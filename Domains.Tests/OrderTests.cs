@@ -1,5 +1,4 @@
 ﻿using ClassLibrary1;
-using Domains.Compromise.Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NFluent;
 
@@ -11,12 +10,23 @@ namespace Domains.Tests
         [TestMethod]
         public void AssureOrderInCompromisePatternIsValid()
         {
-            CannotAddProductIfSubmitted<Order>();
-            UpdateQuantityIfProductAlreadyExist<Order>();
-            CannotRemoveProductIfSubmitted<Order>();
-            CannotSubmitOrderIfAlreadySubmitted<Order>();
-            CalculateTotalCostEveryProductAdd<Order>();
-            CalculateTotalCostEveryProductRemove<Order>();
+            CannotAddProductIfSubmitted<Domains.Compromise.Domain.Order>();
+            UpdateQuantityIfProductAlreadyExist<Domains.Compromise.Domain.Order>();
+            CannotRemoveProductIfSubmitted<Domains.Compromise.Domain.Order>();
+            CannotSubmitOrderIfAlreadySubmitted<Domains.Compromise.Domain.Order>();
+            CalculateTotalCostEveryProductAdd<Domains.Compromise.Domain.Order>();
+            CalculateTotalCostEveryProductRemove<Domains.Compromise.Domain.Order>();
+        }
+
+        [TestMethod]
+        public void AssureOrderInSnapshotPatternIsValid()
+        {
+            CannotAddProductIfSubmitted<Domains.Snapshot.Domain.Order>();
+            UpdateQuantityIfProductAlreadyExist<Domains.Snapshot.Domain.Order>();
+            CannotRemoveProductIfSubmitted<Domains.Snapshot.Domain.Order>();
+            CannotSubmitOrderIfAlreadySubmitted<Domains.Snapshot.Domain.Order>();
+            CalculateTotalCostEveryProductAdd<Domains.Snapshot.Domain.Order>();
+            CalculateTotalCostEveryProductRemove<Domains.Snapshot.Domain.Order>();
         }
 
         // ----- Test bases

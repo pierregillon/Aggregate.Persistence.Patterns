@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PureOrderWithNoPersistance.cs" />
+    <Compile Include="PureOrderLineWithNoPersistance.cs" />
     <Compile Include="OrderOperationException.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="IOrder.cs" />
