@@ -61,10 +61,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="OrderTests.cs" />
-    <Compile Include="Compromise\OrderTests.cs" />
+    <Compile Include="Domain\DomainLogicTests.cs" />
+    <Compile Include="Persistance\OrderWithCompromisePatternTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Snapshot\OrderTests.cs" />
+    <Compile Include="Persistance\OrderWithSnapshotPatternTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\Base.csproj">

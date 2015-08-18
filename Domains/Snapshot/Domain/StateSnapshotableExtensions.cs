@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Domains.Snapshot.Domain
 {
@@ -8,7 +7,10 @@ namespace Domains.Snapshot.Domain
         public static IEnumerable<TState> TakeSnapshot<TModel, TState>(this IList<TModel> models)
             where TModel : IStateSnapshotable<TState>
         {
-            return models.Select(model => model.TakeSnapshot());
+            foreach (var model in models) {
+                var state = model.TakeSnapshot();
+                yield return state;
+            }
         }
 
         public static void LoadFromSnapshot<TModel, TState>(this IList<TModel> models, IEnumerable<TState> states)

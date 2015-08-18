@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Domains.Snapshot.Domain;
 using Domains.Snapshot.Infrastructure.EntityFramework;
 
@@ -8,7 +9,15 @@ namespace Domains.Snapshot.Infrastructure
     {
         public Order Get(Guid id)
         {
-            return null;
+            using (var dataContext = new DataContext()) {
+                var orderState = dataContext.Set<OrderState>().Include("Lines").FirstOrDefault(x => x.Id == id);
+                if (orderState == null) {
+                    return null;
+                }
+                var order = new Order();
+                ((IStateSnapshotable<OrderState>)order).LoadFromSnapshot(orderState);
+                return order;
+            }
         }
 
         public void Add(Order order)

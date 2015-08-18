@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using ClassLibrary1;
-using Domains.Snapshot.Infrastructure;
 
-namespace Domains.Snapshot.Domain
+namespace Domains.Snapshot.Infrastructure
 {
     public class OrderState
     {

@@ -27,7 +27,7 @@ namespace ClassLibrary1
 
             var line = _lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
-                _lines.Add(new PureOrderLineWithNoPersistance(product, quantity, Id));
+                _lines.Add(new PureOrderLineWithNoPersistance(product, quantity));
             }
             else {
                 line.IncreaseQuantity(quantity);

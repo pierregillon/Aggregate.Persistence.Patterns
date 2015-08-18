@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ClassLibrary1;
 using Domains.Compromise.Domain;
@@ -7,10 +8,10 @@ using Domains.Compromise.Infrastructure.EntityFramework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NFluent;
 
-namespace Domains.Tests.Compromise
+namespace Domains.Tests.Persistance
 {
     [TestClass]
-    public class OrderTests
+    public class OrderWithCompromisePatternTests
     {
         [TestMethod]
         public void AddOrderInDatabase()
@@ -35,6 +36,41 @@ namespace Domains.Tests.Compromise
                 Check.That(lines[1].Product).IsEqualTo(Product.Computer);
                 Check.That(lines[1].Quantity).IsEqualTo(1);
             }
+        }
+
+        [TestMethod]
+        public void LoadOrderFromDatabase()
+        {
+            var guid = Guid.NewGuid();
+
+            using (var dataContext = new DataContext())
+            {
+                var orderState = new Order
+                {
+                    Id = guid,
+                    OrderStatus = OrderStatus.Draft,
+                    TotalCost = 688.00,
+                    Lines = new List<OrderLine>()
+                };
+                var orderLineState = new OrderLine
+                {
+                    Order = orderState,
+                    Product = Product.Computer,
+                    Quantity = 1
+                };
+                dataContext.Set<Order>().Add(orderState);
+                dataContext.Set<OrderLine>().Add(orderLineState);
+                dataContext.SaveChanges();
+            }
+
+            var orderRepository = new OrderRepository();
+            var order = orderRepository.Get(guid);
+
+            Check.That(order.Id).IsEqualTo(guid);
+            Check.That(order.OrderStatus).IsEqualTo(OrderStatus.Draft);
+            Check.That(order.SubmitDate).IsEqualTo(default(DateTime));
+            Check.That(order.TotalCost).IsEqualTo(688.00);
+            Check.That(order.GetQuantity(Product.Computer)).IsEqualTo(1);
         }
     }
 }

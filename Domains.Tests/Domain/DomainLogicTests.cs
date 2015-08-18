@@ -2,10 +2,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NFluent;
 
-namespace Domains.Tests
+namespace Domains.Tests.Domain
 {
     [TestClass]
-    public class OrderTests
+    public class DomainLogicTests
     {
         [TestMethod]
         public void AssureOrderInCompromisePatternIsValid()
