@@ -11,7 +11,7 @@ namespace ClassLibrary1
 
         public Guid Id { get; private set; }
         public OrderStatus OrderStatus { get; private set; }
-        public DateTime SubmitDate { get; private set; }
+        public DateTime? SubmitDate { get; private set; }
         public double TotalCost { get; private set; }
 
         // ----- Constructor

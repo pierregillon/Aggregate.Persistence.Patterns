@@ -8,7 +8,7 @@ namespace Domains.Snapshot.Infrastructure
     {
         public Guid Id { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        public DateTime SubmitDate { get; set; }
+        public DateTime? SubmitDate { get; set; }
         public double TotalCost { get; set; }
         public List<OrderLineState> Lines { get; set; }
 

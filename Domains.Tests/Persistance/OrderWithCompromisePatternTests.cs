@@ -27,7 +27,7 @@ namespace Domains.Tests.Persistance
             using (var dataContext = new DataContext()) {
                 var orderInDatabase = dataContext.Set<Order>().Single(x => x.Id == order.Id);
                 Check.That(orderInDatabase.OrderStatus).IsEqualTo(OrderStatus.Submitted);
-                Check.That(orderInDatabase.SubmitDate.ToLongDateString()).IsEqualTo(DateTime.Now.ToLongDateString());
+                Check.That(orderInDatabase.SubmitDate.Value.ToLongDateString()).IsEqualTo(DateTime.Now.ToLongDateString());
                 Check.That(orderInDatabase.TotalCost).IsEqualTo(1089);
 
                 var lines = dataContext.Set<OrderLine>().Where(x => x.OrderId == order.Id).ToArray();
@@ -68,7 +68,7 @@ namespace Domains.Tests.Persistance
 
             Check.That(order.Id).IsEqualTo(guid);
             Check.That(order.OrderStatus).IsEqualTo(OrderStatus.Draft);
-            Check.That(order.SubmitDate).IsEqualTo(default(DateTime));
+            Check.That(order.SubmitDate).IsNull();
             Check.That(order.TotalCost).IsEqualTo(688.00);
             Check.That(order.GetQuantity(Product.Computer)).IsEqualTo(1);
         }

@@ -6,7 +6,7 @@ namespace ClassLibrary1
     {
         OrderStatus OrderStatus { get; }
         double TotalCost { get; }
-        DateTime SubmitDate { get; }
+        DateTime? SubmitDate { get; }
 
         void AddProduct(Product product, int quantity);
         void RemoveProduct(Product product);
