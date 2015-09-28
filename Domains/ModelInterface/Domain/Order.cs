@@ -5,31 +5,31 @@ using Domain.Base;
 
 namespace Domains.ModelInterface.Domain
 {
-    public class Order : IOrder, IOrderStates
+    public class Order : IOrder, IOrderStates<OrderLine>
     {
-        Guid IOrderStates.Id
+        Guid IOrderStates<OrderLine>.Id
         {
             get { return Id; }
             set { Id = value; }
         }
-        OrderStatus IOrderStates.OrderStatus
+        OrderStatus IOrderStates<OrderLine>.OrderStatus
         {
             get { return _orderStatus; }
             set { _orderStatus = value; }
         }
-        DateTime? IOrderStates.SubmitDate
+        DateTime? IOrderStates<OrderLine>.SubmitDate
         {
             get { return SubmitDate; }
             set { SubmitDate = value; }
         }
-        double IOrderStates.TotalCost
+        double IOrderStates<OrderLine>.TotalCost
         {
             get { return TotalCost; }
             set { TotalCost = value; }
         }
-        ICollection<IOrderLineStates> IOrderStates.Lines
+        ICollection<OrderLine> IOrderStates<OrderLine>.Lines
         {
-            get { return _lines.Cast<IOrderLineStates>().ToList(); }
+            get { return _lines; }
             set { value.CopyTo(_lines); }
         }
 

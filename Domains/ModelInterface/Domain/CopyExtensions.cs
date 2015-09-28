@@ -4,13 +4,15 @@ namespace Domains.ModelInterface.Domain
 {
     public static class CopyExtensions
     {
-        public static void CopyTo(this IOrderStates source, IOrderStates target)
+        public static void CopyTo<TSource, TTarget>(this IOrderStates<TSource> source, IOrderStates<TTarget> target)
+            where TSource : IOrderLineStates
+            where TTarget : IOrderLineStates, new()
         {
             target.Id = source.Id;
             target.OrderStatus = source.OrderStatus;
             target.SubmitDate = source.SubmitDate;
             target.TotalCost = source.TotalCost;
-            target.Lines = source.Lines;
+            source.Lines.CopyTo(target.Lines);
         }
 
         public static void CopyTo(this IOrderLineStates source, IOrderLineStates target)

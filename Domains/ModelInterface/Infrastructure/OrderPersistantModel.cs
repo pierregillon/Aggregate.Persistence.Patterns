@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Domain.Base;
 using Domains.ModelInterface.Domain;
 
 namespace Domains.ModelInterface.Infrastructure
 {
-    public class OrderPersistantModel : IOrderStates
+    public class OrderPersistantModel : IOrderStates<OrderLinePersistantModel>
     {
-        ICollection<IOrderLineStates> IOrderStates.Lines
+        ICollection<OrderLinePersistantModel> IOrderStates<OrderLinePersistantModel>.Lines
         {
-            get { return Lines.OfType<IOrderLineStates>().ToList(); }
+            get { return Lines; }
             set { value.CopyTo(Lines); }
         }
 
