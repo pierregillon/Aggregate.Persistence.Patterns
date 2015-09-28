@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Linq;
-using Domain.Base;
 using Domains.Snapshot.Domain;
 using Domains.Snapshot.Infrastructure.EntityFramework;
 
 namespace Domains.Snapshot.Infrastructure
 {
-    public class OrderRepository : IRepository<Order>
+    public class OrderRepository : IOrderRepository
     {
         public Order Get(Guid id)
         {
             using (var dataContext = new DataContext()) {
-                var orderState = dataContext.Set<OrderState>().Include("Lines").FirstOrDefault(x => x.Id == id);
+                var orderState = dataContext
+                    .Set<OrderState>()
+                    .Include("Lines")
+                    .FirstOrDefault(x => x.Id == id);
+
                 if (orderState == null) {
                     return null;
                 }

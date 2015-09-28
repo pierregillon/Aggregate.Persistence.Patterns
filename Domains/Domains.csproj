@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compromise\Domain\IOrderRepository.cs" />
     <Compile Include="Compromise\Domain\Order.cs" />
     <Compile Include="Compromise\Domain\OrderLine.cs" />
     <Compile Include="Compromise\Infrastructure\EntityFramework\DataContext.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Compromise\Infrastructure\OrderRepository.cs" />
     <Compile Include="ModelInterface\Domain\IOrderLinePersistantModel.cs" />
     <Compile Include="ModelInterface\Domain\IOrderPersistantModel.cs" />
+    <Compile Include="ModelInterface\Domain\IOrderRepository.cs" />
     <Compile Include="ModelInterface\Domain\OrderConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Snapshot\Domain\IStateSnapshotable.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="ModelInterface\Domain\Order.cs" />
     <Compile Include="ModelInterface\Domain\OrderLine.cs" />
     <Compile Include="Snapshot\Domain\StateSnapshotableExtensions.cs" />
+    <Compile Include="Snapshot\Domain\IOrderRepository.cs" />
     <Compile Include="Snapshot\Infrastructure\OrderLineState.cs" />
     <Compile Include="Snapshot\Infrastructure\OrderState.cs" />
     <Compile Include="Snapshot\Infrastructure\EntityFramework\DataContext.cs" />

@@ -7,12 +7,16 @@ using Order = Domains.ModelInterface.Domain.Order;
 
 namespace Domains.ModelInterface.Infrastructure
 {
-    public class OrderRepository : IRepository<Order>
+    public class OrderRepository : IOrderRepository
     {
         public Order Get(Guid id)
         {
             using (var dataContext = new DataContext()) {
-                var orderState = dataContext.Set<PersistantOrder>().Include("Lines").FirstOrDefault(x => x.Id == id);
+                var orderState = dataContext
+                    .Set<PersistantOrder>()
+                    .Include("Lines")
+                    .FirstOrDefault(x => x.Id == id);
+
                 if (orderState == null) {
                     return null;
                 }
