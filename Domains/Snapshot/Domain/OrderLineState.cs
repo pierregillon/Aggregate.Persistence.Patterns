@@ -1,8 +1,7 @@
 ﻿using System;
 using Domain.Base;
-using Domains.Snapshot.Domain;
 
-namespace Domains.Snapshot.Infrastructure
+namespace Domains.Snapshot.Domain
 {
     public class OrderLineState
     {

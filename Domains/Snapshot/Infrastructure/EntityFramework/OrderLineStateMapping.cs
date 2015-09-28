@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity.ModelConfiguration;
+using Domains.Snapshot.Domain;
 
 namespace Domains.Snapshot.Infrastructure.EntityFramework
 {

@@ -65,8 +65,8 @@
     <Compile Include="ModelInterface\Domain\OrderLine.cs" />
     <Compile Include="Snapshot\Domain\StateSnapshotableExtensions.cs" />
     <Compile Include="Snapshot\Domain\IOrderRepository.cs" />
-    <Compile Include="Snapshot\Infrastructure\OrderLineState.cs" />
-    <Compile Include="Snapshot\Infrastructure\OrderState.cs" />
+    <Compile Include="Snapshot\Domain\OrderLineState.cs" />
+    <Compile Include="Snapshot\Domain\OrderState.cs" />
     <Compile Include="Snapshot\Infrastructure\EntityFramework\DataContext.cs" />
     <Compile Include="Snapshot\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
     <Compile Include="Snapshot\Infrastructure\EntityFramework\OrderStateMapping.cs" />

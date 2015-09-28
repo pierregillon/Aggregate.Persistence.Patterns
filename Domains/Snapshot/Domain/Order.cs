@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Base;
-using Domains.Snapshot.Infrastructure;
 
 namespace Domains.Snapshot.Domain
 {

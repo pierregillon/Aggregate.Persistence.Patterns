@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Domain.Base;
 
-namespace Domains.Snapshot.Infrastructure
+namespace Domains.Snapshot.Domain
 {
     public class OrderState
     {
