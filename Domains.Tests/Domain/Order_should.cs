@@ -18,6 +18,7 @@ namespace Domains.Tests.Domain
                 {
                     new[] {typeof(Domains.Compromise.Domain.Order)},
                     new[] {typeof(Domains.Snapshot.Domain.Order)},
+                    new[] {typeof(Domains.ModelInterface.Domain.Order)},
                 };
             }
         }

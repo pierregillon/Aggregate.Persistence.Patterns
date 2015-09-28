@@ -52,10 +52,15 @@
     <Compile Include="Compromise\Infrastructure\EntityFramework\OrderLineMapping.cs" />
     <Compile Include="Compromise\Infrastructure\EntityFramework\OrderMapping.cs" />
     <Compile Include="Compromise\Infrastructure\OrderRepository.cs" />
+    <Compile Include="ModelInterface\Domain\IOrderLinePersistantModel.cs" />
+    <Compile Include="ModelInterface\Domain\IOrderPersistantModel.cs" />
+    <Compile Include="ModelInterface\Domain\OrderConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Snapshot\Domain\IStateSnapshotable.cs" />
     <Compile Include="Snapshot\Domain\Order.cs" />
     <Compile Include="Snapshot\Domain\OrderLine.cs" />
+    <Compile Include="ModelInterface\Domain\Order.cs" />
+    <Compile Include="ModelInterface\Domain\OrderLine.cs" />
     <Compile Include="Snapshot\Domain\StateSnapshotableExtensions.cs" />
     <Compile Include="Snapshot\Infrastructure\OrderLineState.cs" />
     <Compile Include="Snapshot\Infrastructure\OrderState.cs" />
@@ -63,6 +68,12 @@
     <Compile Include="Snapshot\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
     <Compile Include="Snapshot\Infrastructure\EntityFramework\OrderStateMapping.cs" />
     <Compile Include="Snapshot\Infrastructure\OrderRepository.cs" />
+    <Compile Include="ModelInterface\Infrastructure\PersistantOrderLine.cs" />
+    <Compile Include="ModelInterface\Infrastructure\PersistantOrder.cs" />
+    <Compile Include="ModelInterface\Infrastructure\EntityFramework\DataContext.cs" />
+    <Compile Include="ModelInterface\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
+    <Compile Include="ModelInterface\Infrastructure\EntityFramework\OrderStateMapping.cs" />
+    <Compile Include="ModelInterface\Infrastructure\OrderRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\Base.csproj">
@@ -74,6 +85,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

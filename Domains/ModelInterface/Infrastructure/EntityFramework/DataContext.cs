@@ -1,10 +1,10 @@
 ﻿using System.Data.Entity;
 
-namespace Domains.Snapshot.Infrastructure.EntityFramework
+namespace Domains.ModelInterface.Infrastructure.EntityFramework
 {
     public class DataContext : DbContext
     {
-        public DataContext() : base("DomainModelPatterns.Snapshot")
+        public DataContext() : base("DomainModelPatterns.ModelInterface")
         {
             
         }
