@@ -11,15 +11,7 @@ namespace Domains.ModelInterface.Infrastructure
         ICollection<IOrderLineStates> IOrderStates.Lines
         {
             get { return Lines.OfType<IOrderLineStates>().ToList(); }
-            set
-            {
-                Lines.Clear();
-                foreach (var orderLine in value) {
-                    var persistantOrderLine = new OrderLinePersistantModel();
-                    orderLine.CopyTo(persistantOrderLine);
-                    Lines.Add(persistantOrderLine);
-                }
-            }
+            set { value.CopyTo(Lines); }
         }
 
         public Guid Id { get; set; }

@@ -30,17 +30,8 @@ namespace Domains.ModelInterface.Domain
         ICollection<IOrderLineStates> IOrderStates.Lines
         {
             get { return _lines.OfType<IOrderLineStates>().ToList(); }
-            set
-            {
-                _lines.Clear();
-                foreach (var persistantModel in value) {
-                    var orderLine = new OrderLine();
-                    persistantModel.CopyTo(orderLine);
-                    _lines.Add(orderLine);
-                }
-            }
+            set { value.CopyTo(_lines); }
         }
-
 
         private readonly ProductCatalog _catalog = new ProductCatalog();
         private readonly List<OrderLine> _lines = new List<OrderLine>();

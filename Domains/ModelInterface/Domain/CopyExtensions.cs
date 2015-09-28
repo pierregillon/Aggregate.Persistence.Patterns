@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Domains.ModelInterface.Domain
 {
     public static class CopyExtensions
@@ -15,6 +17,18 @@ namespace Domains.ModelInterface.Domain
         {
             target.Product = source.Product;
             target.Quantity = source.Quantity;
+        }
+
+        public static void CopyTo<TSource, TTarget>(this IEnumerable<TSource> source, ICollection<TTarget> target)
+            where TSource : IOrderLineStates
+            where TTarget : IOrderLineStates, new()
+        {
+            target.Clear();
+            foreach (var orderLine in source) {
+                var persistantOrderLine = new TTarget();
+                orderLine.CopyTo(persistantOrderLine);
+                target.Add(persistantOrderLine);
+            }
         }
     }
 }
