@@ -10,9 +10,9 @@ namespace Domains.Snapshot.Domain
     {
         private readonly ProductCatalog _catalog = new ProductCatalog();
         private readonly List<OrderLine> _lines = new List<OrderLine>();
+        private OrderStatus _orderStatus;
 
         public Guid Id { get; private set; }
-        public OrderStatus OrderStatus { get; private set; }
         public DateTime? SubmitDate { get; private set; }
         public double TotalCost { get; private set; }
 
@@ -60,13 +60,13 @@ namespace Domains.Snapshot.Domain
         {
             CheckIfDraft();
             SubmitDate = DateTime.Now;
-            OrderStatus = OrderStatus.Submitted;
+            _orderStatus = OrderStatus.Submitted;
         }
 
         // ----- Internal logic
         private void CheckIfDraft()
         {
-            if (OrderStatus != OrderStatus.Draft)
+            if (_orderStatus != OrderStatus.Draft)
                 throw new OrderOperationException("The operation is only allowed if the order is in draft state.");
         }
         private void ReCalculateTotalPrice()
@@ -83,7 +83,7 @@ namespace Domains.Snapshot.Domain
             return new OrderState
             {
                 Id = Id,
-                OrderStatus = OrderStatus,
+                OrderStatus = _orderStatus,
                 SubmitDate = SubmitDate,
                 TotalCost = TotalCost,
                 Lines = _lines.TakeSnapshot<OrderLine, OrderLineState>().ToList()
@@ -92,7 +92,7 @@ namespace Domains.Snapshot.Domain
         void IStateSnapshotable<OrderState>.LoadFromSnapshot(OrderState orderState)
         {
             Id = orderState.Id;
-            OrderStatus = orderState.OrderStatus;
+            _orderStatus = orderState.OrderStatus;
             SubmitDate = orderState.SubmitDate;
             TotalCost = orderState.TotalCost;
 

@@ -65,7 +65,6 @@ namespace Domains.Tests.Persistance
             var order = orderRepository.Get(guid);
 
             Check.That(order.Id).IsEqualTo(guid);
-            Check.That(order.OrderStatus).IsEqualTo(OrderStatus.Draft);
             Check.That(order.SubmitDate).IsNull();
             Check.That(order.TotalCost).IsEqualTo(688.00);
             Check.That(order.GetQuantity(Product.Computer)).IsEqualTo(1);

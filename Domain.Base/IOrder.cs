@@ -4,7 +4,6 @@ namespace Domain.Base
 {
     public interface IOrder
     {
-        OrderStatus OrderStatus { get; }
         double TotalCost { get; }
         DateTime? SubmitDate { get; }
 
