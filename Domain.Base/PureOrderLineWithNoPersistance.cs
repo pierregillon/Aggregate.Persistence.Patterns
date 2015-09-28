@@ -1,4 +1,4 @@
-namespace ClassLibrary1
+namespace Domain.Base
 {
     public class PureOrderLineWithNoPersistance : IOrderLine
     {

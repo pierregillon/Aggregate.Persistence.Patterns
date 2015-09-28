@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ClassLibrary1
+namespace Domain.Base
 {
     public class ProductCatalog
     {

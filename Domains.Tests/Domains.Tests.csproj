@@ -76,9 +76,9 @@
     <Compile Include="Persistance\OrderWithSnapshotPatternTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Base.csproj">
+    <ProjectReference Include="..\Domain.Base\Domain.Base.csproj">
       <Project>{2BCCCCF0-F8A4-4D70-82A9-A2A04825755D}</Project>
-      <Name>Base</Name>
+      <Name>Domain.Base</Name>
     </ProjectReference>
     <ProjectReference Include="..\Domains\Domains.csproj">
       <Project>{7A6ECC26-03A6-438C-8757-ACFED38C1BCD}</Project>

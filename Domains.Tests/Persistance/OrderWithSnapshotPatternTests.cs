@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ClassLibrary1;
+using Domain.Base;
 using Domains.Snapshot.Domain;
 using Domains.Snapshot.Infrastructure;
 using Domains.Snapshot.Infrastructure.EntityFramework;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ClassLibrary1
+namespace Domain.Base
 {
     public class PureOrderWithNoPersistance : IOrder
     {

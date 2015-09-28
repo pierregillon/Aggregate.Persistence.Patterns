@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ClassLibrary1
+namespace Domain.Base
 {
     public class OrderOperationException : Exception
     {

@@ -1,4 +1,4 @@
-using ClassLibrary1;
+using Domain.Base;
 
 namespace Domains.ModelInterface.Domain
 {

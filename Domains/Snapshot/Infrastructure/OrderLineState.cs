@@ -1,5 +1,5 @@
 ﻿using System;
-using ClassLibrary1;
+using Domain.Base;
 using Domains.Snapshot.Domain;
 
 namespace Domains.Snapshot.Infrastructure

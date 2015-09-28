@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using ClassLibrary1;
+using Domain.Base;
 using NFluent;
 using Xunit;
 

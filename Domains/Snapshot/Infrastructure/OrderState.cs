@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using ClassLibrary1;
+using Domain.Base;
 
 namespace Domains.Snapshot.Infrastructure
 {
