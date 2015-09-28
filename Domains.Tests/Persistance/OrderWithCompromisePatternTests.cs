@@ -5,15 +5,14 @@ using ClassLibrary1;
 using Domains.Compromise.Domain;
 using Domains.Compromise.Infrastructure;
 using Domains.Compromise.Infrastructure.EntityFramework;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NFluent;
+using Xunit;
 
 namespace Domains.Tests.Persistance
 {
-    [TestClass]
     public class OrderWithCompromisePatternTests
     {
-        [TestMethod]
+        [Fact]
         public void AddOrderInDatabase()
         {
             var order = new Order();
@@ -38,7 +37,7 @@ namespace Domains.Tests.Persistance
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void LoadOrderFromDatabase()
         {
             var guid = Guid.NewGuid();

@@ -1,13 +1,12 @@
 ﻿using ClassLibrary1;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NFluent;
+using Xunit;
 
 namespace Domains.Tests.Domain
 {
-    [TestClass]
     public class DomainLogicTests
     {
-        [TestMethod]
+        [Fact]
         public void AssureOrderInCompromisePatternIsValid()
         {
             CannotAddProductIfSubmitted<Domains.Compromise.Domain.Order>();
@@ -18,7 +17,7 @@ namespace Domains.Tests.Domain
             CalculateTotalCostEveryProductRemove<Domains.Compromise.Domain.Order>();
         }
 
-        [TestMethod]
+        [Fact]
         public void AssureOrderInSnapshotPatternIsValid()
         {
             CannotAddProductIfSubmitted<Domains.Snapshot.Domain.Order>();
