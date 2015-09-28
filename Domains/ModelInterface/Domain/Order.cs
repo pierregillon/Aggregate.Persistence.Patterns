@@ -29,7 +29,7 @@ namespace Domains.ModelInterface.Domain
         }
         ICollection<IOrderLineStates> IOrderStates.Lines
         {
-            get { return _lines.OfType<IOrderLineStates>().ToList(); }
+            get { return _lines.Cast<IOrderLineStates>().ToList(); }
             set { value.CopyTo(_lines); }
         }
 
