@@ -10,6 +10,6 @@ namespace Domains.ModelInterface.Domain
         OrderStatus OrderStatus { get; set; }
         DateTime? SubmitDate { get; set; }
         double TotalCost { get; set; }
-        ICollection<TOrderLine> Lines { get; set; }
+        IEnumerable<TOrderLine> Lines { get; set; }
     }
 }

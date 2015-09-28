@@ -12,7 +12,7 @@ namespace Domains.ModelInterface.Domain
             target.OrderStatus = source.OrderStatus;
             target.SubmitDate = source.SubmitDate;
             target.TotalCost = source.TotalCost;
-            source.Lines.CopyTo(target.Lines);
+            target.Lines = source.Lines.Clone<TSource, TTarget>();
         }
 
         public static void CopyTo(this IOrderLineStates source, IOrderLineStates target)
@@ -21,16 +21,17 @@ namespace Domains.ModelInterface.Domain
             target.Quantity = source.Quantity;
         }
 
-        public static void CopyTo<TSource, TTarget>(this IEnumerable<TSource> source, ICollection<TTarget> target)
+        public static ICollection<TTarget> Clone<TSource, TTarget>(this IEnumerable<TSource> source)
             where TSource : IOrderLineStates
             where TTarget : IOrderLineStates, new()
         {
-            target.Clear();
+            ICollection<TTarget> target = new List<TTarget>();
             foreach (var orderLine in source) {
                 var persistantOrderLine = new TTarget();
                 orderLine.CopyTo(persistantOrderLine);
                 target.Add(persistantOrderLine);
             }
+            return target;
         }
     }
 }

@@ -27,14 +27,19 @@ namespace Domains.ModelInterface.Domain
             get { return TotalCost; }
             set { TotalCost = value; }
         }
-        ICollection<OrderLine> IOrderStates<OrderLine>.Lines
+        IEnumerable<OrderLine> IOrderStates<OrderLine>.Lines
         {
-            get { return _lines; }
-            set { value.CopyTo(_lines); }
+            get
+            {
+                // We do a copy of the origin list to avoid
+                // modification from outside.
+                return _lines.ToArray();
+            }
+            set { _lines = value.ToList(); }
         }
 
         private readonly ProductCatalog _catalog = new ProductCatalog();
-        private readonly List<OrderLine> _lines = new List<OrderLine>();
+        private List<OrderLine> _lines = new List<OrderLine>();
         private OrderStatus _orderStatus;
 
         public Guid Id { get; private set; }
