@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Domain.Base;
 using Domains.Snapshot.Domain;
 using Domains.Snapshot.Infrastructure.EntityFramework;
 
 namespace Domains.Snapshot.Infrastructure
 {
-    public class OrderRepository
+    public class OrderRepository : IRepository<Order>
     {
         public Order Get(Guid id)
         {

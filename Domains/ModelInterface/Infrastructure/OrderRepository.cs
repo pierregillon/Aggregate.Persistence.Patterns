@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq;
+using Domain.Base;
 using Domains.ModelInterface.Domain;
 using Domains.ModelInterface.Infrastructure.EntityFramework;
 using Order = Domains.ModelInterface.Domain.Order;
 
 namespace Domains.ModelInterface.Infrastructure
 {
-    public class OrderRepository
+    public class OrderRepository : IRepository<Order>
     {
         public Order Get(Guid id)
         {

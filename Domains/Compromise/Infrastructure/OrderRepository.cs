@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Domain.Base;
 using Domains.Compromise.Domain;
 using Domains.Compromise.Infrastructure.EntityFramework;
 
 namespace Domains.Compromise.Infrastructure
 {
-    public class OrderRepository
+    public class OrderRepository : IRepository<Order>
     {
         public Order Get(Guid id)
         {

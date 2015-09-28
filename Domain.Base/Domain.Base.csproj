@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepository.cs" />
     <Compile Include="PureOrderWithNoPersistance.cs" />
     <Compile Include="PureOrderLineWithNoPersistance.cs" />
     <Compile Include="OrderOperationException.cs" />
