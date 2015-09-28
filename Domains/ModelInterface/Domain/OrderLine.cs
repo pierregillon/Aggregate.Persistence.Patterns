@@ -2,7 +2,7 @@ using Domain.Base;
 
 namespace Domains.ModelInterface.Domain
 {
-    public class OrderLine : IOrderLine, IOrderLinePersistantModel
+    public class OrderLine : IOrderLine, IOrderLineStates
     {
         public Product Product { get; set; }
         public int Quantity { get; set; }

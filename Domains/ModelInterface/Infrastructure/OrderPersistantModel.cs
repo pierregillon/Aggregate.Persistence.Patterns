@@ -6,16 +6,16 @@ using Domains.ModelInterface.Domain;
 
 namespace Domains.ModelInterface.Infrastructure
 {
-    public class PersistantOrder : IOrderPersistantModel
+    public class OrderPersistantModel : IOrderStates
     {
-        ICollection<IOrderLinePersistantModel> IOrderPersistantModel.Lines
+        ICollection<IOrderLineStates> IOrderStates.Lines
         {
-            get { return Lines.OfType<IOrderLinePersistantModel>().ToList(); }
+            get { return Lines.OfType<IOrderLineStates>().ToList(); }
             set
             {
                 Lines.Clear();
                 foreach (var orderLine in value) {
-                    var persistantOrderLine = new PersistantOrderLine();
+                    var persistantOrderLine = new OrderLinePersistantModel();
                     orderLine.CopyTo(persistantOrderLine);
                     Lines.Add(persistantOrderLine);
                 }
@@ -26,11 +26,11 @@ namespace Domains.ModelInterface.Infrastructure
         public OrderStatus OrderStatus { get; set; }
         public DateTime? SubmitDate { get; set; }
         public double TotalCost { get; set; }
-        public List<PersistantOrderLine> Lines { get; set; }
+        public List<OrderLinePersistantModel> Lines { get; set; }
 
-        public PersistantOrder()
+        public OrderPersistantModel()
         {
-            Lines = new List<PersistantOrderLine>();
+            Lines = new List<OrderLinePersistantModel>();
         }
     }
 }

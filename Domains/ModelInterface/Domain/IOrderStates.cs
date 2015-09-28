@@ -4,12 +4,12 @@ using Domain.Base;
 
 namespace Domains.ModelInterface.Domain
 {
-    public interface IOrderPersistantModel
+    public interface IOrderStates
     {
         Guid Id { get; set; }
         OrderStatus OrderStatus { get; set; }
         DateTime? SubmitDate { get; set; }
         double TotalCost { get; set; }
-        ICollection<IOrderLinePersistantModel> Lines { get; set; }
+        ICollection<IOrderLineStates> Lines { get; set; }
     }
 }

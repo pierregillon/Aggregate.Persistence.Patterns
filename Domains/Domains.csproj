@@ -53,10 +53,10 @@
     <Compile Include="Compromise\Infrastructure\EntityFramework\OrderLineMapping.cs" />
     <Compile Include="Compromise\Infrastructure\EntityFramework\OrderMapping.cs" />
     <Compile Include="Compromise\Infrastructure\OrderRepository.cs" />
-    <Compile Include="ModelInterface\Domain\IOrderLinePersistantModel.cs" />
-    <Compile Include="ModelInterface\Domain\IOrderPersistantModel.cs" />
+    <Compile Include="ModelInterface\Domain\IOrderLineStates.cs" />
+    <Compile Include="ModelInterface\Domain\IOrderStates.cs" />
     <Compile Include="ModelInterface\Domain\IOrderRepository.cs" />
-    <Compile Include="ModelInterface\Domain\OrderConverter.cs" />
+    <Compile Include="ModelInterface\Domain\CopyExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Snapshot\Domain\IStateSnapshotable.cs" />
     <Compile Include="Snapshot\Domain\Order.cs" />
@@ -71,8 +71,8 @@
     <Compile Include="Snapshot\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
     <Compile Include="Snapshot\Infrastructure\EntityFramework\OrderStateMapping.cs" />
     <Compile Include="Snapshot\Infrastructure\OrderRepository.cs" />
-    <Compile Include="ModelInterface\Infrastructure\PersistantOrderLine.cs" />
-    <Compile Include="ModelInterface\Infrastructure\PersistantOrder.cs" />
+    <Compile Include="ModelInterface\Infrastructure\OrderLinePersistantModel.cs" />
+    <Compile Include="ModelInterface\Infrastructure\OrderPersistantModel.cs" />
     <Compile Include="ModelInterface\Infrastructure\EntityFramework\DataContext.cs" />
     <Compile Include="ModelInterface\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
     <Compile Include="ModelInterface\Infrastructure\EntityFramework\OrderStateMapping.cs" />

@@ -2,7 +2,7 @@
 
 namespace Domains.ModelInterface.Infrastructure.EntityFramework
 {
-    public class OrderLineStateMapping : EntityTypeConfiguration<PersistantOrderLine>
+    public class OrderLineStateMapping : EntityTypeConfiguration<OrderLinePersistantModel>
     {
         public OrderLineStateMapping()
         {

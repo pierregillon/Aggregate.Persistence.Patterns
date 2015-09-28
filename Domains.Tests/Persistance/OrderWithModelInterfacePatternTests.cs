@@ -24,12 +24,12 @@ namespace Domains.Tests.Persistance
             orderRepository.Add(order);
 
             using (var dataContext = new DataContext()) {
-                var orderInDatabase = dataContext.Set<PersistantOrder>().Single(x => x.Id == order.Id);
+                var orderInDatabase = dataContext.Set<OrderPersistantModel>().Single(x => x.Id == order.Id);
                 Check.That(orderInDatabase.OrderStatus).IsEqualTo(OrderStatus.Submitted);
                 Check.That(orderInDatabase.SubmitDate.Value.ToLongDateString()).IsEqualTo(DateTime.Now.ToLongDateString());
                 Check.That(orderInDatabase.TotalCost).IsEqualTo(1089);
 
-                var lines = dataContext.Set<PersistantOrderLine>().Where(x => x.OrderId == order.Id).ToArray();
+                var lines = dataContext.Set<OrderLinePersistantModel>().Where(x => x.OrderId == order.Id).ToArray();
                 Check.That(lines[0].Product).IsEqualTo(Product.Jacket);
                 Check.That(lines[0].Quantity).IsEqualTo(2);
                 Check.That(lines[1].Product).IsEqualTo(Product.Computer);
@@ -43,21 +43,21 @@ namespace Domains.Tests.Persistance
             var guid = Guid.NewGuid();
 
             using (var dataContext = new DataContext()) {
-                var orderState = new PersistantOrder
+                var orderState = new OrderPersistantModel
                 {
                     Id = guid,
                     OrderStatus = OrderStatus.Draft,
                     TotalCost = 688.00,
-                    Lines = new List<PersistantOrderLine>()
+                    Lines = new List<OrderLinePersistantModel>()
                 };
-                var orderLineState = new PersistantOrderLine
+                var orderLineState = new OrderLinePersistantModel
                 {
                     Order = orderState,
                     Product = Product.Computer,
                     Quantity = 1
                 };
-                dataContext.Set<PersistantOrder>().Add(orderState);
-                dataContext.Set<PersistantOrderLine>().Add(orderLineState);
+                dataContext.Set<OrderPersistantModel>().Add(orderState);
+                dataContext.Set<OrderLinePersistantModel>().Add(orderLineState);
                 dataContext.SaveChanges();
             }
 

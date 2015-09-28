@@ -13,7 +13,7 @@ namespace Domains.ModelInterface.Infrastructure
         {
             using (var dataContext = new DataContext()) {
                 var orderState = dataContext
-                    .Set<PersistantOrder>()
+                    .Set<OrderPersistantModel>()
                     .Include("Lines")
                     .FirstOrDefault(x => x.Id == id);
 
@@ -28,10 +28,10 @@ namespace Domains.ModelInterface.Infrastructure
 
         public void Add(Order order)
         {
-            var persistantModel = new PersistantOrder();
+            var persistantModel = new OrderPersistantModel();
             order.CopyTo(persistantModel);
             using (var dataContext = new DataContext()) {
-                dataContext.Set<PersistantOrder>().Add(persistantModel);
+                dataContext.Set<OrderPersistantModel>().Add(persistantModel);
                 dataContext.SaveChanges();
             }
         }
