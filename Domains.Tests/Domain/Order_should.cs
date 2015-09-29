@@ -16,9 +16,10 @@ namespace Domains.Tests.Domain
             {
                 return new[]
                 {
-                    new[] {typeof(Domains.Compromise.Domain.Order)},
-                    new[] {typeof(Domains.Snapshot.Domain.Order)},
-                    new[] {typeof(Domains.ModelInterface.Domain.Order)},
+                    new[] {typeof(Compromise.Domain.Order)},
+                    new[] {typeof(EventSourcing.Domain.Order)},
+                    new[] {typeof(ModelInterface.Domain.Order)},
+                    new[] {typeof(EventSourcing.Domain.Order)},
                 };
             }
         }
