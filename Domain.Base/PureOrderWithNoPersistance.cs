@@ -9,8 +9,9 @@ namespace Domain.Base
         private readonly ProductCatalog _catalog = new ProductCatalog();
         private readonly List<PureOrderLineWithNoPersistance> _lines = new List<PureOrderLineWithNoPersistance>();
 
+        private OrderStatus _orderStatus;
+
         public Guid Id { get; private set; }
-        public OrderStatus OrderStatus { get; private set; }
         public DateTime? SubmitDate { get; private set; }
         public double TotalCost { get; private set; }
 
@@ -58,13 +59,13 @@ namespace Domain.Base
         {
             CheckIfDraft();
             SubmitDate = DateTime.Now;
-            OrderStatus = OrderStatus.Submitted;
+            _orderStatus = OrderStatus.Submitted;
         }
 
         // ----- Internal logic
         private void CheckIfDraft()
         {
-            if (OrderStatus != OrderStatus.Draft)
+            if (_orderStatus != OrderStatus.Draft)
                 throw new OrderOperationException("The operation is only allowed if the order is in draft state.");
         }
         private void ReCalculateTotalPrice()

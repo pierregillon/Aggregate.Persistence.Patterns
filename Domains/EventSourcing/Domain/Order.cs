@@ -95,5 +95,28 @@ namespace Domains.EventSourcing.Domain
             _orderStatus = OrderStatus.Submitted;
             SubmitDate = @event.SubmitDate;
         }
+
+        // ----- Overrides
+        public override bool Equals(object obj)
+        {
+            var target = obj as Order;
+            if (target == null)
+            {
+                return base.Equals(obj);
+            }
+            return target.Id == Id;
+        }
+        protected bool Equals(Order other)
+        {
+            return Id.Equals(other.Id);
+        }
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+        public override string ToString()
+        {
+            return "Order with eventsourcing pattern";
+        }
     }
 }

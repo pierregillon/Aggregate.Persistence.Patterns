@@ -93,5 +93,9 @@ namespace Domains.Binary.Domain
         {
             return Id.GetHashCode();
         }
+        public override string ToString()
+        {
+            return "Order with binary persistance";
+        }
     }
 }

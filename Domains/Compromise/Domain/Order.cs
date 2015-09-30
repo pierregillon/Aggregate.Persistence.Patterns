@@ -76,5 +76,28 @@ namespace Domains.Compromise.Domain
             }
             TotalCost = Lines.Sum(x => _catalog.GetPrice(x.Product) * x.Quantity);
         }
+
+        // ----- Overrides
+        public override bool Equals(object obj)
+        {
+            var target = obj as Order;
+            if (target == null)
+            {
+                return base.Equals(obj);
+            }
+            return target.Id == Id;
+        }
+        protected bool Equals(Order other)
+        {
+            return Id.Equals(other.Id);
+        }
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+        public override string ToString()
+        {
+            return "Order with compromise pattern";
+        }
     }
 }
