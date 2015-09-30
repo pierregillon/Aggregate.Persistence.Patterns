@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Domain.Base;
 using Domains.EventSourcing.Domain;
+using Domains.EventSourcing.Domain.Events;
 using Domains.EventSourcing.Infrastructure;
 using Domains.EventSourcing.Infrastructure.EntityFramework;
 using NFluent;

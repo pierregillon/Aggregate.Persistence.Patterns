@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Base;
+using Domains.EventSourcing.Domain.Events;
 
 namespace Domains.EventSourcing.Domain
 {

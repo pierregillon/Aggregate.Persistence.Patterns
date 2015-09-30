@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Domains.EventSourcing.Domain;
+using Domains.EventSourcing.Domain.Events;
 using Domains.EventSourcing.Infrastructure.EntityFramework;
 using Newtonsoft.Json;
 

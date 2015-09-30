@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Domains.EventSourcing.Domain
+namespace Domains.EventSourcing.Domain.Events
 {
     public abstract class EventOwner
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Domains.EventSourcing.Domain
+namespace Domains.EventSourcing.Domain.Events
 {
     public class OrderSubmitted : IDomainEvent
     {

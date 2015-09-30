@@ -75,13 +75,13 @@
     <Compile Include="Compromise\Infrastructure\EntityFramework\OrderLineMapping.cs" />
     <Compile Include="Compromise\Infrastructure\EntityFramework\OrderMapping.cs" />
     <Compile Include="Compromise\Infrastructure\OrderRepository.cs" />
-    <Compile Include="EventSourcing\Domain\EventOwner.cs" />
-    <Compile Include="EventSourcing\Domain\IDomainEvent.cs" />
+    <Compile Include="EventSourcing\Domain\Events\EventOwner.cs" />
+    <Compile Include="EventSourcing\Domain\Events\IDomainEvent.cs" />
     <Compile Include="EventSourcing\Domain\IOrderRepository.cs" />
-    <Compile Include="EventSourcing\Domain\OrderCreated.cs" />
-    <Compile Include="EventSourcing\Domain\OrderSubmitted.cs" />
-    <Compile Include="EventSourcing\Domain\ProductAdded.cs" />
-    <Compile Include="EventSourcing\Domain\ProductRemoved.cs" />
+    <Compile Include="EventSourcing\Domain\Events\OrderCreated.cs" />
+    <Compile Include="EventSourcing\Domain\Events\OrderSubmitted.cs" />
+    <Compile Include="EventSourcing\Domain\Events\ProductAdded.cs" />
+    <Compile Include="EventSourcing\Domain\Events\ProductRemoved.cs" />
     <Compile Include="EventSourcing\Infrastructure\EntityFramework\DataContext.cs" />
     <Compile Include="EventSourcing\Infrastructure\OrderEvent.cs" />
     <Compile Include="EventSourcing\Infrastructure\EntityFramework\OrderEventMapping.cs" />
@@ -123,6 +123,7 @@
       <Name>Domain.Base</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
