@@ -4,6 +4,18 @@ namespace Domain.Base
 {
     public class ProductCatalog
     {
+        private static ProductCatalog _instance;
+        public static ProductCatalog Instance
+        {
+            get
+            {
+                if (_instance == null) {
+                    _instance = new ProductCatalog();
+                }
+                return _instance;
+            }
+        }
+
         private readonly Dictionary<Product, double> _prices = new Dictionary<Product, double>
         {
             {Product.Tshirt, 3.00},

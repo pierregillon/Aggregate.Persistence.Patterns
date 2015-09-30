@@ -68,6 +68,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binary\Domain\IOrderRepository.cs" />
+    <Compile Include="Binary\Domain\OrderLine.cs" />
+    <Compile Include="Binary\Domain\Order.cs" />
+    <Compile Include="Binary\Infrastructure\OrderRepository.cs" />
     <Compile Include="Compromise\Domain\IOrderRepository.cs" />
     <Compile Include="Compromise\Domain\Order.cs" />
     <Compile Include="Compromise\Domain\OrderLine.cs" />
