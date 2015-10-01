@@ -26,6 +26,10 @@ namespace Domain.Base
         {
             CheckIfDraft();
 
+            if (quantity < 0) {
+                throw new OrderOperationException("Unable to add product with negative quantity.");
+            }
+
             var line = _lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
                 _lines.Add(new PureOrderLineWithNoPersistance(product, quantity));

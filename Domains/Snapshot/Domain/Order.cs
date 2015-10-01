@@ -26,6 +26,10 @@ namespace Domains.Snapshot.Domain
         {
             CheckIfDraft();
 
+            if (quantity < 0) {
+                throw new OrderOperationException("Unable to add product with negative quantity.");
+            }
+
             var line = _lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
                 _lines.Add(new OrderLine(product, quantity));
@@ -103,8 +107,7 @@ namespace Domains.Snapshot.Domain
         public override bool Equals(object obj)
         {
             var target = obj as Order;
-            if (target == null)
-            {
+            if (target == null) {
                 return base.Equals(obj);
             }
             return target.Id == Id;

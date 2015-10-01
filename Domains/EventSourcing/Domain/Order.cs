@@ -31,6 +31,9 @@ namespace Domains.EventSourcing.Domain
         public void AddProduct(Product product, int quantity)
         {
             CheckIfDraft();
+            if (quantity < 0) {
+                throw new OrderOperationException("Unable to add product with negative quantity.");
+            }
             Apply(new ProductAdded(Id, product, quantity));
         }
         public void RemoveProduct(Product product)

@@ -58,6 +58,20 @@ namespace Domains.Tests
         [MemberData("EventSourcing")]
         [MemberData("ModelInterface")]
         [MemberData("Snapshot")]
+        public void throw_exception_when_adding_product_with_negative_quantity<TOrder>(TOrder order) where TOrder : IOrder
+        {
+            Check
+                .ThatCode(() => order.AddProduct(Product.Computer, -5))
+                .Throws<OrderOperationException>()
+                .WithMessage("Unable to add product with negative quantity.");
+        }
+
+        [Theory]
+        [MemberData("Binary")]
+        [MemberData("Compromise")]
+        [MemberData("EventSourcing")]
+        [MemberData("ModelInterface")]
+        [MemberData("Snapshot")]
         public void throw_exception_when_adding_product_to_submitted_order<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.Submit();

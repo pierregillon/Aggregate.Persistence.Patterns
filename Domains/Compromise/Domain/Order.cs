@@ -27,6 +27,10 @@ namespace Domains.Compromise.Domain
         {
             CheckIfDraft();
 
+            if (quantity < 0) {
+                throw new OrderOperationException("Unable to add product with negative quantity.");
+            }
+
             var line = Lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
                 Lines.Add(new OrderLine(product, quantity, Id));
