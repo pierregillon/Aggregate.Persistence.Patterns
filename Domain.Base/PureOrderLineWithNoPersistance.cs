@@ -1,7 +1,11 @@
+using System;
+
 namespace Domain.Base
 {
     public class PureOrderLineWithNoPersistance : IOrderLine
     {
+        private readonly DateTime _creationDate;
+
         public Product Product { get; private set; }
         public int Quantity { get; private set; }
 
@@ -10,6 +14,7 @@ namespace Domain.Base
         {
             Product = product;
             Quantity = quantity;
+            _creationDate = DateTime.Now;
         }
 
         // ----- Public methods
@@ -27,12 +32,16 @@ namespace Domain.Base
             }
 
             return target.Product == Product &&
-                   target.Quantity == Quantity;
+                   target.Quantity == Quantity &&
+                   target._creationDate == _creationDate;
         }
         public override int GetHashCode()
         {
             unchecked {
-                return ((int) Product*397) ^ Quantity;
+                int hashCode = _creationDate.GetHashCode();
+                hashCode = (hashCode*397) ^ (int) Product;
+                hashCode = (hashCode*397) ^ Quantity;
+                return hashCode;
             }
         }
     }

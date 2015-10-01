@@ -85,5 +85,28 @@ namespace Domain.Base
             }
             TotalCost = _lines.Sum(x => _catalog.GetPrice(x.Product)*x.Quantity);
         }
+
+        // ----- Override
+        public override bool Equals(object obj)
+        {
+            var target = obj as PureOrderWithNoPersistance;
+            if (target == null) {
+                return base.Equals(obj);
+            }
+
+            return target.Id == Id &&
+                   target._orderStatus == _orderStatus &&
+                   target.SubmitDate == SubmitDate &&
+                   target.TotalCost == TotalCost &&
+                   target._lines.IsEquivalentIgnoringOrderTo(_lines);
+        }
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+        public override string ToString()
+        {
+            return "Order with compromise pattern";
+        }
     }
 }
