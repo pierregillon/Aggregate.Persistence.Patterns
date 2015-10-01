@@ -1,3 +1,4 @@
+using System;
 using Domain.Base;
 
 namespace Domains.ModelInterface.Domain
@@ -9,11 +10,18 @@ namespace Domains.ModelInterface.Domain
             get { return Quantity; }
             set { Quantity = value; }
         }
+        DateTime IOrderLineStates.CreationDate
+        {
+            get { return _creationDate; }
+            set { _creationDate = value; }
+        }
         Product IOrderLineStates.Product
         {
             get { return Product; }
             set { Product = value; }
         }
+
+        private DateTime _creationDate;
 
         public Product Product { get; private set; }
         public int Quantity { get; private set; }
@@ -26,6 +34,7 @@ namespace Domains.ModelInterface.Domain
         {
             Product = product;
             Quantity = quantity;
+            _creationDate = DateTime.Now;
         }
 
         // ----- Public methods
@@ -43,12 +52,17 @@ namespace Domains.ModelInterface.Domain
             }
 
             return target.Product == Product &&
-                   target.Quantity == Quantity;
+                    target.Quantity == Quantity &&
+                    target._creationDate == _creationDate;
         }
         public override int GetHashCode()
         {
-            unchecked {
-                return ((int) Product*397) ^ Quantity;
+            unchecked
+            {
+                int hashCode = _creationDate.GetHashCode();
+                hashCode = (hashCode * 397) ^ (int)Product;
+                hashCode = (hashCode * 397) ^ Quantity;
+                return hashCode;
             }
         }
     }

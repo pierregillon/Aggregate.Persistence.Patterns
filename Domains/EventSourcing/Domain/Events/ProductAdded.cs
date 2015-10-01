@@ -8,12 +8,14 @@ namespace Domains.EventSourcing.Domain.Events
         public Guid AggregateId { get; private set; }
         public Product Product { get; private set; }
         public int Quantity { get; private set; }
+        public DateTime CreationDate { get; set; }
 
-        public ProductAdded(Guid aggregateId, Product product, int quantity)
+        public ProductAdded(Guid aggregateId, Product product, int quantity, DateTime creationDate)
         {
             AggregateId = aggregateId;
             Product = product;
             Quantity = quantity;
+            CreationDate = creationDate;
         }
     }
 }

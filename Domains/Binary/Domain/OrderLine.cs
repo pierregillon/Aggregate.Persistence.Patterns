@@ -6,6 +6,8 @@ namespace Domains.Binary.Domain
     [Serializable]
     public class OrderLine : IOrderLine
     {
+        private DateTime _creationDate;
+
         public Product Product { get; private set; }
         public int Quantity { get; private set; }
 
@@ -14,6 +16,7 @@ namespace Domains.Binary.Domain
         {
             Product = product;
             Quantity = quantity;
+            _creationDate = DateTime.Now;
         }
 
         // ----- Public methods
@@ -31,12 +34,16 @@ namespace Domains.Binary.Domain
             }
 
             return target.Product == Product &&
-                   target.Quantity == Quantity;
+                   target.Quantity == Quantity &&
+                   target._creationDate == _creationDate;
         }
         public override int GetHashCode()
         {
             unchecked {
-                return ((int) Product*397) ^ Quantity;
+                int hashCode = _creationDate.GetHashCode();
+                hashCode = (hashCode*397) ^ (int) Product;
+                hashCode = (hashCode*397) ^ Quantity;
+                return hashCode;
             }
         }
     }

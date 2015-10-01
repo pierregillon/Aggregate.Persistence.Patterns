@@ -120,7 +120,7 @@ namespace Domains.Snapshot.Domain
                    target._orderStatus == _orderStatus &&
                    target.SubmitDate == SubmitDate &&
                    target.TotalCost == TotalCost &&
-                   target._lines.OrderBy(x => x.Product).SequenceEqual(_lines.OrderBy(x => x.Product));
+                   target._lines.IsEquivalentIgnoringOrderTo(_lines);
         }
         protected bool Equals(Order other)
         {

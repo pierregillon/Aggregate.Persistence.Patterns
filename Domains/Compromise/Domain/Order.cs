@@ -98,7 +98,7 @@ namespace Domains.Compromise.Domain
                    target.OrderStatus == OrderStatus &&
                    target.SubmitDate == SubmitDate &&
                    target.TotalCost == TotalCost &&
-                   target.Lines.OrderBy(x => x.Product).SequenceEqual(Lines.OrderBy(x => x.Product));
+                   target.Lines.IsEquivalentIgnoringOrderTo(Lines);
         }
         public override int GetHashCode()
         {

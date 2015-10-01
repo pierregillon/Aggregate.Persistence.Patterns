@@ -97,7 +97,7 @@ namespace Domains.Binary.Domain
                    target.OrderStatus == OrderStatus &&
                    target.SubmitDate == SubmitDate &&
                    target.TotalCost == TotalCost &&
-                   target._lines.OrderBy(x => x.Product).SequenceEqual(_lines.OrderBy(x => x.Product));
+                   target._lines.IsEquivalentIgnoringOrderTo(_lines);
         }
         public override int GetHashCode()
         {

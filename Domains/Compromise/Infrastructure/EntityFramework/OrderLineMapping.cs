@@ -12,6 +12,7 @@ namespace Domains.Compromise.Infrastructure.EntityFramework
             this.Property(x => x.OrderId);
             this.Property(x => x.Product);
             this.Property(x => x.Quantity);
+            this.Property(x => x.CreationDate).HasColumnType("datetime2");
         }
     }
 }

@@ -9,5 +9,6 @@ namespace Domains.Snapshot.Domain
         public int Quantity { get; set; }
         public Guid OrderId { get; set; }
         public OrderState Order { get; set; }
+        public DateTime CreationDate { get; set; }
     }
 }

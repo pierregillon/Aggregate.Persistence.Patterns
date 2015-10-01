@@ -4,7 +4,7 @@ namespace Domains.Compromise.Infrastructure.EntityFramework
 {
     public class DataContext : DbContext
     {
-        public DataContext() : base("DomainModelPatterns.States")
+        public DataContext() : base("DomainModelPatterns.Compromise")
         {
             
         }

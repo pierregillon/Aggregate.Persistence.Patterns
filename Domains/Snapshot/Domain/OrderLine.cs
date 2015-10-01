@@ -1,3 +1,4 @@
+using System;
 using Domain.Base;
 
 namespace Domains.Snapshot.Domain
@@ -7,6 +8,8 @@ namespace Domains.Snapshot.Domain
         public Product Product { get; private set; }
         public int Quantity { get; private set; }
 
+        private DateTime _creationDate;
+
         // ----- Constructor
         public OrderLine()
         {
@@ -15,6 +18,7 @@ namespace Domains.Snapshot.Domain
         {
             Product = product;
             Quantity = quantity;
+            _creationDate = DateTime.Now;
         }
 
         // ----- Public methods
@@ -24,18 +28,20 @@ namespace Domains.Snapshot.Domain
         }
 
         // ----- Snapshot
-        public OrderLineState TakeSnapshot()
+        OrderLineState IStateSnapshotable<OrderLineState>.TakeSnapshot()
         {
             return new OrderLineState
             {
                 Product = Product,
                 Quantity = Quantity,
+                CreationDate = _creationDate
             };
         }
-        public void LoadFromSnapshot(OrderLineState orderState)
+        void IStateSnapshotable<OrderLineState>.LoadFromSnapshot(OrderLineState orderState)
         {
             Product = orderState.Product;
             Quantity = orderState.Quantity;
+            _creationDate = orderState.CreationDate;
         }
 
         // ----- Overrides
@@ -47,12 +53,16 @@ namespace Domains.Snapshot.Domain
             }
 
             return target.Product == Product &&
-                   target.Quantity == Quantity;
+                   target.Quantity == Quantity &&
+                   target._creationDate == _creationDate;
         }
         public override int GetHashCode()
         {
             unchecked {
-                return ((int) Product*397) ^ Quantity;
+                int hashCode = _creationDate.GetHashCode();
+                hashCode = (hashCode*397) ^ (int) Product;
+                hashCode = (hashCode*397) ^ Quantity;
+                return hashCode;
             }
         }
     }

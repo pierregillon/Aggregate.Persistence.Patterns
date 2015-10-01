@@ -33,7 +33,7 @@ namespace Domains.EventSourcing.Domain
             CheckIfDraft();
             CheckQuantity(quantity);
 
-            Apply(new ProductAdded(Id, product, quantity));
+            Apply(new ProductAdded(Id, product, quantity, DateTime.Now));
         }
         public void RemoveProduct(Product product)
         {
@@ -86,7 +86,7 @@ namespace Domains.EventSourcing.Domain
         {
             var line = _lines.FirstOrDefault(x => x.Product == @event.Product);
             if (line == null) {
-                _lines.Add(new OrderLine(@event.Product, @event.Quantity));
+                _lines.Add(new OrderLine(@event.Product, @event.Quantity, @event.CreationDate));
             }
             else {
                 line.IncreaseQuantity(@event.Quantity);
@@ -119,7 +119,7 @@ namespace Domains.EventSourcing.Domain
                    target._orderStatus == _orderStatus &&
                    target.SubmitDate == SubmitDate &&
                    target.TotalCost == TotalCost &&
-                   target._lines.OrderBy(x => x.Product).SequenceEqual(_lines.OrderBy(x => x.Product));
+                   target._lines.IsEquivalentIgnoringOrderTo(_lines);
         }
         public override int GetHashCode()
         {

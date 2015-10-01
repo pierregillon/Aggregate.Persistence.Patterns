@@ -5,6 +5,7 @@ namespace Domains.Compromise.Domain
 {
     public class OrderLine : IOrderLine
     {
+        public DateTime CreationDate { get; set; }
         public Guid OrderId { get; set; }
         public Order Order { get; set; }
         public Product Product { get; set; }
@@ -18,6 +19,7 @@ namespace Domains.Compromise.Domain
             Product = product;
             Quantity = quantity;
             OrderId = id;
+            CreationDate = DateTime.Now;
         }
 
         public void IncreaseQuantity(int quantity)
@@ -34,12 +36,17 @@ namespace Domains.Compromise.Domain
             }
 
             return target.Product == Product &&
-                   target.Quantity == Quantity;
+                   target.Quantity == Quantity &&
+                   target.CreationDate == CreationDate;
         }
         public override int GetHashCode()
         {
-            unchecked {
-                return ((int) Product*397) ^ Quantity;
+            unchecked
+            {
+                int hashCode = CreationDate.GetHashCode();
+                hashCode = (hashCode * 397) ^ (int)Product;
+                hashCode = (hashCode * 397) ^ Quantity;
+                return hashCode;
             }
         }
     }

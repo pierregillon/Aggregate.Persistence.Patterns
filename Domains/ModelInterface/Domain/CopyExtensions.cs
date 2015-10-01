@@ -19,6 +19,7 @@ namespace Domains.ModelInterface.Domain
         {
             target.Product = source.Product;
             target.Quantity = source.Quantity;
+            target.CreationDate = source.CreationDate;
         }
 
         public static ICollection<TTarget> Clone<TSource, TTarget>(this IEnumerable<TSource> source)

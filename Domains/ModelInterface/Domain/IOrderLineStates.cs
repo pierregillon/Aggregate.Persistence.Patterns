@@ -1,3 +1,4 @@
+using System;
 using Domain.Base;
 
 namespace Domains.ModelInterface.Domain
@@ -6,5 +7,6 @@ namespace Domains.ModelInterface.Domain
     {
         Product Product { get; set; }
         int Quantity { get; set; }
+        DateTime CreationDate { get; set; }
     }
 }
