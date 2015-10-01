@@ -14,7 +14,7 @@ namespace Domains.Tests
         [MemberData("EventSourcing")]
         [MemberData("ModelInterface")]
         [MemberData("Snapshot")]
-        public void increase_quantity_when_adding_existing_product<TOrder>(TOrder order) where TOrder : IOrder, new()
+        public void increase_quantity_when_adding_existing_product<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.AddProduct(Product.Jacket, 1);
             order.AddProduct(Product.Jacket, 3);
@@ -28,7 +28,7 @@ namespace Domains.Tests
         [MemberData("EventSourcing")]
         [MemberData("ModelInterface")]
         [MemberData("Snapshot")]
-        public void calculate_total_cost_when_adding_products<TOrder>(TOrder order) where TOrder : IOrder, new()
+        public void calculate_total_cost_when_adding_products<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.AddProduct(Product.Jacket, 1);
             order.AddProduct(Product.Computer, 1);
@@ -44,7 +44,7 @@ namespace Domains.Tests
         [MemberData("EventSourcing")]
         [MemberData("ModelInterface")]
         [MemberData("Snapshot")]
-        public void calculate_total_cost_when_removing_product<TOrder>(TOrder order) where TOrder : IOrder, new()
+        public void calculate_total_cost_when_removing_product<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.AddProduct(Product.Jacket, 1);
             order.RemoveProduct(Product.Jacket);
@@ -58,7 +58,7 @@ namespace Domains.Tests
         [MemberData("EventSourcing")]
         [MemberData("ModelInterface")]
         [MemberData("Snapshot")]
-        public void throw_exception_when_adding_product_to_submitted_order<TOrder>(TOrder order) where TOrder : IOrder, new()
+        public void throw_exception_when_adding_product_to_submitted_order<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.Submit();
 
@@ -73,7 +73,7 @@ namespace Domains.Tests
         [MemberData("EventSourcing")]
         [MemberData("ModelInterface")]
         [MemberData("Snapshot")]
-        public void throw_exception_when_removing_product_if_submitted<TOrder>(TOrder order) where TOrder : IOrder, new()
+        public void throw_exception_when_removing_product_if_submitted<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.AddProduct(Product.Computer, 1);
             order.Submit();
@@ -89,7 +89,7 @@ namespace Domains.Tests
         [MemberData("EventSourcing")]
         [MemberData("ModelInterface")]
         [MemberData("Snapshot")]
-        public void throw_exception_when_trying_to_submit_twice<TOrder>(TOrder order) where TOrder : IOrder, new()
+        public void throw_exception_when_trying_to_submit_twice<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.Submit();
 
