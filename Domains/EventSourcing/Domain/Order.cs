@@ -31,9 +31,8 @@ namespace Domains.EventSourcing.Domain
         public void AddProduct(Product product, int quantity)
         {
             CheckIfDraft();
-            if (quantity < 0) {
-                throw new OrderOperationException("Unable to add product with negative quantity.");
-            }
+            CheckQuantity(quantity);
+
             Apply(new ProductAdded(Id, product, quantity));
         }
         public void RemoveProduct(Product product)
@@ -60,6 +59,15 @@ namespace Domains.EventSourcing.Domain
         {
             if (_orderStatus != OrderStatus.Draft)
                 throw new OrderOperationException("The operation is only allowed if the order is in draft state.");
+        }
+        private void CheckQuantity(int quantity)
+        {
+            if (quantity < 0) {
+                throw new OrderOperationException("Unable to add product with negative quantity.");
+            }
+            if (quantity == 0) {
+                throw new OrderOperationException("Unable to add product with no quantity.");
+            }
         }
         private void ReCalculateTotalPrice()
         {
@@ -103,8 +111,7 @@ namespace Domains.EventSourcing.Domain
         public override bool Equals(object obj)
         {
             var target = obj as Order;
-            if (target == null)
-            {
+            if (target == null) {
                 return base.Equals(obj);
             }
             return target.Id == Id;

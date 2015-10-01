@@ -25,10 +25,7 @@ namespace Domain.Base
         public void AddProduct(Product product, int quantity)
         {
             CheckIfDraft();
-
-            if (quantity < 0) {
-                throw new OrderOperationException("Unable to add product with negative quantity.");
-            }
+            CheckQuantity(quantity);
 
             var line = _lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
@@ -71,6 +68,15 @@ namespace Domain.Base
         {
             if (_orderStatus != OrderStatus.Draft)
                 throw new OrderOperationException("The operation is only allowed if the order is in draft state.");
+        }
+        private void CheckQuantity(int quantity)
+        {
+            if (quantity < 0) {
+                throw new OrderOperationException("Unable to add product with negative quantity.");
+            }
+            if (quantity == 0) {
+                throw new OrderOperationException("Unable to add product with no quantity.");
+            }
         }
         private void ReCalculateTotalPrice()
         {
