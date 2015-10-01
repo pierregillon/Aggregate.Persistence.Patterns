@@ -1,12 +1,11 @@
 using Domain.Base;
-using Domains.Snapshot.Infrastructure;
 
 namespace Domains.Snapshot.Domain
 {
     public class OrderLine : IOrderLine, IStateSnapshotable<OrderLineState>
     {
-        public Product Product { get; set; }
-        public int Quantity { get; set; }
+        public Product Product { get; private set; }
+        public int Quantity { get; private set; }
 
         // ----- Constructor
         public OrderLine()

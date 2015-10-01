@@ -4,8 +4,8 @@ namespace Domains.EventSourcing.Domain
 {
     public class OrderLine : IOrderLine
     {
-        public Product Product { get; set; }
-        public int Quantity { get; set; }
+        public Product Product { get; private set; }
+        public int Quantity { get; private set; }
 
         // ----- Constructor
         public OrderLine()

@@ -4,8 +4,19 @@ namespace Domains.ModelInterface.Domain
 {
     public class OrderLine : IOrderLine, IOrderLineStates
     {
-        public Product Product { get; set; }
-        public int Quantity { get; set; }
+        int IOrderLineStates.Quantity
+        {
+            get { return Quantity; }
+            set { Quantity = value; }
+        }
+        Product IOrderLineStates.Product
+        {
+            get { return Product; }
+            set { Product = value; }
+        }
+
+        public Product Product { get; private set; }
+        public int Quantity { get; private set; }
 
         // ----- Constructor
         public OrderLine()
