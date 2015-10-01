@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Domain.Base;
 using NFluent;
 using Xunit;
@@ -13,7 +14,7 @@ namespace Domains.Tests
         [MemberData("EventSourcing")]
         [MemberData("ModelInterface")]
         [MemberData("Snapshot")]
-        public void update_quantity_when_adding_existing_product<TOrder>(TOrder order) where TOrder : IOrder, new()
+        public void increase_quantity_when_adding_existing_product<TOrder>(TOrder order) where TOrder : IOrder, new()
         {
             order.AddProduct(Product.Jacket, 1);
             order.AddProduct(Product.Jacket, 3);
@@ -27,7 +28,7 @@ namespace Domains.Tests
         [MemberData("EventSourcing")]
         [MemberData("ModelInterface")]
         [MemberData("Snapshot")]
-        public void update_total_cost_when_adding_products<TOrder>(TOrder order) where TOrder : IOrder, new()
+        public void calculate_total_cost_when_adding_products<TOrder>(TOrder order) where TOrder : IOrder, new()
         {
             order.AddProduct(Product.Jacket, 1);
             order.AddProduct(Product.Computer, 1);
@@ -43,7 +44,7 @@ namespace Domains.Tests
         [MemberData("EventSourcing")]
         [MemberData("ModelInterface")]
         [MemberData("Snapshot")]
-        public void update_total_cost_when_removing_product<TOrder>(TOrder order) where TOrder : IOrder, new()
+        public void calculate_total_cost_when_removing_product<TOrder>(TOrder order) where TOrder : IOrder, new()
         {
             order.AddProduct(Product.Jacket, 1);
             order.RemoveProduct(Product.Jacket);
@@ -61,7 +62,9 @@ namespace Domains.Tests
         {
             order.Submit();
 
-            Check.ThatCode(() => order.AddProduct(Product.Computer, 1)).Throws<OrderOperationException>();
+            Action action = () => order.AddProduct(Product.Computer, 1);
+
+            Check.ThatCode(action).Throws<OrderOperationException>();
         }
 
         [Theory]
@@ -75,7 +78,9 @@ namespace Domains.Tests
             order.AddProduct(Product.Computer, 1);
             order.Submit();
 
-            Check.ThatCode(() => order.RemoveProduct(Product.Computer)).Throws<OrderOperationException>();
+            Action action = () => order.RemoveProduct(Product.Computer);
+
+            Check.ThatCode(action).Throws<OrderOperationException>();
         }
 
         [Theory]
