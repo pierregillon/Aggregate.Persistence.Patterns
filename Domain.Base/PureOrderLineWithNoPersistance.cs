@@ -17,5 +17,23 @@ namespace Domain.Base
         {
             Quantity += quantity;
         }
+
+        // ----- Overrides
+        public override bool Equals(object obj)
+        {
+            var target = obj as PureOrderLineWithNoPersistance;
+            if (target == null) {
+                return base.Equals(obj);
+            }
+
+            return target.Product == Product &&
+                   target.Quantity == Quantity;
+        }
+        public override int GetHashCode()
+        {
+            unchecked {
+                return ((int) Product*397) ^ Quantity;
+            }
+        }
     }
 }

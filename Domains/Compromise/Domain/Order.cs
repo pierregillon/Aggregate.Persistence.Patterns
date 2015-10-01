@@ -93,11 +93,12 @@ namespace Domains.Compromise.Domain
             if (target == null) {
                 return base.Equals(obj);
             }
-            return target.Id == Id;
-        }
-        protected bool Equals(Order other)
-        {
-            return Id.Equals(other.Id);
+
+            return target.Id == Id &&
+                   target.OrderStatus == OrderStatus &&
+                   target.SubmitDate == SubmitDate &&
+                   target.TotalCost == TotalCost &&
+                   target.Lines.OrderBy(x => x.Product).SequenceEqual(Lines.OrderBy(x => x.Product));
         }
         public override int GetHashCode()
         {

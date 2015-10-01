@@ -114,11 +114,12 @@ namespace Domains.EventSourcing.Domain
             if (target == null) {
                 return base.Equals(obj);
             }
-            return target.Id == Id;
-        }
-        protected bool Equals(Order other)
-        {
-            return Id.Equals(other.Id);
+
+            return target.Id == Id &&
+                   target._orderStatus == _orderStatus &&
+                   target.SubmitDate == SubmitDate &&
+                   target.TotalCost == TotalCost &&
+                   target._lines.OrderBy(x => x.Product).SequenceEqual(_lines.OrderBy(x => x.Product));
         }
         public override int GetHashCode()
         {

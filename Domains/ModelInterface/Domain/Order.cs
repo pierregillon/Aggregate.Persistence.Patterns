@@ -123,7 +123,12 @@ namespace Domains.ModelInterface.Domain
             if (target == null) {
                 return base.Equals(obj);
             }
-            return target.Id == Id;
+
+            return target.Id == Id &&
+                   target._orderStatus == _orderStatus &&
+                   target.SubmitDate == SubmitDate &&
+                   target.TotalCost == TotalCost &&
+                   target._lines.OrderBy(x => x.Product).SequenceEqual(_lines.OrderBy(x => x.Product));
         }
         protected bool Equals(Order other)
         {
