@@ -98,8 +98,8 @@ namespace Domains.EventSourcing.Domain
             var line = _lines.FirstOrDefault(x => x.Product == @event.Product);
             if (line != null) {
                 _lines.Remove(line);
+                ReCalculateTotalPrice();
             }
-            ReCalculateTotalPrice();
         }
         private void ApplyOrderSubmitted(OrderSubmitted @event)
         {

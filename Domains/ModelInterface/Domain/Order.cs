@@ -75,9 +75,8 @@ namespace Domains.ModelInterface.Domain
             var line = _lines.FirstOrDefault(x => x.Product == product);
             if (line != null) {
                 _lines.Remove(line);
+                ReCalculateTotalPrice();
             }
-
-            ReCalculateTotalPrice();
         }
         public int GetQuantity(Product product)
         {

@@ -45,9 +45,8 @@ namespace Domains.Compromise.Domain
             var line = Lines.FirstOrDefault(x => x.Product == product);
             if (line != null) {
                 Lines.Remove(line);
+                ReCalculateTotalPrice();
             }
-
-            ReCalculateTotalPrice();
         }
         public int GetQuantity(Product product)
         {
