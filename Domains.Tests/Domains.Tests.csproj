@@ -75,8 +75,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Domain\Order_should.cs" />
-    <Compile Include="Persistance\OrderRepositoryShould.cs" />
+    <Compile Include="OrderShould.cs" />
+    <Compile Include="OrderRepositoryShould.cs" />
     <Compile Include="Persistance\OrderWithCompromisePatternTests.cs" />
     <Compile Include="Persistance\OrderWithModelInterfacePatternTests.cs" />
     <Compile Include="Persistance\OrderWithEventSourcingPatternTests.cs" />

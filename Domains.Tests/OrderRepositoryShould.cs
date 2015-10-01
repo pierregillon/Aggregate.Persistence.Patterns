@@ -3,7 +3,7 @@ using Domain.Base;
 using NFluent;
 using Xunit;
 
-namespace Domains.Tests.Persistance
+namespace Domains.Tests
 {
     public class OrderRepository_should
     {
@@ -27,33 +27,11 @@ namespace Domains.Tests.Persistance
             Check.That(loadedOrder).IsEqualTo(order);
         }
 
-        [Theory]
-        [MemberData("Binary2")]
-        public void persist_order2<TModel, TRepository>()
-            where TModel : IOrder, new()
-            where TRepository : IRepository<TModel>, new()
-        {
-            var order = new TModel();
-            order.AddProduct(Product.Shoes, 2);
-            order.AddProduct(Product.Tshirt, 1);
-            order.Submit();
-
-            var orderRepository = new TRepository();
-            orderRepository.Add(order);
-            var loadedOrder = orderRepository.Get(order.Id);
-
-            Check.That(loadedOrder).IsEqualTo(order);
-        }
-
         // ----- Properties
 
         public static IEnumerable<object[]> Binary
         {
             get { return GetParameters(new Binary.Domain.Order(), new Binary.Infrastructure.OrderRepository()); }
-        }
-        public static IEnumerable<object[]> Binary2
-        {
-            get { return GetParameters(typeof(Binary.Domain.Order), typeof(Binary.Infrastructure.OrderRepository)); }
         }
         public static IEnumerable<object[]> Compromise
         {
