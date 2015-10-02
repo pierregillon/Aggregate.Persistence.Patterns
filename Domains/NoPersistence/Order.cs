@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Domain.Base;
 
-namespace Domain.Base
+namespace Domains.NoPersistence
 {
-    public class PureOrderWithNoPersistance : IOrder
+    public class Order : IOrder
     {
         private readonly ProductCatalog _catalog = new ProductCatalog();
-        private readonly List<PureOrderLineWithNoPersistance> _lines = new List<PureOrderLineWithNoPersistance>();
+        private readonly List<OrderLine> _lines = new List<OrderLine>();
 
         private OrderStatus _orderStatus;
 
@@ -16,7 +17,7 @@ namespace Domain.Base
         public double TotalCost { get; private set; }
 
         // ----- Constructor
-        public PureOrderWithNoPersistance()
+        public Order()
         {
             Id = Guid.NewGuid();
         }
@@ -29,7 +30,7 @@ namespace Domain.Base
 
             var line = _lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
-                _lines.Add(new PureOrderLineWithNoPersistance(product, quantity));
+                _lines.Add(new OrderLine(product, quantity));
             }
             else {
                 line.IncreaseQuantity(quantity);
@@ -89,7 +90,7 @@ namespace Domain.Base
         // ----- Override
         public override bool Equals(object obj)
         {
-            var target = obj as PureOrderWithNoPersistance;
+            var target = obj as Order;
             if (target == null) {
                 return base.Equals(obj);
             }
@@ -106,7 +107,7 @@ namespace Domain.Base
         }
         public override string ToString()
         {
-            return "Order with compromise pattern";
+            return "Order with no persistence";
         }
     }
 }

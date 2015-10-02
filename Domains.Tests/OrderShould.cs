@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Domain.Base;
+using Domains.NoPersistence;
 using NFluent;
 using Xunit;
 
@@ -9,6 +10,7 @@ namespace Domains.Tests
     public class Order_should
     {
         [Theory]
+        [MemberData("NoPersistence")]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -23,6 +25,7 @@ namespace Domains.Tests
         }
 
         [Theory]
+        [MemberData("NoPersistence")]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -39,6 +42,7 @@ namespace Domains.Tests
         }
 
         [Theory]
+        [MemberData("NoPersistence")]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -53,6 +57,7 @@ namespace Domains.Tests
         }
 
         [Theory]
+        [MemberData("NoPersistence")]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -67,6 +72,7 @@ namespace Domains.Tests
         }
 
         [Theory]
+        [MemberData("NoPersistence")]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -81,6 +87,7 @@ namespace Domains.Tests
         }
 
         [Theory]
+        [MemberData("NoPersistence")]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -96,6 +103,7 @@ namespace Domains.Tests
         }
 
         [Theory]
+        [MemberData("NoPersistence")]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -112,6 +120,7 @@ namespace Domains.Tests
         }
 
         [Theory]
+        [MemberData("NoPersistence")]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -125,7 +134,10 @@ namespace Domains.Tests
         }
 
         // ----- Properties
-
+        public static IEnumerable<object[]> NoPersistence
+        {
+            get { return GetParameters(new Order()); }
+        }
         public static IEnumerable<object[]> Binary
         {
             get { return GetParameters(new Binary.Domain.Order()); }

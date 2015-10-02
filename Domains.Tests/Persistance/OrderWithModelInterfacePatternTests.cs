@@ -7,6 +7,7 @@ using Domains.ModelInterface.Infrastructure;
 using Domains.ModelInterface.Infrastructure.EntityFramework;
 using NFluent;
 using Xunit;
+using Order = Domains.ModelInterface.Domain.Order;
 
 namespace Domains.Tests.Persistance
 {

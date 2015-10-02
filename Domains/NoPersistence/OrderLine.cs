@@ -1,8 +1,9 @@
 using System;
+using Domain.Base;
 
-namespace Domain.Base
+namespace Domains.NoPersistence
 {
-    public class PureOrderLineWithNoPersistance : IOrderLine
+    public class OrderLine : IOrderLine
     {
         private readonly DateTime _creationDate;
 
@@ -10,7 +11,7 @@ namespace Domain.Base
         public int Quantity { get; private set; }
 
         // ----- Constructor
-        public PureOrderLineWithNoPersistance(Product product, int quantity)
+        public OrderLine(Product product, int quantity)
         {
             Product = product;
             Quantity = quantity;
@@ -26,7 +27,7 @@ namespace Domain.Base
         // ----- Overrides
         public override bool Equals(object obj)
         {
-            var target = obj as PureOrderLineWithNoPersistance;
+            var target = obj as OrderLine;
             if (target == null) {
                 return base.Equals(obj);
             }

@@ -8,6 +8,7 @@ using Domains.EventSourcing.Infrastructure;
 using Domains.EventSourcing.Infrastructure.EntityFramework;
 using NFluent;
 using Xunit;
+using Order = Domains.EventSourcing.Domain.Order;
 
 namespace Domains.Tests.Persistance
 {

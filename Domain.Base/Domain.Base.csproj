@@ -41,8 +41,6 @@
   <ItemGroup>
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="PureOrderWithNoPersistance.cs" />
-    <Compile Include="PureOrderLineWithNoPersistance.cs" />
     <Compile Include="OrderOperationException.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="IOrder.cs" />

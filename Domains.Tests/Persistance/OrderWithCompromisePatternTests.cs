@@ -7,6 +7,8 @@ using Domains.Compromise.Infrastructure;
 using Domains.Compromise.Infrastructure.EntityFramework;
 using NFluent;
 using Xunit;
+using Order = Domains.Compromise.Domain.Order;
+using OrderLine = Domains.Compromise.Domain.OrderLine;
 
 namespace Domains.Tests.Persistance
 {

@@ -121,6 +121,8 @@
     <Compile Include="ModelInterface\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
     <Compile Include="ModelInterface\Infrastructure\EntityFramework\OrderStateMapping.cs" />
     <Compile Include="ModelInterface\Infrastructure\OrderRepository.cs" />
+    <Compile Include="NoPersistence\OrderLine.cs" />
+    <Compile Include="NoPersistence\Order.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
