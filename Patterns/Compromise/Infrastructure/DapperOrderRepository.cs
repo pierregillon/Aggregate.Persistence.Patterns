@@ -30,5 +30,9 @@ namespace Patterns.Compromise.Infrastructure
                 connection.Execute(SqlQueries.InsertOrderLineQuery, order.Lines);
             }
         }
+        public void Update(Order order)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -29,6 +29,16 @@ namespace Patterns.EventSourcing.Infrastructure
 
         public void Add(Order order)
         {
+            SaveUncommitedEvents(order);
+        }
+        public void Update(Order order)
+        {
+            SaveUncommitedEvents(order);
+        }
+
+        // ----- Internal logics
+        private static void SaveUncommitedEvents(Order order)
+        {
             var domainEvents = order.GetUncommittedEvents();
             var persistedEvents = domainEvents.Select(ConvertToPersistantEvent);
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
@@ -37,7 +47,6 @@ namespace Patterns.EventSourcing.Infrastructure
         }
 
         // ----- Utils
-
         private static OrderEvent ConvertToPersistantEvent(IDomainEvent domainEvent)
         {
             return new OrderEvent

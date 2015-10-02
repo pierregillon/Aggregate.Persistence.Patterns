@@ -35,5 +35,9 @@ namespace Patterns.ModelInterface.Infrastructure
                 connection.Execute(SqlQueries.InsertOrderLineQuery, persistentModel.Lines);
             }
         }
+        public void Update(Order order)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

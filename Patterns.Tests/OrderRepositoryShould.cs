@@ -19,11 +19,38 @@ namespace Patterns.Tests
         {
             order.AddProduct(Product.Shoes, 2);
             order.AddProduct(Product.Tshirt, 1);
+            order.AddProduct(Product.Computer, 1);
+            order.AddProduct(Product.Tshirt, 2);
+            order.RemoveProduct(Product.Shoes);
             order.Submit();
 
             orderRepository.Add(order);
             var loadedOrder = orderRepository.Get(order.Id);
 
+            Check.That(loadedOrder).IsEqualTo(order);
+        }
+
+        [Theory]
+        [MemberData("EventSourcing")]
+        public void update_order<TModel, TRepository>(TModel order, TRepository orderRepository)
+            where TModel : IOrder
+            where TRepository : IRepository<TModel>
+        {
+            // Arrange
+            orderRepository.Add(order);
+
+            // Acts
+            order = orderRepository.Get(order.Id);
+            order.AddProduct(Product.Shoes, 2);
+            order.AddProduct(Product.Tshirt, 1);
+            order.AddProduct(Product.Computer, 1);
+            order.AddProduct(Product.Tshirt, 2);
+            order.RemoveProduct(Product.Shoes);
+            order.Submit();
+            orderRepository.Update(order);
+
+            // Asserts
+            var loadedOrder = orderRepository.Get(order.Id);
             Check.That(loadedOrder).IsEqualTo(order);
         }
 

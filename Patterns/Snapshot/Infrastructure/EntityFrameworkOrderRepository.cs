@@ -32,5 +32,9 @@ namespace Patterns.Snapshot.Infrastructure
                 dataContext.SaveChanges();
             }
         }
+        public void Update(Order order)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

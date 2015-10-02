@@ -33,5 +33,9 @@ namespace Patterns.Snapshot.Infrastructure
                 connection.Execute(SqlQueries.InsertOrderLineQuery, orderState.Lines);
             }
         }
+        public void Update(Order order)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

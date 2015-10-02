@@ -6,5 +6,6 @@ namespace Patterns.Common
     {
         TOrder Get(Guid id);
         void Add(TOrder order);
+        void Update(TOrder order);
     }
 }
