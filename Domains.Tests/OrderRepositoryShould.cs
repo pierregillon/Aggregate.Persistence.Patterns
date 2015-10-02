@@ -46,7 +46,14 @@ namespace Domains.Tests
         }
         public static IEnumerable<object[]> EventSourcing
         {
-            get { return GetParameters(new EventSourcing.Domain.Order(), new EventSourcing.Infrastructure.OrderRepository()); }
+            get
+            {
+                return new[]
+                {
+                    new object[] {new EventSourcing.Domain.Order(), new EventSourcing.Infrastructure.EntityFrameworkOrderRepository()},
+                    new object[] {new EventSourcing.Domain.Order(), new EventSourcing.Infrastructure.DapperOrderRepository()}
+                };
+            }
         }
         public static IEnumerable<object[]> ModelInterface
         {

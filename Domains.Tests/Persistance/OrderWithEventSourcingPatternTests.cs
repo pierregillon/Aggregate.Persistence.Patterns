@@ -22,7 +22,7 @@ namespace Domains.Tests.Persistance
             order.AddProduct(Product.Jacket, 2);
             order.Submit();
 
-            var orderRepository = new OrderRepository();
+            var orderRepository = new EntityFrameworkOrderRepository();
             orderRepository.Add(order);
 
             using (var dataContext = new DataContext()) {
@@ -68,7 +68,7 @@ namespace Domains.Tests.Persistance
                 dataContext.SaveChanges();
             }
 
-            var orderRepository = new OrderRepository();
+            var orderRepository = new EntityFrameworkOrderRepository();
             var order = orderRepository.Get(guid);
 
             Check.That(order.Id).IsEqualTo(guid);

@@ -33,7 +33,7 @@ namespace Domains.EventSourcing.Domain
             CheckIfDraft();
             CheckQuantity(quantity);
 
-            Apply(new ProductAdded(Id, product, quantity, DateTime.Now));
+            Apply(new ProductAdded(Id, product, quantity, DateTime.Now.RoundToSecond()));
         }
         public void RemoveProduct(Product product)
         {
@@ -51,7 +51,7 @@ namespace Domains.EventSourcing.Domain
         public void Submit()
         {
             CheckIfDraft();
-            Apply(new OrderSubmitted(Id, DateTime.Now));
+            Apply(new OrderSubmitted(Id, DateTime.Now.RoundToSecond()));
         }
 
         // ----- Internal logic

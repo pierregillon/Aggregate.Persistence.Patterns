@@ -91,10 +91,11 @@
     <Compile Include="EventSourcing\Domain\Events\OrderSubmitted.cs" />
     <Compile Include="EventSourcing\Domain\Events\ProductAdded.cs" />
     <Compile Include="EventSourcing\Domain\Events\ProductRemoved.cs" />
+    <Compile Include="EventSourcing\Infrastructure\DapperOrderRepository.cs" />
     <Compile Include="EventSourcing\Infrastructure\EntityFramework\DataContext.cs" />
     <Compile Include="EventSourcing\Infrastructure\OrderEvent.cs" />
     <Compile Include="EventSourcing\Infrastructure\EntityFramework\OrderEventMapping.cs" />
-    <Compile Include="EventSourcing\Infrastructure\OrderRepository.cs" />
+    <Compile Include="EventSourcing\Infrastructure\EntityFrameworkOrderRepository.cs" />
     <Compile Include="ModelInterface\Domain\IOrderLineStates.cs" />
     <Compile Include="ModelInterface\Domain\IOrderStates.cs" />
     <Compile Include="ModelInterface\Domain\IOrderRepository.cs" />
