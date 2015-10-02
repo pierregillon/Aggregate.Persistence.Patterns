@@ -12,8 +12,8 @@ namespace Domains.Snapshot.Infrastructure
         public Order Get(Guid id)
         {
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
-                string query = @"SELECT Id, OrderStatus, TotalCost, SubmitDate FROM Compromise_Order WHERE Id = @id 
-                                 SELECT CreationDate, Product, Quantity FROM Compromise_OrderLine WHERE OrderId = @id";
+                string query = @"SELECT Id, OrderStatus, TotalCost, SubmitDate FROM [dbo].[Order] WHERE Id = @id 
+                                 SELECT CreationDate, Product, Quantity FROM [dbo].[OrderLine] WHERE OrderId = @id";
 
                 using (var multi = connection.QueryMultiple(query, new {id})) {
                     var orderState = multi.Read<OrderState>().SingleOrDefault();
@@ -31,8 +31,8 @@ namespace Domains.Snapshot.Infrastructure
         {
             var orderState = ((IStateSnapshotable<OrderState>) order).TakeSnapshot();
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
-                connection.Execute(@"INSERT INTO Compromise_Order (Id, OrderStatus, TotalCost, SubmitDate) VALUES(@Id, @OrderStatus, @TotalCost, @SubmitDate)", orderState);
-                connection.Execute(@"INSERT INTO Compromise_OrderLine (CreationDate, Product, Quantity, OrderId) VALUES(@CreationDate, @Product, @Quantity, @OrderId)", 
+                connection.Execute(@"INSERT INTO [dbo].[Order] (Id, OrderStatus, TotalCost, SubmitDate) VALUES(@Id, @OrderStatus, @TotalCost, @SubmitDate)", orderState);
+                connection.Execute(@"INSERT INTO [dbo].[OrderLine] (CreationDate, Product, Quantity, OrderId) VALUES(@CreationDate, @Product, @Quantity, @OrderId)", 
                     orderState.Lines.Select(x=>new
                     {
                         x.CreationDate,

@@ -7,7 +7,7 @@ namespace Domains.Compromise.Infrastructure.EntityFramework
     {
         public OrderLineMapping()
         {
-            this.ToTable("Compromise_OrderLine");
+            this.ToTable("OrderLine");
             this.HasKey(x => new {x.OrderId, x.Product});
             this.Property(x => x.OrderId);
             this.Property(x => x.Product);

@@ -13,8 +13,8 @@ namespace Domains.Compromise.Infrastructure
         {
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress()))
             {
-                string query = @"SELECT Id, OrderStatus, TotalCost, SubmitDate FROM Compromise_Order WHERE Id = @id 
-                                 SELECT CreationDate, Product, Quantity FROM Compromise_OrderLine WHERE OrderId = @id";
+                string query = @"SELECT Id, OrderStatus, TotalCost, SubmitDate FROM [dbo].[Order] WHERE Id = @id;
+                                 SELECT CreationDate, Product, Quantity FROM [dbo].[OrderLine] WHERE OrderId = @id";
 
                 using (var multi = connection.QueryMultiple(query, new{id}))
                 {
@@ -30,8 +30,8 @@ namespace Domains.Compromise.Infrastructure
         {
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress()))
             {
-                connection.Execute(@"INSERT INTO Compromise_Order (Id, OrderStatus, TotalCost, SubmitDate) VALUES(@Id, @OrderStatus, @TotalCost, @SubmitDate)", order);
-                connection.Execute(@"INSERT INTO Compromise_OrderLine (CreationDate, Product, Quantity, OrderId) VALUES(@CreationDate, @Product, @Quantity, @OrderId)", order.Lines);
+                connection.Execute(@"INSERT INTO [dbo].[Order] (Id, OrderStatus, TotalCost, SubmitDate) VALUES(@Id, @OrderStatus, @TotalCost, @SubmitDate)", order);
+                connection.Execute(@"INSERT INTO [dbo].[OrderLine] (CreationDate, Product, Quantity, OrderId) VALUES(@CreationDate, @Product, @Quantity, @OrderId)", order.Lines);
             }
         }
     }

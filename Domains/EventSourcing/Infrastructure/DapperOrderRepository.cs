@@ -14,7 +14,7 @@ namespace Domains.EventSourcing.Infrastructure
         public Order Get(Guid id)
         {
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
-                const string query = @"SELECT AggregateId, CreationDate, Content, Name FROM EventSourcing_OrderEvent WHERE AggregateId = @id";
+                const string query = @"SELECT AggregateId, CreationDate, Content, Name FROM OrderEvent WHERE AggregateId = @id";
 
                 var domainEvents = connection
                     .Query<OrderEvent>(query, new {id})
@@ -33,7 +33,7 @@ namespace Domains.EventSourcing.Infrastructure
             var domainEvents = order.GetUncommittedEvents();
             var persistedEvents = domainEvents.Select(ConvertToPersistantEvent);
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
-                const string query = "INSERT INTO EventSourcing_OrderEvent (AggregateId, CreationDate, Content, Name) " +
+                const string query = "INSERT INTO OrderEvent (AggregateId, CreationDate, Content, Name) " +
                                      "VALUES(@AggregateId, @CreationDate, @Content, @Name)";
                 connection.Execute(query, persistedEvents);
             }

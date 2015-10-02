@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity;
-using Domain.Base;
 using Domain.Base.Infrastructure;
 
 namespace Domains.Snapshot.Infrastructure.EntityFramework

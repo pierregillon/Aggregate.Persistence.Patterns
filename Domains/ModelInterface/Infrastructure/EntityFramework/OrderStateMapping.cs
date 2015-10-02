@@ -6,11 +6,11 @@ namespace Domains.ModelInterface.Infrastructure.EntityFramework
     {
         public OrderStateMapping()
         {
-            this.ToTable("ModelInterface_Order");
+            this.ToTable("Order");
             this.HasKey(x => x.Id);
             this.Property(x => x.OrderStatus);
             this.Property(x => x.TotalCost);
-            this.Property(x => x.SubmitDate).HasColumnType("datetime2");
+            this.Property(x => x.SubmitDate);
             this.HasMany(x => x.Lines).WithRequired(x => x.Order);
         }
     }
