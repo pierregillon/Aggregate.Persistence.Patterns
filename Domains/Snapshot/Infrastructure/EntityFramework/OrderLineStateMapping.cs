@@ -7,7 +7,7 @@ namespace Domains.Snapshot.Infrastructure.EntityFramework
     {
         public OrderLineStateMapping()
         {
-            this.ToTable("OrderLine");
+            this.ToTable("Snapshot_OrderLine");
             this.HasKey(x => new {x.OrderId, x.Product});
             this.Property(x => x.OrderId);
             this.Property(x => x.Product);

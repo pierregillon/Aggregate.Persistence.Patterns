@@ -6,7 +6,7 @@ namespace Domains.ModelInterface.Infrastructure.EntityFramework
     {
         public OrderLineStateMapping()
         {
-            this.ToTable("OrderLine");
+            this.ToTable("ModelInterface_OrderLine");
             this.HasKey(x => new {x.OrderId, x.Product});
             this.Property(x => x.OrderId);
             this.Property(x => x.Product);

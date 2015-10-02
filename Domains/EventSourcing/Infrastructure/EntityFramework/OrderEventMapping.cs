@@ -7,7 +7,7 @@ namespace Domains.EventSourcing.Infrastructure.EntityFramework
     {
         public OrderEventMapping()
         {
-            this.ToTable("OrderEvent");
+            this.ToTable("EventSourcing_OrderEvent");
             this.HasKey(x => x.Id);
             this.Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(x => x.AggregateId);

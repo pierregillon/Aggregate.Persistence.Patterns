@@ -1,14 +1,11 @@
 ﻿using System.Data.Entity;
+using Domain.Base;
+using Domain.Base.Infrastructure;
 
 namespace Domains.Compromise.Infrastructure.EntityFramework
 {
-    public class DataContext : DbContext
+    public class DataContext : DataContextBase
     {
-        public DataContext() : base("DomainModelPatterns.Compromise")
-        {
-            
-        }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
