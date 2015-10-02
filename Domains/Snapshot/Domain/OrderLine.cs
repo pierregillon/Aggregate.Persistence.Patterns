@@ -18,7 +18,7 @@ namespace Domains.Snapshot.Domain
         {
             Product = product;
             Quantity = quantity;
-            _creationDate = DateTime.Now;
+            _creationDate = DateTime.Now.RoundToSecond();
         }
 
         // ----- Public methods

@@ -5,7 +5,7 @@ using Domains.Snapshot.Infrastructure.EntityFramework;
 
 namespace Domains.Snapshot.Infrastructure
 {
-    public class OrderRepository : IOrderRepository
+    public class EntityFrameworkOrderRepository : IOrderRepository
     {
         public Order Get(Guid id)
         {

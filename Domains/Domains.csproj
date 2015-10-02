@@ -111,10 +111,11 @@
     <Compile Include="Snapshot\Domain\IOrderRepository.cs" />
     <Compile Include="Snapshot\Domain\OrderLineState.cs" />
     <Compile Include="Snapshot\Domain\OrderState.cs" />
+    <Compile Include="Snapshot\Infrastructure\DapperOrderRepository.cs" />
     <Compile Include="Snapshot\Infrastructure\EntityFramework\DataContext.cs" />
     <Compile Include="Snapshot\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
     <Compile Include="Snapshot\Infrastructure\EntityFramework\OrderStateMapping.cs" />
-    <Compile Include="Snapshot\Infrastructure\OrderRepository.cs" />
+    <Compile Include="Snapshot\Infrastructure\EntityFrameworkOrderRepository.cs" />
     <Compile Include="ModelInterface\Infrastructure\OrderLinePersistantModel.cs" />
     <Compile Include="ModelInterface\Infrastructure\OrderPersistantModel.cs" />
     <Compile Include="ModelInterface\Infrastructure\EntityFramework\DataContext.cs" />

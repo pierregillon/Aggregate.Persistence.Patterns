@@ -54,7 +54,14 @@ namespace Domains.Tests
         }
         public static IEnumerable<object[]> Snapshot
         {
-            get { return GetParameters(new Snapshot.Domain.Order(), new Snapshot.Infrastructure.OrderRepository()); }
+            get
+            {
+                return new[]
+                {
+                    new object[] {new Snapshot.Domain.Order(), new Snapshot.Infrastructure.EntityFrameworkOrderRepository()},
+                    new object[] {new Snapshot.Domain.Order(), new Snapshot.Infrastructure.DapperOrderRepository()}
+                };
+            }
         }
         private static IEnumerable<object[]> GetParameters<TOrder, TRepository>(TOrder order, TRepository repository)
         {
