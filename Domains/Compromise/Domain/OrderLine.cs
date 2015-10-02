@@ -6,10 +6,11 @@ namespace Domains.Compromise.Domain
     public class OrderLine : IOrderLine
     {
         public DateTime CreationDate { get; set; }
-        public Guid OrderId { get; set; }
-        public Order Order { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
+
+        // EF properties
+        public Guid OrderId { get; set; }
 
         public OrderLine()
         {

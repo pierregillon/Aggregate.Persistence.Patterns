@@ -12,7 +12,7 @@ namespace Domains.Snapshot.Infrastructure.EntityFramework
             this.Property(x => x.OrderStatus);
             this.Property(x => x.TotalCost);
             this.Property(x => x.SubmitDate);
-            this.HasMany(x => x.Lines).WithRequired(x => x.Order);
+            this.HasMany(x => x.Lines).WithRequired().HasForeignKey(x=>x.OrderId);
         }
     }
 }

@@ -11,6 +11,5 @@ namespace Domains.Snapshot.Domain
 
         // EF properties
         public Guid OrderId { get; set; }
-        public OrderState Order { get; set; }
     }
 }

@@ -9,8 +9,8 @@ namespace Domains.ModelInterface.Infrastructure
         public Product Product { get; set; }
         public int Quantity { get; set; }
         public DateTime CreationDate { get; set; }
-        public Guid OrderId { get; set; }
 
-        public OrderPersistantModel Order { get; set; }
+        // EF properties
+        public Guid OrderId { get; set; }
     }
 }
