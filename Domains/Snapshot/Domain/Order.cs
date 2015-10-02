@@ -108,7 +108,8 @@ namespace Domains.Snapshot.Domain
             _lines.LoadFromSnapshot(orderState.Lines);
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as Order;
@@ -122,10 +123,6 @@ namespace Domains.Snapshot.Domain
                    target.TotalCost == TotalCost &&
                    target._lines.IsEquivalentIgnoringOrderTo(_lines);
         }
-        protected bool Equals(Order other)
-        {
-            return Id.Equals(other.Id);
-        }
         public override int GetHashCode()
         {
             return Id.GetHashCode();
@@ -134,5 +131,7 @@ namespace Domains.Snapshot.Domain
         {
             return "Order with snapshot pattern";
         }
+
+        #endregion
     }
 }

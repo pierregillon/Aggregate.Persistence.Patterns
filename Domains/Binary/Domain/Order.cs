@@ -85,7 +85,8 @@ namespace Domains.Binary.Domain
             TotalCost = _lines.Sum(x => ProductCatalog.Instance.GetPrice(x.Product)*x.Quantity);
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as Order;
@@ -107,5 +108,7 @@ namespace Domains.Binary.Domain
         {
             return "Order with binary persistance";
         }
+
+        #endregion
     }
 }

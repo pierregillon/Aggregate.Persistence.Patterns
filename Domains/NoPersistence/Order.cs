@@ -87,7 +87,8 @@ namespace Domains.NoPersistence
             TotalCost = _lines.Sum(x => _catalog.GetPrice(x.Product)*x.Quantity);
         }
 
-        // ----- Override
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as Order;
@@ -109,5 +110,7 @@ namespace Domains.NoPersistence
         {
             return "Order with no persistence";
         }
+
+        #endregion
     }
 }

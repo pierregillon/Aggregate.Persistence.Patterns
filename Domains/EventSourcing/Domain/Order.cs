@@ -107,7 +107,8 @@ namespace Domains.EventSourcing.Domain
             SubmitDate = @event.SubmitDate;
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as Order;
@@ -129,5 +130,7 @@ namespace Domains.EventSourcing.Domain
         {
             return "Order with eventsourcing pattern";
         }
+
+        #endregion
     }
 }

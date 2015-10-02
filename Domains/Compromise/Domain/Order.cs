@@ -86,7 +86,8 @@ namespace Domains.Compromise.Domain
             TotalCost = Lines.Sum(x => _catalog.GetPrice(x.Product)*x.Quantity);
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as Order;
@@ -108,5 +109,7 @@ namespace Domains.Compromise.Domain
         {
             return "Order with compromise pattern";
         }
+
+        #endregion
     }
 }

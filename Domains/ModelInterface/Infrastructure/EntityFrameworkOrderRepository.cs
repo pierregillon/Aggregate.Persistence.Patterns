@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Domain.Base;
 using Domains.ModelInterface.Domain;
 using Domains.ModelInterface.Infrastructure.EntityFramework;
 using Order = Domains.ModelInterface.Domain.Order;

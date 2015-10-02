@@ -116,7 +116,8 @@ namespace Domains.ModelInterface.Domain
             TotalCost = _lines.Sum(x => _catalog.GetPrice(x.Product)*x.Quantity);
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as Order;
@@ -130,10 +131,6 @@ namespace Domains.ModelInterface.Domain
                    target.TotalCost == TotalCost &&
                    target._lines.IsEquivalentIgnoringOrderTo(_lines);
         }
-        protected bool Equals(Order other)
-        {
-            return Id.Equals(other.Id);
-        }
         public override int GetHashCode()
         {
             return Id.GetHashCode();
@@ -142,5 +139,7 @@ namespace Domains.ModelInterface.Domain
         {
             return "Order with model interface pattern";
         }
+
+        #endregion
     }
 }
