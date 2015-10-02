@@ -106,7 +106,7 @@ namespace Patterns.Binary.Domain
         }
         public override string ToString()
         {
-            return "Order with binary persistance";
+            return "Order with binary persistence";
         }
 
         #endregion
