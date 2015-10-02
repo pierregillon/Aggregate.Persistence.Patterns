@@ -11,27 +11,23 @@ namespace Domains.Compromise.Infrastructure
     {
         public Order Get(Guid id)
         {
-            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress()))
-            {
-                string query = @"SELECT Id, OrderStatus, TotalCost, SubmitDate FROM [dbo].[Order] WHERE Id = @id;
-                                 SELECT CreationDate, Product, Quantity FROM [dbo].[OrderLine] WHERE OrderId = @id";
-
-                using (var multi = connection.QueryMultiple(query, new{id}))
-                {
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
+                const string query = SqlQueries.SelectOrdersByIdQuery + " " + SqlQueries.SelectOrderLinesByIdQuery;
+                using (var multi = connection.QueryMultiple(query, new {id})) {
                     var order = multi.Read<Order>().SingleOrDefault();
                     if (order != null) {
                         order.Lines = multi.Read<OrderLine>().ToList();
                     }
                     return order;
-                } 
+                }
             }
         }
+
         public void Add(Order order)
         {
-            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress()))
-            {
-                connection.Execute(@"INSERT INTO [dbo].[Order] (Id, OrderStatus, TotalCost, SubmitDate) VALUES(@Id, @OrderStatus, @TotalCost, @SubmitDate)", order);
-                connection.Execute(@"INSERT INTO [dbo].[OrderLine] (CreationDate, Product, Quantity, OrderId) VALUES(@CreationDate, @Product, @Quantity, @OrderId)", order.Lines);
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
+                connection.Execute(SqlQueries.InsertOrderQuery, order);
+                connection.Execute(SqlQueries.InsertOrderLineQuery, order.Lines);
             }
         }
     }

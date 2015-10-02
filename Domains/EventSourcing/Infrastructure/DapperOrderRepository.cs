@@ -14,28 +14,25 @@ namespace Domains.EventSourcing.Infrastructure
         public Order Get(Guid id)
         {
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
-                const string query = @"SELECT AggregateId, CreationDate, Content, Name FROM OrderEvent WHERE AggregateId = @id";
-
                 var domainEvents = connection
-                    .Query<OrderEvent>(query, new {id})
+                    .Query<OrderEvent>(SqlQueries.SelectOrderEventQuery, new {id})
                     .OrderBy(x => x.CreationDate)
                     .ToArray()
                     .Select(ConvertToDomainEvent)
-                    .ToArray(); ;
+                    .ToArray();
 
                 var order = new Order();
                 order.Replay(domainEvents);
                 return order;
             }
         }
+
         public void Add(Order order)
         {
             var domainEvents = order.GetUncommittedEvents();
             var persistedEvents = domainEvents.Select(ConvertToPersistantEvent);
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
-                const string query = "INSERT INTO OrderEvent (AggregateId, CreationDate, Content, Name) " +
-                                     "VALUES(@AggregateId, @CreationDate, @Content, @Name)";
-                connection.Execute(query, persistedEvents);
+                connection.Execute(SqlQueries.InsertOrderEventQuery, persistedEvents);
             }
         }
 
@@ -54,7 +51,7 @@ namespace Domains.EventSourcing.Infrastructure
         private IDomainEvent ConvertToDomainEvent(OrderEvent persistedEvent)
         {
             var type = GetType().Assembly.GetType(persistedEvent.Name);
-            return (IDomainEvent)JsonConvert.DeserializeObject(persistedEvent.Content, type);
+            return (IDomainEvent) JsonConvert.DeserializeObject(persistedEvent.Content, type);
         }
     }
 }
