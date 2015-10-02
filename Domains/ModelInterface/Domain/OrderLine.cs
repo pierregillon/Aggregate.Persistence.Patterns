@@ -15,14 +15,22 @@ namespace Domains.ModelInterface.Domain
             get { return _creationDate; }
             set { _creationDate = value; }
         }
+        Guid IOrderLineStates.OrderId
+        {
+            get { return _orderId; }
+            set { _orderId = value; }
+        }
         Product IOrderLineStates.Product
         {
             get { return Product; }
             set { Product = value; }
         }
 
+        // ----- Fields
         private DateTime _creationDate;
+        private Guid _orderId;
 
+        // ----- Properties
         public Product Product { get; private set; }
         public int Quantity { get; private set; }
 
@@ -30,11 +38,12 @@ namespace Domains.ModelInterface.Domain
         public OrderLine()
         {
         }
-        public OrderLine(Product product, int quantity)
+        public OrderLine(Guid orderId, Product product, int quantity)
         {
+            _orderId = orderId;
+            _creationDate = DateTime.Now.RoundToSecond();
             Product = product;
             Quantity = quantity;
-            _creationDate = DateTime.Now.RoundToSecond();
         }
 
         // ----- Public methods

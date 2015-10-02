@@ -30,14 +30,7 @@ namespace Domains.Snapshot.Infrastructure
             var orderState = ((IStateSnapshotable<OrderState>) order).TakeSnapshot();
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
                 connection.Execute(SqlQueries.InsertOrderQuery, orderState);
-                connection.Execute(SqlQueries.InsertOrderLineQuery,
-                    orderState.Lines.Select(x => new
-                    {
-                        x.CreationDate,
-                        x.Product,
-                        x.Quantity,
-                        OrderId = orderState.Id
-                    }));
+                connection.Execute(SqlQueries.InsertOrderLineQuery, orderState.Lines);
             }
         }
     }

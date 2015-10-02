@@ -29,7 +29,7 @@ namespace Domains.Snapshot.Domain
 
             var line = _lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
-                _lines.Add(new OrderLine(product, quantity));
+                _lines.Add(new OrderLine(Id, product, quantity));
             }
             else {
                 line.IncreaseQuantity(quantity);

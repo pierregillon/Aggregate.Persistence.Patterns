@@ -32,14 +32,7 @@ namespace Domains.ModelInterface.Infrastructure
             order.CopyTo(persistentModel);
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
                 connection.Execute(SqlQueries.InsertOrderQuery, persistentModel);
-                connection.Execute(SqlQueries.InsertOrderLineQuery,
-                    persistentModel.Lines.Select(x => new
-                    {
-                        x.CreationDate,
-                        x.Product,
-                        x.Quantity,
-                        OrderId = persistentModel.Id
-                    }));
+                connection.Execute(SqlQueries.InsertOrderLineQuery, persistentModel.Lines);
             }
         }
     }
