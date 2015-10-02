@@ -19,7 +19,7 @@ namespace Domains.Compromise.Domain
             Product = product;
             Quantity = quantity;
             OrderId = id;
-            CreationDate = DateTime.Now;
+            CreationDate = DateTime.Now.RoundToSecond();
         }
 
         public void IncreaseQuantity(int quantity)

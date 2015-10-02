@@ -35,7 +35,14 @@ namespace Domains.Tests
         }
         public static IEnumerable<object[]> Compromise
         {
-            get { return GetParameters(new Compromise.Domain.Order(), new Compromise.Infrastructure.OrderRepository()); }
+            get
+            {
+                return new[]
+                {
+                    new object[] {new Compromise.Domain.Order(), new Compromise.Infrastructure.EntityFrameworkOrderRepository()},
+                    new object[] {new Compromise.Domain.Order(), new Compromise.Infrastructure.DapperOrderRepository()}
+                };
+            }
         }
         public static IEnumerable<object[]> EventSourcing
         {

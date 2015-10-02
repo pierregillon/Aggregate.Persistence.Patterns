@@ -5,7 +5,7 @@ using Domains.Compromise.Infrastructure.EntityFramework;
 
 namespace Domains.Compromise.Infrastructure
 {
-    public class OrderRepository : IOrderRepository
+    public class EntityFrameworkOrderRepository : IOrderRepository
     {
         public Order Get(Guid id)
         {

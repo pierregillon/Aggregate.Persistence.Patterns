@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Base;
-using Domains.Compromise.Domain;
 using Domains.Compromise.Infrastructure;
 using Domains.Compromise.Infrastructure.EntityFramework;
 using NFluent;
@@ -22,7 +21,7 @@ namespace Domains.Tests.Persistance
             order.AddProduct(Product.Jacket, 2);
             order.Submit();
 
-            var orderRepository = new OrderRepository();
+            var orderRepository = new EntityFrameworkOrderRepository();
             orderRepository.Add(order);
 
             using (var dataContext = new DataContext()) {
@@ -57,6 +56,7 @@ namespace Domains.Tests.Persistance
                 {
                     Order = orderState,
                     Product = Product.Computer,
+                    CreationDate = DateTime.Now.RoundToSecond(),
                     Quantity = 1
                 };
                 dataContext.Set<Order>().Add(orderState);
@@ -64,7 +64,7 @@ namespace Domains.Tests.Persistance
                 dataContext.SaveChanges();
             }
 
-            var orderRepository = new OrderRepository();
+            var orderRepository = new EntityFrameworkOrderRepository();
             var order = orderRepository.Get(guid);
 
             Check.That(order.Id).IsEqualTo(guid);

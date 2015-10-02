@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectionExtensions.cs" />
+    <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="Infrastructure\DataContextBase.cs" />
+    <Compile Include="Infrastructure\SqlConnectionLocator.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="OrderOperationException.cs" />
     <Compile Include="OrderStatus.cs" />

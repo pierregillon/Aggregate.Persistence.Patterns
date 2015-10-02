@@ -83,7 +83,7 @@
     <Compile Include="Compromise\Infrastructure\EntityFramework\DataContext.cs" />
     <Compile Include="Compromise\Infrastructure\EntityFramework\OrderLineMapping.cs" />
     <Compile Include="Compromise\Infrastructure\EntityFramework\OrderMapping.cs" />
-    <Compile Include="Compromise\Infrastructure\OrderRepository.cs" />
+    <Compile Include="Compromise\Infrastructure\EntityFrameworkOrderRepository.cs" />
     <Compile Include="EventSourcing\Domain\Events\EventOwner.cs" />
     <Compile Include="EventSourcing\Domain\Events\IDomainEvent.cs" />
     <Compile Include="EventSourcing\Domain\IOrderRepository.cs" />

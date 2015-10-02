@@ -59,7 +59,7 @@ namespace Domains.Compromise.Domain
         public void Submit()
         {
             CheckIfDraft();
-            SubmitDate = DateTime.Now;
+            SubmitDate = DateTime.Now.RoundToSecond();
             OrderStatus = OrderStatus.Submitted;
         }
 

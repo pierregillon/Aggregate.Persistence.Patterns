@@ -5,7 +5,7 @@ namespace Domain.Base.Infrastructure
     public abstract class DataContextBase : DbContext
     {
         protected DataContextBase()
-            : base("DomainModelPersistencePatterns")
+            : base(SqlConnectionLocator.LocalhostSqlExpress())
         {
             
         }

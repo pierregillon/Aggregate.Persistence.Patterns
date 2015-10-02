@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
+using Domain.Base.Infrastructure;
 using Domains.Compromise.Domain;
 
 namespace Domains.Compromise.Infrastructure
@@ -10,20 +11,27 @@ namespace Domains.Compromise.Infrastructure
     {
         public Order Get(Guid id)
         {
-            using (var connection = new SqlConnection(@"Server=localhost\\SQLEXPRESS;database=DomainModelPatterns.Compromise;")) {
-                return connection.Query<Order>("SELECT * FROM Order WHERE Id = @id", new {id}).FirstOrDefault();
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress()))
+            {
+                string query = @"SELECT Id, OrderStatus, TotalCost, SubmitDate FROM Compromise_Order WHERE Id = @id 
+                                 SELECT CreationDate, Product, Quantity FROM Compromise_OrderLine WHERE OrderId = @id";
+
+                using (var multi = connection.QueryMultiple(query, new{id}))
+                {
+                    var order = multi.Read<Order>().SingleOrDefault();
+                    if (order != null) {
+                        order.Lines = multi.Read<OrderLine>().ToList();
+                    }
+                    return order;
+                } 
             }
         }
         public void Add(Order order)
         {
-            using (var connection = new SqlConnection(@"Server=localhost\\SQLEXPRESS;database=DomainModelPatterns.Compromise;")) {
-                connection.Execute(@"INSERT INTO Order (Id, OrderStatus, TotalCost, SubmitDate) VALUES(@a, @b, @c, @d)", new
-                {
-                    a = order.Id,
-                    b = order.OrderStatus,
-                    c = order.TotalCost,
-                    d = order.SubmitDate
-                });
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress()))
+            {
+                connection.Execute(@"INSERT INTO Compromise_Order (Id, OrderStatus, TotalCost, SubmitDate) VALUES(@Id, @OrderStatus, @TotalCost, @SubmitDate)", order);
+                connection.Execute(@"INSERT INTO Compromise_OrderLine (CreationDate, Product, Quantity, OrderId) VALUES(@CreationDate, @Product, @Quantity, @OrderId)", order.Lines);
             }
         }
     }
