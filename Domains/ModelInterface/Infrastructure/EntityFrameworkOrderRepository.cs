@@ -7,7 +7,7 @@ using Order = Domains.ModelInterface.Domain.Order;
 
 namespace Domains.ModelInterface.Infrastructure
 {
-    public class OrderRepository : IOrderRepository
+    public class EntityFrameworkOrderRepository : IOrderRepository
     {
         public Order Get(Guid id)
         {

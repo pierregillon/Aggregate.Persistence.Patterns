@@ -89,7 +89,7 @@ namespace Domains.ModelInterface.Domain
         public void Submit()
         {
             CheckIfDraft();
-            SubmitDate = DateTime.Now;
+            SubmitDate = DateTime.Now.RoundToSecond();
             _orderStatus = OrderStatus.Submitted;
         }
 

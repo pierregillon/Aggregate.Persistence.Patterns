@@ -99,6 +99,7 @@
     <Compile Include="ModelInterface\Domain\IOrderStates.cs" />
     <Compile Include="ModelInterface\Domain\IOrderRepository.cs" />
     <Compile Include="ModelInterface\Domain\CopyExtensions.cs" />
+    <Compile Include="ModelInterface\Infrastructure\DapperOrderRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Snapshot\Domain\IStateSnapshotable.cs" />
     <Compile Include="EventSourcing\Domain\Order.cs" />
@@ -121,7 +122,7 @@
     <Compile Include="ModelInterface\Infrastructure\EntityFramework\DataContext.cs" />
     <Compile Include="ModelInterface\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
     <Compile Include="ModelInterface\Infrastructure\EntityFramework\OrderStateMapping.cs" />
-    <Compile Include="ModelInterface\Infrastructure\OrderRepository.cs" />
+    <Compile Include="ModelInterface\Infrastructure\EntityFrameworkOrderRepository.cs" />
     <Compile Include="NoPersistence\OrderLine.cs" />
     <Compile Include="NoPersistence\Order.cs" />
   </ItemGroup>

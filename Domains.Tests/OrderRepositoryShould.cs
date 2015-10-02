@@ -50,7 +50,14 @@ namespace Domains.Tests
         }
         public static IEnumerable<object[]> ModelInterface
         {
-            get { return GetParameters(new ModelInterface.Domain.Order(), new ModelInterface.Infrastructure.OrderRepository()); }
+            get
+            {
+                return new[]
+                {
+                    new object[] {new ModelInterface.Domain.Order(), new ModelInterface.Infrastructure.EntityFrameworkOrderRepository()},
+                    new object[] {new ModelInterface.Domain.Order(), new ModelInterface.Infrastructure.DapperOrderRepository()}
+                };
+            }
         }
         public static IEnumerable<object[]> Snapshot
         {

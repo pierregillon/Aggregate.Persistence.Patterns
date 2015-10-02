@@ -34,7 +34,7 @@ namespace Domains.ModelInterface.Domain
         {
             Product = product;
             Quantity = quantity;
-            _creationDate = DateTime.Now;
+            _creationDate = DateTime.Now.RoundToSecond();
         }
 
         // ----- Public methods
@@ -52,16 +52,15 @@ namespace Domains.ModelInterface.Domain
             }
 
             return target.Product == Product &&
-                    target.Quantity == Quantity &&
-                    target._creationDate == _creationDate;
+                   target.Quantity == Quantity &&
+                   target._creationDate == _creationDate;
         }
         public override int GetHashCode()
         {
-            unchecked
-            {
+            unchecked {
                 int hashCode = _creationDate.GetHashCode();
-                hashCode = (hashCode * 397) ^ (int)Product;
-                hashCode = (hashCode * 397) ^ Quantity;
+                hashCode = (hashCode*397) ^ (int) Product;
+                hashCode = (hashCode*397) ^ Quantity;
                 return hashCode;
             }
         }
