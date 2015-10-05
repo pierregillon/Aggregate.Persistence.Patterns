@@ -11,10 +11,12 @@ namespace Patterns.EventSourcing.Domain
         private readonly ProductCatalog _catalog = new ProductCatalog();
         private readonly List<OrderLine> _lines = new List<OrderLine>();
         private OrderStatus _orderStatus;
+        private bool _isDeleted;
 
         public Guid Id { get; private set; }
         public DateTime? SubmitDate { get; private set; }
         public double TotalCost { get; private set; }
+        public bool IsDeleted { get { return _isDeleted; } }
 
         // ----- Constructor
         public Order()
@@ -23,6 +25,7 @@ namespace Patterns.EventSourcing.Domain
             RegisterEvent<ProductAdded>(ApplyProductAdded);
             RegisterEvent<ProductRemoved>(ApplyProductRemoved);
             RegisterEvent<OrderSubmitted>(ApplyOrderSubmitted);
+            RegisterEvent<OrderDeleted>(ApplyOrderDeleted);
 
             Apply(new OrderCreated(Guid.NewGuid()));
         }
@@ -105,6 +108,10 @@ namespace Patterns.EventSourcing.Domain
         {
             _orderStatus = OrderStatus.Submitted;
             SubmitDate = @event.SubmitDate;
+        }
+        private void ApplyOrderDeleted(OrderDeleted @event)
+        {
+            _isDeleted = true;
         }
 
         #region Overrides with no interest

@@ -23,6 +23,9 @@ namespace Patterns.EventSourcing.Infrastructure
 
                 var order = new Order();
                 order.Replay(domainEvents);
+                if (order.IsDeleted) {
+                    return null;
+                }
                 return order;
             }
         }
@@ -37,7 +40,11 @@ namespace Patterns.EventSourcing.Infrastructure
         }
         public void Delete(Guid orderId)
         {
-            throw new NotImplementedException();
+            var @event = new OrderDeleted(orderId);
+            var eventToPersist = ConvertToPersistantEvent(@event);
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
+                connection.Execute(SqlQueries.InsertOrderEventQuery, eventToPersist);
+            }
         }
 
         // ----- Internal logics
