@@ -3,9 +3,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Patterns.Common.Infrastructure;
-using Patterns.ModelInterface.Domain;
+using Patterns.StateInterface.Domain;
 
-namespace Patterns.ModelInterface.Infrastructure
+namespace Patterns.StateInterface.Infrastructure
 {
     public class DapperOrderRepository : IOrderRepository
     {

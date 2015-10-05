@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using NFluent;
 using Patterns.Common;
+using Patterns.StateInterface.Domain;
+using Patterns.StateInterface.Infrastructure;
 using Xunit;
 
 namespace Patterns.Tests
@@ -11,7 +13,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void persist_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder
@@ -37,7 +39,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("EventSourcing")]
         [MemberData("Compromise")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void update_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder
@@ -65,7 +67,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("EventSourcing")]
         [MemberData("Compromise")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void delete_existing_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : class, IOrder
@@ -113,14 +115,14 @@ namespace Patterns.Tests
                 };
             }
         }
-        public static IEnumerable<object[]> ModelInterface
+        public static IEnumerable<object[]> StateInterface
         {
             get
             {
                 return new[]
                 {
-                    new object[] {new ModelInterface.Domain.Order(), new ModelInterface.Infrastructure.EntityFrameworkOrderRepository()},
-                    new object[] {new ModelInterface.Domain.Order(), new ModelInterface.Infrastructure.DapperOrderRepository()}
+                    new object[] {new Order(), new EntityFrameworkOrderRepository()},
+                    new object[] {new Order(), new DapperOrderRepository()}
                 };
             }
         }

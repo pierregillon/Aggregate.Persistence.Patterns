@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using Patterns.Common.Infrastructure;
 
-namespace Patterns.ModelInterface.Infrastructure.EntityFramework
+namespace Patterns.StateInterface.Infrastructure.EntityFramework
 {
     public class DataContext : DataContextBase
     {

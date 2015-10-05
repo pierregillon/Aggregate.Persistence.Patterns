@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Patterns.Common;
 
-namespace Patterns.ModelInterface.Domain
+namespace Patterns.StateInterface.Domain
 {
     public class Order : IOrder, IOrderStates<OrderLine>
     {

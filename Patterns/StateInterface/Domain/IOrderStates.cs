@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Patterns.Common;
 
-namespace Patterns.ModelInterface.Domain
+namespace Patterns.StateInterface.Domain
 {
     public interface IOrderStates<TOrderLine> where TOrderLine : IOrderLineStates
     {

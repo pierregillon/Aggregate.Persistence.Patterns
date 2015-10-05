@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 
-namespace Patterns.ModelInterface.Infrastructure.EntityFramework
+namespace Patterns.StateInterface.Infrastructure.EntityFramework
 {
     public class OrderStateMapping : EntityTypeConfiguration<OrderPersistantModel>
     {

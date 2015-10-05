@@ -14,7 +14,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void increase_quantity_when_adding_existing_product<TOrder>(TOrder order) where TOrder : IOrder
         {
@@ -29,7 +29,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void calculate_total_cost_when_adding_products<TOrder>(TOrder order) where TOrder : IOrder
         {
@@ -46,7 +46,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void calculate_total_cost_when_removing_product<TOrder>(TOrder order) where TOrder : IOrder
         {
@@ -61,7 +61,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void throw_exception_when_adding_product_with_negative_quantity<TOrder>(TOrder order) where TOrder : IOrder
         {
@@ -76,7 +76,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void throw_exception_when_adding_product_with_no_quantity<TOrder>(TOrder order) where TOrder : IOrder
         {
@@ -91,7 +91,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void throw_exception_when_adding_product_to_submitted_order<TOrder>(TOrder order) where TOrder : IOrder
         {
@@ -107,7 +107,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void throw_exception_when_removing_product_if_submitted<TOrder>(TOrder order) where TOrder : IOrder
         {
@@ -124,7 +124,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
-        [MemberData("ModelInterface")]
+        [MemberData("StateInterface")]
         [MemberData("Snapshot")]
         public void throw_exception_when_trying_to_submit_twice<TOrder>(TOrder order) where TOrder : IOrder
         {
@@ -150,9 +150,9 @@ namespace Patterns.Tests
         {
             get { return GetParameters(new EventSourcing.Domain.Order()); }
         }
-        public static IEnumerable<object[]> ModelInterface
+        public static IEnumerable<object[]> StateInterface
         {
-            get { return GetParameters(new ModelInterface.Domain.Order()); }
+            get { return GetParameters(new StateInterface.Domain.Order()); }
         }
         public static IEnumerable<object[]> Snapshot
         {

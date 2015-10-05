@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Patterns.Common;
-using Patterns.ModelInterface.Domain;
+using Patterns.StateInterface.Domain;
 
-namespace Patterns.ModelInterface.Infrastructure
+namespace Patterns.StateInterface.Infrastructure
 {
     public class OrderPersistantModel : IOrderStates<OrderLinePersistantModel>
     {

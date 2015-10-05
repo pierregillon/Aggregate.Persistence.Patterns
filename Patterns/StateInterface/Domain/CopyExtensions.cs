@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Patterns.ModelInterface.Domain
+namespace Patterns.StateInterface.Domain
 {
     public static class CopyExtensions
     {
