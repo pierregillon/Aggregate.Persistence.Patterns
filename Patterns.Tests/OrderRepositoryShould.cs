@@ -17,6 +17,7 @@ namespace Patterns.Tests
             where TModel : IOrder
             where TRepository : IRepository<TModel>
         {
+            // Arrange
             order.AddProduct(Product.Shoes, 2);
             order.AddProduct(Product.Tshirt, 1);
             order.AddProduct(Product.Computer, 1);
@@ -24,9 +25,11 @@ namespace Patterns.Tests
             order.RemoveProduct(Product.Shoes);
             order.Submit();
 
+            // Acts
             orderRepository.Add(order);
             var loadedOrder = orderRepository.Get(order.Id);
 
+            // Asserts
             Check.That(loadedOrder).IsEqualTo(order);
         }
 
