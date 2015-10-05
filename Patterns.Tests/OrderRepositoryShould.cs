@@ -58,6 +58,8 @@ namespace Patterns.Tests
             Check.That(loadedOrder).IsEqualTo(order);
         }
 
+        [Theory]
+        [MemberData("Binary")]
         public void delete_existing_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : class, IOrder
             where TRepository : IRepository<TModel>

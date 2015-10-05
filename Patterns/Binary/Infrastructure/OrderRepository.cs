@@ -11,6 +11,9 @@ namespace Patterns.Binary.Infrastructure
 
         public Order Get(Guid id)
         {
+            if (!File.Exists(FilePath)) {
+                return null;
+            }
             using (var stream = File.OpenRead(FilePath)) {
                 var formatter = new BinaryFormatter();
                 return (Order) formatter.Deserialize(stream);
@@ -27,13 +30,15 @@ namespace Patterns.Binary.Infrastructure
 
         public void Update(Order order)
         {
-            File.Delete(FilePath);
+            Delete(order.Id);
             Add(order);
         }
 
         public void Delete(Guid orderId)
         {
-            throw new NotImplementedException();
+            if (File.Exists(FilePath)) {
+                File.Delete(FilePath);
+            }
         }
     }
 }
