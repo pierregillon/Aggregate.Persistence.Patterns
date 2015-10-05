@@ -15,7 +15,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
-        public void persist_order<TModel, TRepository>(TModel order, TRepository orderRepository)
+        public void persist_new_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder
             where TRepository : IRepository<TModel>
         {
@@ -41,7 +41,7 @@ namespace Patterns.Tests
         [MemberData("Compromise")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
-        public void update_order<TModel, TRepository>(TModel order, TRepository orderRepository)
+        public void update_existing_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder
             where TRepository : IRepository<TModel>
         {
