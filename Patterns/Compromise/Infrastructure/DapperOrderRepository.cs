@@ -30,6 +30,7 @@ namespace Patterns.Compromise.Infrastructure
                 connection.Execute(SqlQueries.InsertOrderLineQuery, order.Lines);
             }
         }
+
         public void Update(Order order)
         {
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
@@ -41,7 +42,10 @@ namespace Patterns.Compromise.Infrastructure
 
         public void Delete(Guid orderId)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
+                connection.Execute(SqlQueries.DeleteOrderLineQuery, new { OrderId = orderId });
+                connection.Execute(SqlQueries.DeleteOrderQuery, new { OrderId = orderId });
+            }
         }
     }
 }

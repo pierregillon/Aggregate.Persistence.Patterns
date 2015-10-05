@@ -37,7 +37,11 @@ namespace Patterns.Compromise.Infrastructure
 
         public void Delete(Guid orderId)
         {
-            throw new NotImplementedException();
+            using (var dataContext = new DataContext()) {
+                var order = dataContext.Set<Order>().Find(orderId);
+                dataContext.Entry(order).State = EntityState.Deleted;
+                dataContext.SaveChanges();
+            }
         }
     }
 }

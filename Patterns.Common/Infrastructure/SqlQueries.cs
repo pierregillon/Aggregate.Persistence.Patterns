@@ -32,5 +32,7 @@
         public const string DeleteOrderLineQuery = "DELETE FROM [dbo].[OrderLine] " +
                                                    "WHERE OrderId = @OrderId";
 
+        public const string DeleteOrderQuery = "DELETE FROM [dbo].[Order] " +
+                                               "WHERE Id = @OrderId";
     }
 }
