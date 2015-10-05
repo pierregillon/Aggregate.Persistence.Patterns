@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using Patterns.Snapshot.Domain;
 using Patterns.Snapshot.Infrastructure.EntityFramework;
@@ -19,7 +20,7 @@ namespace Patterns.Snapshot.Infrastructure
                     return null;
                 }
                 var order = new Order();
-                ((IStateSnapshotable<OrderState>)order).LoadFromSnapshot(orderState);
+                ((IStateSnapshotable<OrderState>) order).LoadFromSnapshot(orderState);
                 return order;
             }
         }
@@ -32,9 +33,15 @@ namespace Patterns.Snapshot.Infrastructure
                 dataContext.SaveChanges();
             }
         }
+
         public void Update(Order order)
         {
-            throw new NotImplementedException();
+            var orderState = ((IStateSnapshotable<OrderState>) order).TakeSnapshot();
+            using (var dataContext = new DataContext()) {
+                dataContext.Entry(orderState).State = EntityState.Modified;
+                orderState.Lines.ForEach(x => dataContext.Entry(x).State = EntityState.Added);
+                dataContext.SaveChanges();
+            }
         }
     }
 }

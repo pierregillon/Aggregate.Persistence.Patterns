@@ -33,9 +33,15 @@ namespace Patterns.Snapshot.Infrastructure
                 connection.Execute(SqlQueries.InsertOrderLineQuery, orderState.Lines);
             }
         }
+
         public void Update(Order order)
         {
-            throw new NotImplementedException();
+            var orderState = ((IStateSnapshotable<OrderState>) order).TakeSnapshot();
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
+                connection.Execute(SqlQueries.UpdateOrderQuery, orderState);
+                connection.Execute(SqlQueries.DeleteOrderLineQuery, new {OrderId = orderState.Id});
+                connection.Execute(SqlQueries.InsertOrderLineQuery, orderState.Lines);
+            }
         }
     }
 }
