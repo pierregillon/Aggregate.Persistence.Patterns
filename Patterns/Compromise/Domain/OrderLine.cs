@@ -5,13 +5,13 @@ namespace Patterns.Compromise.Domain
 {
     public class OrderLine : IOrderLine
     {
+        // ----- Properties
         public DateTime CreationDate { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
-
-        // EF properties
         public Guid OrderId { get; set; }
 
+        // ----- Constructors
         public OrderLine()
         {
         }
@@ -23,12 +23,14 @@ namespace Patterns.Compromise.Domain
             CreationDate = DateTime.Now.RoundToSecond();
         }
 
+        // ----- Public methods
         public void IncreaseQuantity(int quantity)
         {
             Quantity += quantity;
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as OrderLine;
@@ -42,13 +44,14 @@ namespace Patterns.Compromise.Domain
         }
         public override int GetHashCode()
         {
-            unchecked
-            {
+            unchecked {
                 int hashCode = CreationDate.GetHashCode();
-                hashCode = (hashCode * 397) ^ (int)Product;
-                hashCode = (hashCode * 397) ^ Quantity;
+                hashCode = (hashCode*397) ^ (int) Product;
+                hashCode = (hashCode*397) ^ Quantity;
                 return hashCode;
             }
         }
+
+        #endregion
     }
 }

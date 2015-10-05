@@ -52,7 +52,8 @@ namespace Patterns.ModelInterface.Domain
             Quantity += quantity;
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as OrderLine;
@@ -73,5 +74,7 @@ namespace Patterns.ModelInterface.Domain
                 return hashCode;
             }
         }
+
+        #endregion
     }
 }

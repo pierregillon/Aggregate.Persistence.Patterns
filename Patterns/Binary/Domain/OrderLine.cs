@@ -25,7 +25,8 @@ namespace Patterns.Binary.Domain
             Quantity += quantity;
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as OrderLine;
@@ -46,5 +47,7 @@ namespace Patterns.Binary.Domain
                 return hashCode;
             }
         }
+
+        #endregion
     }
 }

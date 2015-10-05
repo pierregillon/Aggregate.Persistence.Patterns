@@ -24,7 +24,8 @@ namespace Patterns.NoPersistence
             Quantity += quantity;
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as OrderLine;
@@ -45,5 +46,7 @@ namespace Patterns.NoPersistence
                 return hashCode;
             }
         }
+
+        #endregion
     }
 }

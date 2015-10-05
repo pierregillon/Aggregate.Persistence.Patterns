@@ -50,7 +50,8 @@ namespace Patterns.Snapshot.Domain
             _creationDate = orderState.CreationDate;
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as OrderLine;
@@ -71,5 +72,7 @@ namespace Patterns.Snapshot.Domain
                 return hashCode;
             }
         }
+
+        #endregion
     }
 }

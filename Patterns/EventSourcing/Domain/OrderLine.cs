@@ -27,7 +27,8 @@ namespace Patterns.EventSourcing.Domain
             Quantity += quantity;
         }
 
-        // ----- Overrides
+        #region Overrides with no interest
+
         public override bool Equals(object obj)
         {
             var target = obj as OrderLine;
@@ -48,5 +49,7 @@ namespace Patterns.EventSourcing.Domain
                 return hashCode;
             }
         }
+
+        #endregion
     }
 }
