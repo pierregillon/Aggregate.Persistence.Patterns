@@ -46,7 +46,12 @@ namespace Patterns.Snapshot.Infrastructure
 
         public void Delete(Guid orderId)
         {
-            throw new NotImplementedException();
+            using (var dataContext = new DataContext()) {
+                var orderState = dataContext.Set<OrderState>().Find(orderId);
+                dataContext.Entry(orderState).State = EntityState.Deleted;
+                orderState.Lines.ForEach(x => dataContext.Entry(x).State = EntityState.Added);
+                dataContext.SaveChanges();
+            }
         }
     }
 }

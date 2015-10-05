@@ -15,9 +15,12 @@ namespace Patterns.Snapshot.Infrastructure
                 const string query = SqlQueries.SelectOrdersByIdQuery + " " + SqlQueries.SelectOrderLinesByIdQuery;
                 using (var multi = connection.QueryMultiple(query, new {id})) {
                     var orderState = multi.Read<OrderState>().SingleOrDefault();
-                    if (orderState != null) {
-                        orderState.Lines = multi.Read<OrderLineState>().ToList();
+                    if (orderState == null) {
+                        return null;
                     }
+                    
+                    orderState.Lines = multi.Read<OrderLineState>().ToList();
+                    
                     var order = new Order();
                     ((IStateSnapshotable<OrderState>) order).LoadFromSnapshot(orderState);
                     return order;
@@ -46,7 +49,10 @@ namespace Patterns.Snapshot.Infrastructure
 
         public void Delete(Guid orderId)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
+                connection.Execute(SqlQueries.DeleteOrderLineQuery, new { OrderId = orderId });
+                connection.Execute(SqlQueries.DeleteOrderQuery, new { OrderId = orderId });
+            }
         }
     }
 }
