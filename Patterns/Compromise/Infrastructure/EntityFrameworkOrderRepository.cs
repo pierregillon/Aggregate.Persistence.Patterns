@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using Patterns.Compromise.Domain;
 using Patterns.Compromise.Infrastructure.EntityFramework;
@@ -24,9 +25,14 @@ namespace Patterns.Compromise.Infrastructure
                 dataContext.SaveChanges();
             }
         }
+
         public void Update(Order order)
         {
-            throw new NotImplementedException();
+            using (var dataContext = new DataContext()) {
+                dataContext.Entry(order).State = EntityState.Modified;
+                order.Lines.ForEach(x => dataContext.Entry(x).State = EntityState.Added);
+                dataContext.SaveChanges();
+            }
         }
     }
 }

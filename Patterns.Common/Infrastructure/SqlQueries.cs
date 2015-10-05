@@ -22,5 +22,15 @@
 
         public const string InsertOrderEventQuery = "INSERT INTO OrderEvent (AggregateId, CreationDate, Content, Name) " +
                                                     "VALUES(@AggregateId, @CreationDate, @Content, @Name)";
+
+        public const string UpdateOrderQuery = "UPDATE [dbo].[Order] " +
+                                               "SET OrderStatus = @OrderStatus, " +
+                                               "    TotalCost   = @TotalCost, " +
+                                               "    SubmitDate  = @SubmitDate " +
+                                               "WHERE Id = @Id";
+
+        public const string DeleteOrderLineQuery = "DELETE FROM [dbo].[OrderLine] " +
+                                                   "WHERE OrderId = @OrderId";
+
     }
 }

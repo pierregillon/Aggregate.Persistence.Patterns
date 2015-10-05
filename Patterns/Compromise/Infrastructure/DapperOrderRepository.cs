@@ -32,7 +32,11 @@ namespace Patterns.Compromise.Infrastructure
         }
         public void Update(Order order)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
+                connection.Execute(SqlQueries.UpdateOrderQuery, order);
+                connection.Execute(SqlQueries.DeleteOrderLineQuery, new {OrderId = order.Id});
+                connection.Execute(SqlQueries.InsertOrderLineQuery, order.Lines);
+            }
         }
     }
 }
