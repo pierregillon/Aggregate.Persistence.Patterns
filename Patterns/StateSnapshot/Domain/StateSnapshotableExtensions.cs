@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Patterns.Snapshot.Domain
+namespace Patterns.StateSnapshot.Domain
 {
     public static class StateSnapshotableExtensions
     {

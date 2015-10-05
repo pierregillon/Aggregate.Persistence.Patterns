@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Patterns.Common;
 
-namespace Patterns.Snapshot.Domain
+namespace Patterns.StateSnapshot.Domain
 {
     public class Order : IOrder, IStateSnapshotable<OrderState>
     {
@@ -85,7 +85,7 @@ namespace Patterns.Snapshot.Domain
             TotalCost = _lines.Sum(x => _catalog.GetPrice(x.Product)*x.Quantity);
         }
 
-        // ----- Snapshot
+        // ----- State Snapshot
         OrderState IStateSnapshotable<OrderState>.TakeSnapshot()
         {
             return new OrderState

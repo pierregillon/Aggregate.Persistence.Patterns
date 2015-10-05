@@ -1,4 +1,4 @@
-namespace Patterns.Snapshot.Domain
+namespace Patterns.StateSnapshot.Domain
 {
     public interface IStateSnapshotable<T>
     {

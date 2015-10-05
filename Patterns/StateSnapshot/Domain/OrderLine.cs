@@ -1,7 +1,7 @@
 using System;
 using Patterns.Common;
 
-namespace Patterns.Snapshot.Domain
+namespace Patterns.StateSnapshot.Domain
 {
     public class OrderLine : IOrderLine, IStateSnapshotable<OrderLineState>
     {
@@ -31,7 +31,7 @@ namespace Patterns.Snapshot.Domain
             Quantity += quantity;
         }
 
-        // ----- Snapshot
+        // ----- State Snapshot
         OrderLineState IStateSnapshotable<OrderLineState>.TakeSnapshot()
         {
             return new OrderLineState

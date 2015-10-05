@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Patterns.Common;
 
-namespace Patterns.Snapshot.Domain
+namespace Patterns.StateSnapshot.Domain
 {
     public class OrderState
     {

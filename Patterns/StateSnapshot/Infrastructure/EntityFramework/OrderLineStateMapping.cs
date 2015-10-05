@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using Patterns.Snapshot.Domain;
+using Patterns.StateSnapshot.Domain;
 
-namespace Patterns.Snapshot.Infrastructure.EntityFramework
+namespace Patterns.StateSnapshot.Infrastructure.EntityFramework
 {
     public class OrderLineStateMapping : EntityTypeConfiguration<OrderLineState>
     {

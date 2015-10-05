@@ -1,6 +1,6 @@
 using Patterns.Common;
 
-namespace Patterns.Snapshot.Domain
+namespace Patterns.StateSnapshot.Domain
 {
     public interface IOrderRepository : IRepository<Order>
     {

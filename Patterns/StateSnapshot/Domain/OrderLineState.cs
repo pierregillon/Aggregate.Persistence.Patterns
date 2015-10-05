@@ -1,7 +1,7 @@
 ﻿using System;
 using Patterns.Common;
 
-namespace Patterns.Snapshot.Domain
+namespace Patterns.StateSnapshot.Domain
 {
     public class OrderLineState
     {

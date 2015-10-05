@@ -14,7 +14,7 @@ namespace Patterns.Tests
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
-        [MemberData("Snapshot")]
+        [MemberData("StateSnapshot")]
         public void persist_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder
             where TRepository : IRepository<TModel>
@@ -40,7 +40,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("Compromise")]
         [MemberData("StateInterface")]
-        [MemberData("Snapshot")]
+        [MemberData("StateSnapshot")]
         public void update_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder
             where TRepository : IRepository<TModel>
@@ -68,7 +68,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("Compromise")]
         [MemberData("StateInterface")]
-        [MemberData("Snapshot")]
+        [MemberData("StateSnapshot")]
         public void delete_existing_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : class, IOrder
             where TRepository : IRepository<TModel>
@@ -126,14 +126,14 @@ namespace Patterns.Tests
                 };
             }
         }
-        public static IEnumerable<object[]> Snapshot
+        public static IEnumerable<object[]> StateSnapshot
         {
             get
             {
                 return new[]
                 {
-                    new object[] {new Snapshot.Domain.Order(), new Snapshot.Infrastructure.EntityFrameworkOrderRepository()},
-                    new object[] {new Snapshot.Domain.Order(), new Snapshot.Infrastructure.DapperOrderRepository()}
+                    new object[] {new StateSnapshot.Domain.Order(), new StateSnapshot.Infrastructure.EntityFrameworkOrderRepository()},
+                    new object[] {new StateSnapshot.Domain.Order(), new StateSnapshot.Infrastructure.DapperOrderRepository()}
                 };
             }
         }
