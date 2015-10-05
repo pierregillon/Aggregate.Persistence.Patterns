@@ -38,7 +38,7 @@ namespace Patterns.ModelInterface.Domain
             set { _lines = value.ToList(); }
         }
 
-        private readonly ProductCatalog _catalog = new ProductCatalog();
+        private readonly PriceCatalog _catalog = new PriceCatalog();
         private List<OrderLine> _lines = new List<OrderLine>();
         private OrderStatus _orderStatus;
 

@@ -7,7 +7,7 @@ namespace Patterns.Compromise.Domain
 {
     public class Order : IOrder
     {
-        private readonly ProductCatalog _catalog = new ProductCatalog();
+        private readonly PriceCatalog _catalog = new PriceCatalog();
 
         public Guid Id { get; set; }
         public OrderStatus OrderStatus { get; set; }

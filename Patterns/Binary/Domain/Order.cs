@@ -82,7 +82,7 @@ namespace Patterns.Binary.Domain
             if (_lines.Count == 0) {
                 TotalCost = 0;
             }
-            TotalCost = _lines.Sum(x => ProductCatalog.Instance.GetPrice(x.Product)*x.Quantity);
+            TotalCost = _lines.Sum(x => PriceCatalog.Instance.GetPrice(x.Product)*x.Quantity);
         }
 
         #region Overrides with no interest

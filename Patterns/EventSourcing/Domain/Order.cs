@@ -8,7 +8,7 @@ namespace Patterns.EventSourcing.Domain
 {
     public class Order : EventOwner, IOrder
     {
-        private readonly ProductCatalog _catalog = new ProductCatalog();
+        private readonly PriceCatalog _catalog = new PriceCatalog();
         private readonly List<OrderLine> _lines = new List<OrderLine>();
         private OrderStatus _orderStatus;
         private bool _isDeleted;

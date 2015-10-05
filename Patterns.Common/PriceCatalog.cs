@@ -2,15 +2,15 @@ using System.Collections.Generic;
 
 namespace Patterns.Common
 {
-    public class ProductCatalog
+    public class PriceCatalog
     {
-        private static ProductCatalog _instance;
-        public static ProductCatalog Instance
+        private static PriceCatalog _instance;
+        public static PriceCatalog Instance
         {
             get
             {
                 if (_instance == null) {
-                    _instance = new ProductCatalog();
+                    _instance = new PriceCatalog();
                 }
                 return _instance;
             }

@@ -7,7 +7,7 @@ namespace Patterns.NoPersistence
 {
     public class Order : IOrder
     {
-        private readonly ProductCatalog _catalog = new ProductCatalog();
+        private readonly PriceCatalog _catalog = new PriceCatalog();
         private readonly List<OrderLine> _lines = new List<OrderLine>();
 
         private OrderStatus _orderStatus;
