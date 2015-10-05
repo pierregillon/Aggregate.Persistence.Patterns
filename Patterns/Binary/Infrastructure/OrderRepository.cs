@@ -30,5 +30,10 @@ namespace Patterns.Binary.Infrastructure
             File.Delete(FilePath);
             Add(order);
         }
+
+        public void Delete(Guid orderId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

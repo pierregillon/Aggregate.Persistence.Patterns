@@ -38,5 +38,10 @@ namespace Patterns.Compromise.Infrastructure
                 connection.Execute(SqlQueries.InsertOrderLineQuery, order.Lines);
             }
         }
+
+        public void Delete(Guid orderId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

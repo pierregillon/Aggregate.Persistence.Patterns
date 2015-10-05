@@ -35,6 +35,10 @@ namespace Patterns.EventSourcing.Infrastructure
         {
             SaveUncommitedEvents(order);
         }
+        public void Delete(Guid orderId)
+        {
+            throw new NotImplementedException();
+        }
 
         // ----- Internal logics
         private static void SaveUncommitedEvents(Order order)

@@ -34,5 +34,10 @@ namespace Patterns.Compromise.Infrastructure
                 dataContext.SaveChanges();
             }
         }
+
+        public void Delete(Guid orderId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

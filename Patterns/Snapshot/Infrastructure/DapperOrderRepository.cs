@@ -43,5 +43,10 @@ namespace Patterns.Snapshot.Infrastructure
                 connection.Execute(SqlQueries.InsertOrderLineQuery, orderState.Lines);
             }
         }
+
+        public void Delete(Guid orderId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

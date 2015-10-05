@@ -46,5 +46,10 @@ namespace Patterns.ModelInterface.Infrastructure
                 connection.Execute(SqlQueries.InsertOrderLineQuery, persistentModel.Lines);
             }
         }
+
+        public void Delete(Guid orderId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

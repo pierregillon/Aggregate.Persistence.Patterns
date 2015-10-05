@@ -58,6 +58,24 @@ namespace Patterns.Tests
             Check.That(loadedOrder).IsEqualTo(order);
         }
 
+        public void delete_existing_order<TModel, TRepository>(TModel order, TRepository orderRepository)
+            where TModel : class, IOrder
+            where TRepository : IRepository<TModel>
+        {
+            // Arrange
+            order.AddProduct(Product.Shoes, 2);
+            order.AddProduct(Product.Tshirt, 2);
+            order.Submit();
+            orderRepository.Add(order);
+
+            // Acts
+            orderRepository.Delete(order.Id);
+
+            // Asserts
+            var loadedOrder = orderRepository.Get(order.Id);
+            Check.That(loadedOrder).IsNull();
+        }
+
         // ----- Properties
 
         public static IEnumerable<object[]> Binary
