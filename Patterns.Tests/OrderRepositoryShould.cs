@@ -31,6 +31,7 @@ namespace Patterns.Tests
         }
 
         [Theory]
+        [MemberData("Binary")]
         [MemberData("EventSourcing")]
         public void update_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder

@@ -24,9 +24,11 @@ namespace Patterns.Binary.Infrastructure
                 formatter.Serialize(stream, order);
             }
         }
+
         public void Update(Order order)
         {
-            throw new NotImplementedException();
+            File.Delete(FilePath);
+            Add(order);
         }
     }
 }
