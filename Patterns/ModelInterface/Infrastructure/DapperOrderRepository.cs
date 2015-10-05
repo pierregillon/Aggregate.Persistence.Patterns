@@ -35,9 +35,16 @@ namespace Patterns.ModelInterface.Infrastructure
                 connection.Execute(SqlQueries.InsertOrderLineQuery, persistentModel.Lines);
             }
         }
+
         public void Update(Order order)
         {
-            throw new NotImplementedException();
+            var persistentModel = new OrderPersistantModel();
+            order.CopyTo(persistentModel);
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
+                connection.Execute(SqlQueries.UpdateOrderQuery, persistentModel);
+                connection.Execute(SqlQueries.DeleteOrderLineQuery, new {OrderId = persistentModel.Id});
+                connection.Execute(SqlQueries.InsertOrderLineQuery, persistentModel.Lines);
+            }
         }
     }
 }

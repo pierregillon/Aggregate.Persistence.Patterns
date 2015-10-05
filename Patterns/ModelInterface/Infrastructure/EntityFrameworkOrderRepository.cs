@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using Patterns.ModelInterface.Domain;
 using Patterns.ModelInterface.Infrastructure.EntityFramework;
@@ -33,9 +34,16 @@ namespace Patterns.ModelInterface.Infrastructure
                 dataContext.SaveChanges();
             }
         }
+
         public void Update(Order order)
         {
-            throw new NotImplementedException();
+            var persistantModel = new OrderPersistantModel();
+            order.CopyTo(persistantModel);
+            using (var dataContext = new DataContext()) {
+                dataContext.Entry(persistantModel).State = EntityState.Modified;
+                persistantModel.Lines.ForEach(x => dataContext.Entry(x).State = EntityState.Added);
+                dataContext.SaveChanges();
+            }
         }
     }
 }
