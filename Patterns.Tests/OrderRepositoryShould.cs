@@ -62,6 +62,7 @@ namespace Patterns.Tests
         [MemberData("Binary")]
         [MemberData("EventSourcing")]
         [MemberData("Compromise")]
+        [MemberData("ModelInterface")]
         public void delete_existing_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : class, IOrder
             where TRepository : IRepository<TModel>

@@ -19,6 +19,9 @@ namespace Patterns.ModelInterface.Infrastructure
                         persistentModel.Lines = multi.Read<OrderLinePersistantModel>().ToList();
                     }
 
+                    if (persistentModel == null) {
+                        return null;
+                    }
                     var order = new Order();
                     persistentModel.CopyTo(order);
                     return order;
@@ -49,7 +52,10 @@ namespace Patterns.ModelInterface.Infrastructure
 
         public void Delete(Guid orderId)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
+                connection.Execute(SqlQueries.DeleteOrderLineQuery, new {OrderId = orderId});
+                connection.Execute(SqlQueries.DeleteOrderQuery, new {OrderId = orderId});
+            }
         }
     }
 }

@@ -48,7 +48,11 @@ namespace Patterns.ModelInterface.Infrastructure
 
         public void Delete(Guid orderId)
         {
-            throw new NotImplementedException();
+            using (var dataContext = new DataContext()) {
+                var order = dataContext.Set<OrderPersistantModel>().Find(orderId);
+                dataContext.Entry(order).State = EntityState.Deleted;
+                dataContext.SaveChanges();
+            }
         }
     }
 }
