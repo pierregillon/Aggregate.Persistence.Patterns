@@ -15,6 +15,9 @@ namespace Patterns.StateInterface.Infrastructure.Mapping
         {
             var persistentModel = new OrderPersistentModel();
             domainModel.CopyTo(persistentModel);
+            foreach (var line in persistentModel.Lines) {
+                line.OrderId = persistentModel.Id;
+            }
             return persistentModel;
         }
     }

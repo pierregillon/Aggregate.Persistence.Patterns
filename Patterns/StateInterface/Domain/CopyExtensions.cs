@@ -17,7 +17,6 @@ namespace Patterns.StateInterface.Domain
 
         public static void CopyTo(this IOrderLineStates source, IOrderLineStates target)
         {
-            target.OrderId = source.OrderId;
             target.Product = source.Product;
             target.Quantity = source.Quantity;
             target.CreationDate = source.CreationDate;

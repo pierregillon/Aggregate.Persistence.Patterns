@@ -60,7 +60,7 @@ namespace Patterns.StateInterface.Domain
 
             var line = _lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
-                _lines.Add(new OrderLine(Id, product, quantity));
+                _lines.Add(new OrderLine(product, quantity));
             }
             else {
                 line.IncreaseQuantity(quantity);

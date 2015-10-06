@@ -15,11 +15,6 @@ namespace Patterns.StateInterface.Domain
             get { return _creationDate; }
             set { _creationDate = value; }
         }
-        Guid IOrderLineStates.OrderId
-        {
-            get { return _orderId; }
-            set { _orderId = value; }
-        }
         Product IOrderLineStates.Product
         {
             get { return Product; }
@@ -28,7 +23,6 @@ namespace Patterns.StateInterface.Domain
 
         // ----- Fields
         private DateTime _creationDate;
-        private Guid _orderId;
 
         // ----- Properties
         public Product Product { get; private set; }
@@ -38,9 +32,8 @@ namespace Patterns.StateInterface.Domain
         public OrderLine()
         {
         }
-        public OrderLine(Guid orderId, Product product, int quantity)
+        public OrderLine(Product product, int quantity)
         {
-            _orderId = orderId;
             _creationDate = DateTime.Now.RoundToSecond();
             Product = product;
             Quantity = quantity;

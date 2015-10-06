@@ -12,7 +12,12 @@ namespace Patterns.StateInterface.Infrastructure.Mapping
             Mapper.CreateMap<IOrderLineStates, OrderLine>().As<IOrderLineStates>();
 
             Mapper.CreateMap<IOrderStates<OrderLinePersistentModel>, IOrderStates<OrderLine>>();
-            Mapper.CreateMap<IOrderStates<OrderLine>, IOrderStates<OrderLinePersistentModel>>();
+            Mapper.CreateMap<IOrderStates<OrderLine>, IOrderStates<OrderLinePersistentModel>>().AfterMap((domainModel, persistentModel) =>
+            {
+                foreach (var line in persistentModel.Lines) {
+                    line.OrderId = domainModel.Id;
+                }
+            });
         }
 
         public Order ToDomainModel(OrderPersistentModel persistentModel)
