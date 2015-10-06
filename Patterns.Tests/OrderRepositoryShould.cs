@@ -3,6 +3,7 @@ using NFluent;
 using Patterns.Common;
 using Patterns.StateInterface.Domain;
 using Patterns.StateInterface.Infrastructure;
+using Patterns.StateInterface.Infrastructure.Mapping;
 using Xunit;
 
 namespace Patterns.Tests
@@ -121,8 +122,8 @@ namespace Patterns.Tests
             {
                 return new[]
                 {
-                    new object[] {new Order(), new EntityFrameworkOrderRepository()},
-                    new object[] {new Order(), new DapperOrderRepository()}
+                    new object[] {new Order(), new EntityFrameworkOrderRepository(new OrderInterfaceMapper())},
+                    new object[] {new Order(), new DapperOrderRepository(new OrderAutoMapper())}
                 };
             }
         }

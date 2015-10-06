@@ -4,35 +4,38 @@ using System.Linq;
 using Dapper;
 using Patterns.Common.Infrastructure;
 using Patterns.StateInterface.Domain;
+using Patterns.StateInterface.Infrastructure.Mapping;
 
 namespace Patterns.StateInterface.Infrastructure
 {
     public class DapperOrderRepository : IOrderRepository
     {
+        private readonly IOrderMapper _orderMapper;
+
+        public DapperOrderRepository(IOrderMapper orderMapper)
+        {
+            _orderMapper = orderMapper;
+        }
+
         public Order Get(Guid id)
         {
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
                 const string query = SqlQueries.SelectOrdersByIdQuery + " " + SqlQueries.SelectOrderLinesByIdQuery;
                 using (var multi = connection.QueryMultiple(query, new {id})) {
                     var persistentModel = multi.Read<OrderPersistantModel>().SingleOrDefault();
-                    if (persistentModel != null) {
-                        persistentModel.Lines = multi.Read<OrderLinePersistantModel>().ToList();
-                    }
-
                     if (persistentModel == null) {
                         return null;
                     }
-                    var order = new Order();
-                    persistentModel.CopyTo(order);
-                    return order;
+                    persistentModel.Lines = multi.Read<OrderLinePersistantModel>().ToList();
+                    persistentModel.Lines.ForEach(x => x.OrderId = id);
+                    return _orderMapper.ToDomainModel(persistentModel);
                 }
             }
         }
 
         public void Add(Order order)
         {
-            var persistentModel = new OrderPersistantModel();
-            order.CopyTo(persistentModel);
+            var persistentModel = _orderMapper.ToPersistentModel(order);
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
                 connection.Execute(SqlQueries.InsertOrderQuery, persistentModel);
                 connection.Execute(SqlQueries.InsertOrderLineQuery, persistentModel.Lines);
@@ -41,8 +44,7 @@ namespace Patterns.StateInterface.Infrastructure
 
         public void Update(Order order)
         {
-            var persistentModel = new OrderPersistantModel();
-            order.CopyTo(persistentModel);
+            var persistentModel = _orderMapper.ToPersistentModel(order);
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
                 connection.Execute(SqlQueries.UpdateOrderQuery, persistentModel);
                 connection.Execute(SqlQueries.DeleteOrderLineQuery, new {OrderId = persistentModel.Id});
