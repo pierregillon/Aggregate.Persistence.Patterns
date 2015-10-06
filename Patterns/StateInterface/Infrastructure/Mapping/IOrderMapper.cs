@@ -2,9 +2,7 @@
 
 namespace Patterns.StateInterface.Infrastructure.Mapping
 {
-    public interface IOrderMapper
+    public interface IOrderMapper : IMapper<Order, OrderPersistentModel>
     {
-        Order ToDomainModel(OrderPersistentModel persistentModel);
-        OrderPersistentModel ToPersistentModel(Order domainModel);
     }
 }
