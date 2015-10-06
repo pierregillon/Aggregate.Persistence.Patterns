@@ -7,7 +7,15 @@ namespace Patterns.Common.Infrastructure
         protected DataContextBase()
             : base(SqlConnectionLocator.LocalhostSqlExpress())
         {
-            
+            DisableDatabaseGeneration();
+        }
+
+        private void DisableDatabaseGeneration()
+        {
+            typeof (Database)
+                .GetMethod("SetInitializer")
+                .MakeGenericMethod(GetType())
+                .Invoke(this, new object[] {null});
         }
     }
 }
