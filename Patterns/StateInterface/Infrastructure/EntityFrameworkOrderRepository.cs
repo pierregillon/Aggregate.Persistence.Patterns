@@ -20,7 +20,7 @@ namespace Patterns.StateInterface.Infrastructure
         {
             using (var dataContext = new DataContext()) {
                 var persistentModel = dataContext
-                    .Set<OrderPersistantModel>()
+                    .Set<OrderPersistentModel>()
                     .Include("Lines")
                     .FirstOrDefault(x => x.Id == id);
 
@@ -33,19 +33,19 @@ namespace Patterns.StateInterface.Infrastructure
 
         public void Add(Order order)
         {
-            var persistantModel = _orderMapper.ToPersistentModel(order);
+            var persistentModel = _orderMapper.ToPersistentModel(order);
             using (var dataContext = new DataContext()) {
-                dataContext.Set<OrderPersistantModel>().Add(persistantModel);
+                dataContext.Set<OrderPersistentModel>().Add(persistentModel);
                 dataContext.SaveChanges();
             }
         }
 
         public void Update(Order order)
         {
-            var persistantModel = _orderMapper.ToPersistentModel(order);
+            var persistentModel = _orderMapper.ToPersistentModel(order);
             using (var dataContext = new DataContext()) {
-                dataContext.Entry(persistantModel).State = EntityState.Modified;
-                persistantModel.Lines.ForEach(x => dataContext.Entry(x).State = EntityState.Added);
+                dataContext.Entry(persistentModel).State = EntityState.Modified;
+                persistentModel.Lines.ForEach(x => dataContext.Entry(x).State = EntityState.Added);
                 dataContext.SaveChanges();
             }
         }
@@ -53,7 +53,7 @@ namespace Patterns.StateInterface.Infrastructure
         public void Delete(Guid orderId)
         {
             using (var dataContext = new DataContext()) {
-                var order = dataContext.Set<OrderPersistantModel>().Find(orderId);
+                var order = dataContext.Set<OrderPersistentModel>().Find(orderId);
                 dataContext.Entry(order).State = EntityState.Deleted;
                 dataContext.SaveChanges();
             }

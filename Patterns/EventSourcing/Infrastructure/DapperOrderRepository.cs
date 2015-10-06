@@ -41,7 +41,7 @@ namespace Patterns.EventSourcing.Infrastructure
         public void Delete(Guid orderId)
         {
             var @event = new OrderDeleted(orderId);
-            var eventToPersist = ConvertToPersistantEvent(@event);
+            var eventToPersist = ConvertToPersistentEvent(@event);
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
                 connection.Execute(SqlQueries.InsertOrderEventQuery, eventToPersist);
             }
@@ -51,14 +51,14 @@ namespace Patterns.EventSourcing.Infrastructure
         private static void SaveUncommitedEvents(Order order)
         {
             var domainEvents = order.GetUncommittedEvents();
-            var persistedEvents = domainEvents.Select(ConvertToPersistantEvent);
+            var persistedEvents = domainEvents.Select(ConvertToPersistentEvent);
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
                 connection.Execute(SqlQueries.InsertOrderEventQuery, persistedEvents);
             }
         }
 
         // ----- Utils
-        private static OrderEvent ConvertToPersistantEvent(IDomainEvent domainEvent)
+        private static OrderEvent ConvertToPersistentEvent(IDomainEvent domainEvent)
         {
             return new OrderEvent
             {

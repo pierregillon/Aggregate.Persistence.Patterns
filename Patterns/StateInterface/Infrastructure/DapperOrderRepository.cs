@@ -22,11 +22,11 @@ namespace Patterns.StateInterface.Infrastructure
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
                 const string query = SqlQueries.SelectOrdersByIdQuery + " " + SqlQueries.SelectOrderLinesByIdQuery;
                 using (var multi = connection.QueryMultiple(query, new {id})) {
-                    var persistentModel = multi.Read<OrderPersistantModel>().SingleOrDefault();
+                    var persistentModel = multi.Read<OrderPersistentModel>().SingleOrDefault();
                     if (persistentModel == null) {
                         return null;
                     }
-                    persistentModel.Lines = multi.Read<OrderLinePersistantModel>().ToList();
+                    persistentModel.Lines = multi.Read<OrderLinePersistentModel>().ToList();
                     persistentModel.Lines.ForEach(x => x.OrderId = id);
                     return _orderMapper.ToDomainModel(persistentModel);
                 }

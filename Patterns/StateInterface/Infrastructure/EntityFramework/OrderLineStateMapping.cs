@@ -2,7 +2,7 @@
 
 namespace Patterns.StateInterface.Infrastructure.EntityFramework
 {
-    public class OrderLineStateMapping : EntityTypeConfiguration<OrderLinePersistantModel>
+    public class OrderLineStateMapping : EntityTypeConfiguration<OrderLinePersistentModel>
     {
         public OrderLineStateMapping()
         {

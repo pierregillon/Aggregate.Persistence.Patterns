@@ -125,8 +125,8 @@
     <Compile Include="StateSnapshot\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
     <Compile Include="StateSnapshot\Infrastructure\EntityFramework\OrderStateMapping.cs" />
     <Compile Include="StateSnapshot\Infrastructure\EntityFrameworkOrderRepository.cs" />
-    <Compile Include="StateInterface\Infrastructure\OrderLinePersistantModel.cs" />
-    <Compile Include="StateInterface\Infrastructure\OrderPersistantModel.cs" />
+    <Compile Include="StateInterface\Infrastructure\OrderLinePersistentModel.cs" />
+    <Compile Include="StateInterface\Infrastructure\OrderPersistentModel.cs" />
     <Compile Include="StateInterface\Infrastructure\EntityFramework\DataContext.cs" />
     <Compile Include="StateInterface\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
     <Compile Include="StateInterface\Infrastructure\EntityFramework\OrderStateMapping.cs" />

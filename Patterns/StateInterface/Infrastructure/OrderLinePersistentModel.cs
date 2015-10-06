@@ -4,7 +4,7 @@ using Patterns.StateInterface.Domain;
 
 namespace Patterns.StateInterface.Infrastructure
 {
-    public class OrderLinePersistantModel : IOrderLineStates
+    public class OrderLinePersistentModel : IOrderLineStates
     {
         public Product Product { get; set; }
         public int Quantity { get; set; }

@@ -29,9 +29,9 @@ namespace Patterns.StateInterface.Domain
         {
             ICollection<TTarget> target = new List<TTarget>();
             foreach (var orderLine in source) {
-                var persistantOrderLine = new TTarget();
-                orderLine.CopyTo(persistantOrderLine);
-                target.Add(persistantOrderLine);
+                var persistentOrderLine = new TTarget();
+                orderLine.CopyTo(persistentOrderLine);
+                target.Add(persistentOrderLine);
             }
             return target;
         }

@@ -6,9 +6,9 @@ using Patterns.StateInterface.Domain;
 
 namespace Patterns.StateInterface.Infrastructure
 {
-    public class OrderPersistantModel : IOrderStates<OrderLinePersistantModel>
+    public class OrderPersistentModel : IOrderStates<OrderLinePersistentModel>
     {
-        IEnumerable<OrderLinePersistantModel> IOrderStates<OrderLinePersistantModel>.Lines
+        IEnumerable<OrderLinePersistentModel> IOrderStates<OrderLinePersistentModel>.Lines
         {
             get
             {
@@ -23,11 +23,11 @@ namespace Patterns.StateInterface.Infrastructure
         public OrderStatus OrderStatus { get; set; }
         public DateTime? SubmitDate { get; set; }
         public double TotalCost { get; set; }
-        public List<OrderLinePersistantModel> Lines { get; set; }
+        public List<OrderLinePersistentModel> Lines { get; set; }
 
-        public OrderPersistantModel()
+        public OrderPersistentModel()
         {
-            Lines = new List<OrderLinePersistantModel>();
+            Lines = new List<OrderLinePersistentModel>();
         }
     }
 }

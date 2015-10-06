@@ -8,24 +8,24 @@ namespace Patterns.StateInterface.Infrastructure.Mapping
         public OrderAutoMapper()
         {
             Mapper.CreateMap<IOrderLineStates, IOrderLineStates>();
-            Mapper.CreateMap<IOrderLineStates, OrderLinePersistantModel>().As<IOrderLineStates>();
+            Mapper.CreateMap<IOrderLineStates, OrderLinePersistentModel>().As<IOrderLineStates>();
             Mapper.CreateMap<IOrderLineStates, OrderLine>().As<IOrderLineStates>();
 
-            Mapper.CreateMap<IOrderStates<OrderLinePersistantModel>, IOrderStates<OrderLine>>();
-            Mapper.CreateMap<IOrderStates<OrderLine>, IOrderStates<OrderLinePersistantModel>>();
+            Mapper.CreateMap<IOrderStates<OrderLinePersistentModel>, IOrderStates<OrderLine>>();
+            Mapper.CreateMap<IOrderStates<OrderLine>, IOrderStates<OrderLinePersistentModel>>();
         }
 
-        public Order ToDomainModel(OrderPersistantModel persistentModel)
+        public Order ToDomainModel(OrderPersistentModel persistentModel)
         {
             var order = new Order();
-            Mapper.Map<IOrderStates<OrderLinePersistantModel>, IOrderStates<OrderLine>>(persistentModel, order);
+            Mapper.Map<IOrderStates<OrderLinePersistentModel>, IOrderStates<OrderLine>>(persistentModel, order);
             return order;
         }
 
-        public OrderPersistantModel ToPersistentModel(Order domainModel)
+        public OrderPersistentModel ToPersistentModel(Order domainModel)
         {
-            var persistentModel = new OrderPersistantModel();
-            Mapper.Map<IOrderStates<OrderLine>, IOrderStates<OrderLinePersistantModel>>(domainModel, persistentModel);
+            var persistentModel = new OrderPersistentModel();
+            Mapper.Map<IOrderStates<OrderLine>, IOrderStates<OrderLinePersistentModel>>(domainModel, persistentModel);
             return persistentModel;
         }
     }

@@ -4,16 +4,16 @@ namespace Patterns.StateInterface.Infrastructure.Mapping
 {
     public class OrderInterfaceMapper : IOrderMapper
     {
-        public Order ToDomainModel(OrderPersistantModel persistentModel)
+        public Order ToDomainModel(OrderPersistentModel persistentModel)
         {
             var order = new Order();
             persistentModel.CopyTo(order);
             return order;
         }
 
-        public OrderPersistantModel ToPersistentModel(Order domainModel)
+        public OrderPersistentModel ToPersistentModel(Order domainModel)
         {
-            var persistentModel = new OrderPersistantModel();
+            var persistentModel = new OrderPersistentModel();
             domainModel.CopyTo(persistentModel);
             return persistentModel;
         }
