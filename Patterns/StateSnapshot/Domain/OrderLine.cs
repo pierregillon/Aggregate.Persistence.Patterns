@@ -39,11 +39,11 @@ namespace Patterns.StateSnapshot.Domain
                 CreationDate = _creationDate
             };
         }
-        void IStateSnapshotable<OrderLineState>.LoadFromSnapshot(OrderLineState orderState)
+        void IStateSnapshotable<OrderLineState>.LoadSnapshot(OrderLineState snapshot)
         {
-            Product = orderState.Product;
-            Quantity = orderState.Quantity;
-            _creationDate = orderState.CreationDate;
+            Product = snapshot.Product;
+            Quantity = snapshot.Quantity;
+            _creationDate = snapshot.CreationDate;
         }
 
         #region Overrides with no interest

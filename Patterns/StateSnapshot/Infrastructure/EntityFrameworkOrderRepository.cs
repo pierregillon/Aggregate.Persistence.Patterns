@@ -20,7 +20,7 @@ namespace Patterns.StateSnapshot.Infrastructure
                     return null;
                 }
                 var order = new Order();
-                ((IStateSnapshotable<OrderState>) order).LoadFromSnapshot(orderState);
+                ((IStateSnapshotable<OrderState>) order).LoadSnapshot(orderState);
                 return order;
             }
         }

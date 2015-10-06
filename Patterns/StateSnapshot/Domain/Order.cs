@@ -97,15 +97,15 @@ namespace Patterns.StateSnapshot.Domain
                 Lines = _lines.TakeSnapshot<OrderLine, OrderLineState>(x => x.OrderId = Id).ToList()
             };
         }
-        void IStateSnapshotable<OrderState>.LoadFromSnapshot(OrderState orderState)
+        void IStateSnapshotable<OrderState>.LoadSnapshot(OrderState snapshot)
         {
-            Id = orderState.Id;
-            _orderStatus = orderState.OrderStatus;
-            SubmitDate = orderState.SubmitDate;
-            TotalCost = orderState.TotalCost;
+            Id = snapshot.Id;
+            _orderStatus = snapshot.OrderStatus;
+            SubmitDate = snapshot.SubmitDate;
+            TotalCost = snapshot.TotalCost;
 
             _lines.Clear();
-            _lines.LoadFromSnapshot(orderState.Lines);
+            _lines.LoadFromSnapshot(snapshot.Lines);
         }
 
         #region Overrides with no interest

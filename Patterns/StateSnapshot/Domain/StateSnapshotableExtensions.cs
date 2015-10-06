@@ -22,7 +22,7 @@ namespace Patterns.StateSnapshot.Domain
         {
             foreach (var state in states) {
                 var model = new TModel();
-                model.LoadFromSnapshot(state);
+                model.LoadSnapshot(state);
                 models.Add(model);
             }
         }

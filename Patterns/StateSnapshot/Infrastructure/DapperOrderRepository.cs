@@ -22,7 +22,7 @@ namespace Patterns.StateSnapshot.Infrastructure
                     orderState.Lines = multi.Read<OrderLineState>().ToList();
                     
                     var order = new Order();
-                    ((IStateSnapshotable<OrderState>) order).LoadFromSnapshot(orderState);
+                    ((IStateSnapshotable<OrderState>) order).LoadSnapshot(orderState);
                     return order;
                 }
             }
