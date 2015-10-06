@@ -29,7 +29,7 @@ namespace Patterns.StateSnapshot.Domain
 
             var line = _lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
-                _lines.Add(new OrderLine(Id, product, quantity));
+                _lines.Add(new OrderLine(product, quantity));
             }
             else {
                 line.IncreaseQuantity(quantity);
@@ -94,7 +94,7 @@ namespace Patterns.StateSnapshot.Domain
                 OrderStatus = _orderStatus,
                 SubmitDate = SubmitDate,
                 TotalCost = TotalCost,
-                Lines = _lines.TakeSnapshot<OrderLine, OrderLineState>().ToList()
+                Lines = _lines.TakeSnapshot<OrderLine, OrderLineState>(x => x.OrderId = Id).ToList()
             };
         }
         void IStateSnapshotable<OrderState>.LoadFromSnapshot(OrderState orderState)

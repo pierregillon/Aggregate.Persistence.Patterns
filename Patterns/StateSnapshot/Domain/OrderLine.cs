@@ -6,7 +6,6 @@ namespace Patterns.StateSnapshot.Domain
     public class OrderLine : IOrderLine, IStateSnapshotable<OrderLineState>
     {
         // ----- Fields
-        private Guid _orderId;
         private DateTime _creationDate;
 
         // ----- Properties
@@ -17,9 +16,8 @@ namespace Patterns.StateSnapshot.Domain
         public OrderLine()
         {
         }
-        public OrderLine(Guid orderId, Product product, int quantity)
+        public OrderLine(Product product, int quantity)
         {
-            _orderId = orderId;
             Product = product;
             Quantity = quantity;
             _creationDate = DateTime.Now.RoundToSecond();
@@ -36,7 +34,6 @@ namespace Patterns.StateSnapshot.Domain
         {
             return new OrderLineState
             {
-                OrderId = _orderId,
                 Product = Product,
                 Quantity = Quantity,
                 CreationDate = _creationDate
@@ -44,7 +41,6 @@ namespace Patterns.StateSnapshot.Domain
         }
         void IStateSnapshotable<OrderLineState>.LoadFromSnapshot(OrderLineState orderState)
         {
-            _orderId = orderState.OrderId;
             Product = orderState.Product;
             Quantity = orderState.Quantity;
             _creationDate = orderState.CreationDate;
