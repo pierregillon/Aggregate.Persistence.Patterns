@@ -16,6 +16,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void increase_quantity_when_adding_existing_product<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.AddProduct(Product.Jacket, 1);
@@ -31,6 +32,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void calculate_total_cost_when_adding_products<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.AddProduct(Product.Jacket, 1);
@@ -48,6 +50,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void calculate_total_cost_when_removing_product<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.AddProduct(Product.Jacket, 1);
@@ -63,6 +66,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void throw_exception_when_adding_product_with_negative_quantity<TOrder>(TOrder order) where TOrder : IOrder
         {
             Check
@@ -78,6 +82,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void throw_exception_when_adding_product_with_no_quantity<TOrder>(TOrder order) where TOrder : IOrder
         {
             Check
@@ -93,6 +98,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void throw_exception_when_adding_product_to_submitted_order<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.Submit();
@@ -109,6 +115,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void throw_exception_when_removing_product_if_submitted<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.AddProduct(Product.Computer, 1);
@@ -126,6 +133,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void throw_exception_when_trying_to_submit_twice<TOrder>(TOrder order) where TOrder : IOrder
         {
             order.Submit();
@@ -158,6 +166,11 @@ namespace Patterns.Tests
         {
             get { return GetParameters(new StateSnapshot.Domain.Order()); }
         }
+        public static IEnumerable<object[]> InnerClass
+        {
+            get { return GetParameters(new InnerClass.Domain.Order()); }
+        }
+
         private static IEnumerable<object[]> GetParameters<TOrder>(TOrder order)
         {
             return new[]

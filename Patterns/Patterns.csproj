@@ -100,6 +100,16 @@
     <Compile Include="EventSourcing\Infrastructure\OrderEvent.cs" />
     <Compile Include="EventSourcing\Infrastructure\EntityFramework\OrderEventMapping.cs" />
     <Compile Include="EventSourcing\Infrastructure\EntityFrameworkOrderRepository.cs" />
+    <Compile Include="InnerClass\Domain\Order.cs" />
+    <Compile Include="InnerClass\Domain\OrderLine.cs" />
+    <Compile Include="InnerClass\Domain\OrderLineState.cs" />
+    <Compile Include="InnerClass\Domain\OrderState.cs" />
+    <Compile Include="InnerClass\Domain\IOrderRepository.cs" />
+    <Compile Include="InnerClass\Infrastructure\DapperOrderRepository.cs" />
+    <Compile Include="InnerClass\Infrastructure\EntityFrameworkOrderRepository.cs" />
+    <Compile Include="InnerClass\Infrastructure\EntityFramework\DataContext.cs" />
+    <Compile Include="InnerClass\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
+    <Compile Include="InnerClass\Infrastructure\EntityFramework\OrderStateMapping.cs" />
     <Compile Include="StateInterface\Domain\IOrderLineStates.cs" />
     <Compile Include="StateInterface\Domain\IOrderStates.cs" />
     <Compile Include="StateInterface\Domain\IOrderRepository.cs" />

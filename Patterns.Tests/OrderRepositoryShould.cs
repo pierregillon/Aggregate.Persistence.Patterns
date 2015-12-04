@@ -16,6 +16,7 @@ namespace Patterns.Tests
         [MemberData("EventSourcing")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void persist_new_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder
             where TRepository : IRepository<TModel>
@@ -42,6 +43,7 @@ namespace Patterns.Tests
         [MemberData("Compromise")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void update_existing_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder
             where TRepository : IRepository<TModel>
@@ -70,6 +72,7 @@ namespace Patterns.Tests
         [MemberData("Compromise")]
         [MemberData("StateInterface")]
         [MemberData("StateSnapshot")]
+        [MemberData("InnerClass")]
         public void delete_existing_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : class, IOrder
             where TRepository : IRepository<TModel>
@@ -138,6 +141,18 @@ namespace Patterns.Tests
                 };
             }
         }
+        public static IEnumerable<object[]> InnerClass
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] {new InnerClass.Domain.Order(), new InnerClass.Infrastructure.EntityFrameworkOrderRepository()},
+                    new object[] {new InnerClass.Domain.Order(), new InnerClass.Infrastructure.DapperOrderRepository()}
+                };
+            }
+        }
+
         private static IEnumerable<object[]> GetParameters<TOrder, TRepository>(TOrder order, TRepository repository)
         {
             return new[]
