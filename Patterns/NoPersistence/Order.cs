@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Patterns.Common;
+using Patterns.Common.Domain;
 
 namespace Patterns.NoPersistence
 {

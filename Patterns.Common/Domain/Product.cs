@@ -1,4 +1,4 @@
-﻿namespace Patterns.Common
+﻿namespace Patterns.Common.Domain
 {
     public enum Product
     {

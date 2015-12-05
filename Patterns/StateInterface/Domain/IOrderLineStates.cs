@@ -1,5 +1,6 @@
 using System;
 using Patterns.Common;
+using Patterns.Common.Domain;
 
 namespace Patterns.StateInterface.Domain
 {

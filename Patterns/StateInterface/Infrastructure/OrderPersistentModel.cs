@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Patterns.Common;
+using Patterns.Common.Domain;
 using Patterns.StateInterface.Domain;
 
 namespace Patterns.StateInterface.Infrastructure

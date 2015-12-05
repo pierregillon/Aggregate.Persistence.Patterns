@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NFluent;
 using Patterns.Common;
+using Patterns.Common.Domain;
 using Patterns.NoPersistence;
 using Xunit;
 

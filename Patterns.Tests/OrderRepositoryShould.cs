@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using NFluent;
 using Patterns.Common;
+using Patterns.Common.Domain;
 using Patterns.StateInterface.Domain;
 using Patterns.StateInterface.Infrastructure;
 using Patterns.StateInterface.Infrastructure.Mapping;
