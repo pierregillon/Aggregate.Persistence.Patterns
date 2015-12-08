@@ -36,7 +36,8 @@ tests, you must publish the database project before (Patterns.Tables).
 
 ##The patterns
 The patterns are :
-* **Compromise** : oriented object compromise by exposing domain model internal states publicly to persist them.
+* **[Compromise](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/Compromise)** 
+        : oriented object compromise by exposing domain model internal states publicly to persist them.
 * **Binary** : persist internal states of a domain model using binary serialization
 * **State-Interface** : create a clear separation between domain model and persistence model. Copy states from one to other
 thanks to interface.
