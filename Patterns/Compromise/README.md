@@ -15,7 +15,7 @@ this kind of approach, use it sparingly. You need to know its advantages/disadva
 ##Disadvantages
 * Internal states are mutable and can be modified from outside of the domain model, without evaluating business rules
 in object methods.
-* Our domain model is coupled to the database structure.
+* Our domain model is coupled to the database structure and corrupted.
 * Object Relational Mapping tools are corrupting the domain model with metadata or syntax requirement, that are needed 
 to persist it.
 
