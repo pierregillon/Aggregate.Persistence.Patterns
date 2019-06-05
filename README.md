@@ -38,14 +38,14 @@ tests, you must publish the database project before (Patterns.Tables).
 The patterns are :
 * **[Compromise](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/Compromise)** 
         : oriented object compromise by exposing domain model internal states publicly to persist them.
-* **Binary** : persist internal states of a domain model using binary serialization
-* **State-Interface** : create a clear separation between domain model and persistence model. Copy states from one to other
+* **[Binary](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/Binary)** : persist internal states of a domain model using binary serialization
+* **[State-Interface](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/StateInterface)** : create a clear separation between domain model and persistence model. Copy states from one to other
 thanks to interface.
-* **State-Snapshot** : create a clear separation between domain model and persistence model. Persistent model is returned 
+* **[State-Snapshot](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/StateSnapshot)** : create a clear separation between domain model and persistence model. Persistent model is returned 
 by the domain model as a Snapshot of its internal states.
-* **Inner-Class** : create a clear separation between domain model and persistence model. Create a converter class within 
+* **[Inner-Class](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/InnerClass)** : create a clear separation between domain model and persistence model. Create a converter class within 
 the domain model to access to its internal states and build persistent model from it.
-* **Event-Sourcing** : the domain model state is decomposed in domain events that are persisted in the database. They are 
+* **[Event-Sourcing](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/EventSourcing)** : the domain model state is decomposed in domain events that are persisted in the database. They are 
 replayed in the domain model to restore its original state.
 
 ## Original blog
