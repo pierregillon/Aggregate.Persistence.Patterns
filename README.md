@@ -3,7 +3,7 @@
 ## Introduction
 Building a set of pure domain objects to answer a business need is hard. When you finally succeed to create a perfect
 encapsulated domain model using TDD, BDD, DDD and whatever things containing D, you could think about persistence.
-Persistence in Oriented Object Programing can be hard when models are well encapsulated.
+Persistence in Object-Oriented Programing can be hard when models are well encapsulated.
 
 This repository contains examples of patterns you can use to fit this need of encapsulation and persistence.
 
