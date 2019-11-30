@@ -1,11 +1,12 @@
 using System;
+using Patterns.EventSourcing.Domain.Base;
 
 namespace Patterns.EventSourcing.Domain.Events
 {
     public class OrderSubmitted : IDomainEvent
     {
-        public Guid AggregateId { get; private set; }
-        public DateTime SubmitDate { get; private set; }
+        public Guid AggregateId { get; }
+        public DateTime SubmitDate { get; }
 
         public OrderSubmitted(Guid id, DateTime submitDate)
         {

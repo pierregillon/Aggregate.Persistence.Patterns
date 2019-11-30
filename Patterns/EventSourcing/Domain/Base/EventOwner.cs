@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-namespace Patterns.EventSourcing.Domain.Events
+namespace Patterns.EventSourcing.Domain.Base
 {
-    public abstract class EventOwner
+    public abstract class EventOwner : IEventPlayer
     {
         private readonly IDictionary<Type, Delegate> _eventCallbacks = new Dictionary<Type, Delegate>();
         private readonly IList<IDomainEvent> _uncommittedEvents = new List<IDomainEvent>();
 
-        public void Replay(IEnumerable<IDomainEvent> events)
+        void IEventPlayer.Replay(IEnumerable<IDomainEvent> events)
         {
             foreach (var domainEvent in events) {
                 Apply((dynamic) domainEvent);
@@ -29,8 +29,7 @@ namespace Patterns.EventSourcing.Domain.Events
 
         protected void Apply<TEvent>(TEvent @event) where TEvent : IDomainEvent
         {
-            Delegate callback;
-            if (_eventCallbacks.TryGetValue(typeof(TEvent), out callback)) {
+            if (_eventCallbacks.TryGetValue(typeof(TEvent), out var callback)) {
                 callback.DynamicInvoke(@event);
             }
 

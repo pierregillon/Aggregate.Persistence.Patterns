@@ -2,6 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json;
 using Patterns.EventSourcing.Domain;
+using Patterns.EventSourcing.Domain.Base;
 using Patterns.EventSourcing.Domain.Events;
 using Patterns.EventSourcing.Infrastructure.EntityFramework;
 
@@ -20,12 +21,12 @@ namespace Patterns.EventSourcing.Infrastructure
                 .Select(ConvertToDomainEvent)
                 .ToArray();
 
-            var order = new Order();
-            order.Replay(domainEvents);
-            if (order.IsDeleted) {
+            if (domainEvents.Cast<OrderDeleted>().Any()) {
                 return null;
             }
 
+            var order = new Order();
+            ((IEventPlayer) order).Replay(domainEvents);
             return order;
         }
 

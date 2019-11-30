@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Patterns.Contract;
 using Patterns.Contract.Domain;
+using Patterns.EventSourcing.Domain.Base;
 using Patterns.EventSourcing.Domain.Events;
 
 namespace Patterns.EventSourcing.Domain
@@ -12,29 +13,26 @@ namespace Patterns.EventSourcing.Domain
         private readonly PriceCatalog _catalog = new PriceCatalog();
         private readonly List<OrderLine> _lines = new List<OrderLine>();
         private OrderStatus _orderStatus;
-        private bool _isDeleted;
 
         public Guid Id { get; private set; }
         public DateTime? SubmitDate { get; private set; }
         public double TotalCost { get; private set; }
-        public bool IsDeleted
-        {
-            get { return _isDeleted; }
-        }
 
         // ----- Constructor
+
         public Order()
         {
-            RegisterEvent<OrderCreated>(ApplyOrderCreated);
+            RegisterEvent<OrderPlaced>(ApplyOrderCreated);
             RegisterEvent<ProductAdded>(ApplyProductAdded);
             RegisterEvent<ProductRemoved>(ApplyProductRemoved);
             RegisterEvent<OrderSubmitted>(ApplyOrderSubmitted);
             RegisterEvent<OrderDeleted>(ApplyOrderDeleted);
 
-            Apply(new OrderCreated(Guid.NewGuid()));
+            Apply(new OrderPlaced(Guid.NewGuid()));
         }
 
         // ----- Public methods
+
         public void AddProduct(Product product, int quantity)
         {
             CheckIfDraft();
@@ -66,13 +64,14 @@ namespace Patterns.EventSourcing.Domain
         }
 
         // ----- Internal logic
+
         private void CheckIfDraft()
         {
             if (_orderStatus != OrderStatus.Draft)
                 throw new OrderOperationException("The operation is only allowed if the order is in draft state.");
         }
 
-        private void CheckQuantity(int quantity)
+        private static void CheckQuantity(int quantity)
         {
             if (quantity < 0) {
                 throw new OrderOperationException("Unable to add product with negative quantity.");
@@ -93,7 +92,8 @@ namespace Patterns.EventSourcing.Domain
         }
 
         // ----- Callback events
-        private void ApplyOrderCreated(OrderCreated @event)
+
+        private void ApplyOrderCreated(OrderPlaced @event)
         {
             Id = @event.AggregateId;
         }
@@ -126,10 +126,7 @@ namespace Patterns.EventSourcing.Domain
             SubmitDate = @event.SubmitDate;
         }
 
-        private void ApplyOrderDeleted(OrderDeleted @event)
-        {
-            _isDeleted = true;
-        }
+        private void ApplyOrderDeleted(OrderDeleted @event) { }
 
         #region Overrides with no interest
 

@@ -7,11 +7,8 @@ namespace Patterns.EventSourcing.Domain
     {
         private readonly DateTime _creationDate;
 
-        public Product Product { get; private set; }
+        public Product Product { get; }
         public int Quantity { get; private set; }
-
-        // ----- Constructor
-        public OrderLine() { }
 
         public OrderLine(Product product, int quantity, DateTime creationDate)
         {

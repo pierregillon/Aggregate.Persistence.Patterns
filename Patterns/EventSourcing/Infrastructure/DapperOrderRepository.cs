@@ -5,6 +5,7 @@ using Dapper;
 using Newtonsoft.Json;
 using Patterns.Contract.Infrastructure;
 using Patterns.EventSourcing.Domain;
+using Patterns.EventSourcing.Domain.Base;
 using Patterns.EventSourcing.Domain.Events;
 
 namespace Patterns.EventSourcing.Infrastructure
@@ -21,12 +22,12 @@ namespace Patterns.EventSourcing.Infrastructure
                 .Select(ConvertToDomainEvent)
                 .ToArray();
 
-            var order = new Order();
-            order.Replay(domainEvents);
-            if (order.IsDeleted) {
+            if (domainEvents.Cast<OrderDeleted>().Any()) {
                 return null;
             }
 
+            var order = new Order();
+            ((IEventPlayer) order).Replay(domainEvents);
             return order;
         }
 

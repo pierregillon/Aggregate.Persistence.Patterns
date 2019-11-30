@@ -7,7 +7,7 @@ namespace Patterns.NoPersistence
     {
         private readonly DateTime _creationDate;
 
-        public Product Product { get; private set; }
+        public Product Product { get; }
         public int Quantity { get; private set; }
 
         // ----- Constructor

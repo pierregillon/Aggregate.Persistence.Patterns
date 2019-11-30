@@ -13,7 +13,7 @@ namespace Patterns.NoPersistence
 
         private OrderStatus _orderStatus;
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; }
         public DateTime? SubmitDate { get; private set; }
         public double TotalCost { get; private set; }
 

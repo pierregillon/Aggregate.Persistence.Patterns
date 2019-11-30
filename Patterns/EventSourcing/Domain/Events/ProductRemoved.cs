@@ -1,5 +1,6 @@
 using System;
 using Patterns.Contract.Domain;
+using Patterns.EventSourcing.Domain.Base;
 
 namespace Patterns.EventSourcing.Domain.Events
 {

@@ -9,7 +9,7 @@ namespace Patterns.Binary.Domain
     {
         private DateTime _creationDate;
 
-        public Product Product { get; private set; }
+        public Product Product { get; }
         public int Quantity { get; private set; }
 
         // ----- Constructor
