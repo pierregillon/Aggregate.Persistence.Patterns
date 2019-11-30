@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Newtonsoft.Json;
-using Patterns.Common.Infrastructure;
+using Patterns.Contract.Infrastructure;
 using Patterns.EventSourcing.Domain;
 using Patterns.EventSourcing.Domain.Events;
 

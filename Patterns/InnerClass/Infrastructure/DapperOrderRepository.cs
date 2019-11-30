@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
-using Patterns.Common.Infrastructure;
+using Patterns.Contract.Infrastructure;
 using Patterns.InnerClass.Domain;
 
 namespace Patterns.InnerClass.Infrastructure

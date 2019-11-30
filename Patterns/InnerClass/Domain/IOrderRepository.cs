@@ -1,8 +1,6 @@
-using Patterns.Common;
-using Patterns.Common.Domain;
-using Patterns.InnerClass.Domain;
+using Patterns.Contract.Domain;
 
-namespace Patterns.InnerClass.Infrastructure
+namespace Patterns.InnerClass.Domain
 {
     public interface IOrderRepository : IRepository<Order>
     {

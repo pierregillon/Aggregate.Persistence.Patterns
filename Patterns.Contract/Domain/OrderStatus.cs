@@ -1,4 +1,4 @@
-﻿namespace Patterns.Common.Domain
+﻿namespace Patterns.Contract.Domain
 {
     public enum OrderStatus
     {

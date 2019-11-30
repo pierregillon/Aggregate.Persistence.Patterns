@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace Patterns.Common.Infrastructure
+namespace Patterns.Contract.Infrastructure
 {
     public abstract class DataContextBase : DbContext
     {
@@ -12,10 +12,10 @@ namespace Patterns.Common.Infrastructure
 
         private void DisableDatabaseGeneration()
         {
-            typeof (Database)
+            typeof(Database)
                 .GetMethod("SetInitializer")
                 .MakeGenericMethod(GetType())
-                .Invoke(this, new object[] {null});
+                .Invoke(this, new object[] { null });
         }
     }
 }

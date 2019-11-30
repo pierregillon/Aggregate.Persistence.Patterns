@@ -1,4 +1,4 @@
-﻿namespace Patterns.Common.Infrastructure
+﻿namespace Patterns.Contract.Infrastructure
 {
     public class SqlQueries
     {

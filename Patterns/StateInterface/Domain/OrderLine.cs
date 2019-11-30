@@ -1,6 +1,6 @@
 using System;
-using Patterns.Common;
-using Patterns.Common.Domain;
+using Patterns.Contract;
+using Patterns.Contract.Domain;
 
 namespace Patterns.StateInterface.Domain
 {

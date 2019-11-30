@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NFluent;
-using Patterns.Common;
-using Patterns.Common.Domain;
+using Patterns.Contract.Domain;
 using Patterns.NoPersistence;
 using Xunit;
 
@@ -20,7 +19,7 @@ namespace Patterns.Tests
         [MemberData("InnerClass")]
         public void increase_quantity_when_adding_existing_product<TOrder>(TOrder order) where TOrder : IOrder
         {
-            order.AddProduct(Product.Jacket, 1);
+            order.AddProduct(Product.Jacket, 1); 
             order.AddProduct(Product.Jacket, 3);
 
             Check.That(order.GetQuantity(Product.Jacket)).IsEqualTo(4);

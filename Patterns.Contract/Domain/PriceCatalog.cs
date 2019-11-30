@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Patterns.Common.Domain
+namespace Patterns.Contract.Domain
 {
     public class PriceCatalog
     {

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using NFluent;
-using Patterns.Common;
-using Patterns.Common.Domain;
+using Patterns.Contract.Domain;
 using Patterns.StateInterface.Domain;
 using Patterns.StateInterface.Infrastructure;
 using Patterns.StateInterface.Infrastructure.Mapping;
@@ -11,7 +10,7 @@ namespace Patterns.Tests
 {
     public class OrderRepository_should
     {
-        [Theory]
+        [Theory(Skip ="infra")]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -38,7 +37,7 @@ namespace Patterns.Tests
             Check.That(loadedOrder).IsEqualTo(order);
         }
 
-        [Theory]
+        [Theory(Skip = "infra")]
         [MemberData("Binary")]
         [MemberData("EventSourcing")]
         [MemberData("Compromise")]
@@ -67,7 +66,7 @@ namespace Patterns.Tests
             Check.That(loadedOrder).IsEqualTo(order);
         }
 
-        [Theory]
+        [Theory(Skip = "infra")]
         [MemberData("Binary")]
         [MemberData("EventSourcing")]
         [MemberData("Compromise")]
@@ -126,7 +125,7 @@ namespace Patterns.Tests
             {
                 return new[]
                 {
-                    new object[] {new Order(), new EntityFrameworkOrderRepository(new OrderInterfaceMapper())},
+                    new object[] {new Patterns.StateInterface.Domain.Order(), new EntityFrameworkOrderRepository(new OrderInterfaceMapper())},
                     new object[] {new Order(), new DapperOrderRepository(new OrderAutoMapper())}
                 };
             }

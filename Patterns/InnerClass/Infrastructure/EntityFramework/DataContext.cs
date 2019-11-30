@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using Patterns.Common.Infrastructure;
+using Patterns.Contract.Infrastructure;
 
 namespace Patterns.InnerClass.Infrastructure.EntityFramework
 {

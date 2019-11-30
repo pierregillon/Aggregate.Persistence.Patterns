@@ -46,19 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectionExtensions.cs" />
-    <Compile Include="DateTimeExtensions.cs" />
-    <Compile Include="Infrastructure\DataContextBase.cs" />
-    <Compile Include="Infrastructure\SqlConnectionLocator.cs" />
-    <Compile Include="Domain\IRepository.cs" />
-    <Compile Include="Domain\OrderOperationException.cs" />
-    <Compile Include="Domain\OrderStatus.cs" />
-    <Compile Include="Domain\IOrder.cs" />
-    <Compile Include="Domain\IOrderLine.cs" />
-    <Compile Include="Domain\Product.cs" />
-    <Compile Include="Domain\PriceCatalog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Infrastructure\SqlQueries.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

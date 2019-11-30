@@ -1,5 +1,4 @@
-using Patterns.Common;
-using Patterns.Common.Domain;
+using Patterns.Contract.Domain;
 
 namespace Patterns.StateSnapshot.Domain
 {

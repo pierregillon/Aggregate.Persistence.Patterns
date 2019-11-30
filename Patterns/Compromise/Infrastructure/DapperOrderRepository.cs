@@ -2,8 +2,8 @@
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
-using Patterns.Common.Infrastructure;
 using Patterns.Compromise.Domain;
+using Patterns.Contract.Infrastructure;
 
 namespace Patterns.Compromise.Infrastructure
 {
@@ -13,11 +13,12 @@ namespace Patterns.Compromise.Infrastructure
         {
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
                 const string query = SqlQueries.SelectOrdersByIdQuery + " " + SqlQueries.SelectOrderLinesByIdQuery;
-                using (var multi = connection.QueryMultiple(query, new {id})) {
+                using (var multi = connection.QueryMultiple(query, new { id })) {
                     var order = multi.Read<Order>().SingleOrDefault();
                     if (order != null) {
                         order.Lines = multi.Read<OrderLine>().ToList();
                     }
+
                     return order;
                 }
             }
@@ -35,7 +36,7 @@ namespace Patterns.Compromise.Infrastructure
         {
             using (var connection = new SqlConnection(SqlConnectionLocator.LocalhostSqlExpress())) {
                 connection.Execute(SqlQueries.UpdateOrderQuery, order);
-                connection.Execute(SqlQueries.DeleteOrderLineQuery, new {OrderId = order.Id});
+                connection.Execute(SqlQueries.DeleteOrderLineQuery, new { OrderId = order.Id });
                 connection.Execute(SqlQueries.InsertOrderLineQuery, order.Lines);
             }
         }

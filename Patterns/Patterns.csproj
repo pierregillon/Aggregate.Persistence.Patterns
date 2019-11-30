@@ -1,173 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props" Condition="Exists('..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7A6ECC26-03A6-438C-8757-ACFED38C1BCD}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Patterns</RootNamespace>
-    <AssemblyName>Patterns</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>6c9cd72d</NuGetPackageImportStamp>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.assert.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.assert.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
-      <Private>True</Private>
+    <PackageReference Include="AutoMapper" Version="5.1.1" />
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <PackageReference Include="EntityFramework" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Patterns.Contract\Patterns.Contract.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\9.0.1\lib\netstandard1.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Binary\Domain\IOrderRepository.cs" />
-    <Compile Include="Binary\Domain\OrderLine.cs" />
-    <Compile Include="Binary\Domain\Order.cs" />
-    <Compile Include="Binary\Infrastructure\OrderRepository.cs" />
-    <Compile Include="Compromise\Domain\IOrderRepository.cs" />
-    <Compile Include="Compromise\Domain\Order.cs" />
-    <Compile Include="Compromise\Domain\OrderLine.cs" />
-    <Compile Include="Compromise\Infrastructure\DapperOrderRepository.cs" />
-    <Compile Include="Compromise\Infrastructure\EntityFramework\DataContext.cs" />
-    <Compile Include="Compromise\Infrastructure\EntityFramework\OrderLineMapping.cs" />
-    <Compile Include="Compromise\Infrastructure\EntityFramework\OrderMapping.cs" />
-    <Compile Include="Compromise\Infrastructure\EntityFrameworkOrderRepository.cs" />
-    <Compile Include="EventSourcing\Domain\Events\EventOwner.cs" />
-    <Compile Include="EventSourcing\Domain\Events\IDomainEvent.cs" />
-    <Compile Include="EventSourcing\Domain\IOrderRepository.cs" />
-    <Compile Include="EventSourcing\Domain\Events\OrderCreated.cs" />
-    <Compile Include="EventSourcing\Domain\Events\OrderSubmitted.cs" />
-    <Compile Include="EventSourcing\Domain\Events\ProductAdded.cs" />
-    <Compile Include="EventSourcing\Domain\Events\ProductRemoved.cs" />
-    <Compile Include="EventSourcing\Infrastructure\DapperOrderRepository.cs" />
-    <Compile Include="EventSourcing\Infrastructure\EntityFramework\DataContext.cs" />
-    <Compile Include="EventSourcing\Domain\Events\OrderDeleted.cs" />
-    <Compile Include="EventSourcing\Infrastructure\OrderEvent.cs" />
-    <Compile Include="EventSourcing\Infrastructure\EntityFramework\OrderEventMapping.cs" />
-    <Compile Include="EventSourcing\Infrastructure\EntityFrameworkOrderRepository.cs" />
-    <Compile Include="InnerClass\Domain\Order.cs" />
-    <Compile Include="InnerClass\Domain\OrderLine.cs" />
-    <Compile Include="InnerClass\Domain\OrderLineState.cs" />
-    <Compile Include="InnerClass\Domain\OrderState.cs" />
-    <Compile Include="InnerClass\Domain\IOrderRepository.cs" />
-    <Compile Include="InnerClass\Infrastructure\DapperOrderRepository.cs" />
-    <Compile Include="InnerClass\Infrastructure\EntityFrameworkOrderRepository.cs" />
-    <Compile Include="InnerClass\Infrastructure\EntityFramework\DataContext.cs" />
-    <Compile Include="InnerClass\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
-    <Compile Include="InnerClass\Infrastructure\EntityFramework\OrderStateMapping.cs" />
-    <Compile Include="StateInterface\Domain\IOrderLineStates.cs" />
-    <Compile Include="StateInterface\Domain\IOrderStates.cs" />
-    <Compile Include="StateInterface\Domain\IOrderRepository.cs" />
-    <Compile Include="StateInterface\Domain\CopyExtensions.cs" />
-    <Compile Include="StateInterface\Infrastructure\DapperOrderRepository.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StateInterface\Infrastructure\Mapping\IMapper.cs" />
-    <Compile Include="StateInterface\Infrastructure\Mapping\IOrderMapper.cs" />
-    <Compile Include="StateInterface\Infrastructure\Mapping\OrderAutoMapper.cs" />
-    <Compile Include="StateInterface\Infrastructure\Mapping\OrderInterfaceMapper.cs" />
-    <Compile Include="StateSnapshot\Domain\IStateSnapshotable.cs" />
-    <Compile Include="EventSourcing\Domain\Order.cs" />
-    <Compile Include="EventSourcing\Domain\OrderLine.cs" />
-    <Compile Include="StateInterface\Domain\Order.cs" />
-    <Compile Include="StateInterface\Domain\OrderLine.cs" />
-    <Compile Include="StateSnapshot\Domain\Order.cs" />
-    <Compile Include="StateSnapshot\Domain\OrderLine.cs" />
-    <Compile Include="StateSnapshot\Domain\StateSnapshotableExtensions.cs" />
-    <Compile Include="StateSnapshot\Domain\IOrderRepository.cs" />
-    <Compile Include="StateSnapshot\Domain\OrderLineState.cs" />
-    <Compile Include="StateSnapshot\Domain\OrderState.cs" />
-    <Compile Include="StateSnapshot\Infrastructure\DapperOrderRepository.cs" />
-    <Compile Include="StateSnapshot\Infrastructure\EntityFramework\DataContext.cs" />
-    <Compile Include="StateSnapshot\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
-    <Compile Include="StateSnapshot\Infrastructure\EntityFramework\OrderStateMapping.cs" />
-    <Compile Include="StateSnapshot\Infrastructure\EntityFrameworkOrderRepository.cs" />
-    <Compile Include="StateInterface\Infrastructure\OrderLinePersistentModel.cs" />
-    <Compile Include="StateInterface\Infrastructure\OrderPersistentModel.cs" />
-    <Compile Include="StateInterface\Infrastructure\EntityFramework\DataContext.cs" />
-    <Compile Include="StateInterface\Infrastructure\EntityFramework\OrderLineStateMapping.cs" />
-    <Compile Include="StateInterface\Infrastructure\EntityFramework\OrderStateMapping.cs" />
-    <Compile Include="StateInterface\Infrastructure\EntityFrameworkOrderRepository.cs" />
-    <Compile Include="NoPersistence\OrderLine.cs" />
-    <Compile Include="NoPersistence\Order.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Patterns.Common\Patterns.Common.csproj">
-      <Project>{2BCCCCF0-F8A4-4D70-82A9-A2A04825755D}</Project>
-      <Name>Patterns.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
