@@ -22,7 +22,7 @@ namespace Patterns.EventSourcing.Infrastructure
                 .Select(ConvertToDomainEvent)
                 .ToArray();
 
-            if (domainEvents.Cast<OrderDeleted>().Any()) {
+            if (domainEvents.OfType<OrderDeleted>().Any()) {
                 return null;
             }
 

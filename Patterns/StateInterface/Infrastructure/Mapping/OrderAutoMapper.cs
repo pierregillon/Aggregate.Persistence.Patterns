@@ -10,15 +10,14 @@ namespace Patterns.StateInterface.Infrastructure.Mapping
         public OrderAutoMapper()
         {
             var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<IOrderLineStates, IOrderLineStates>();
-                cfg.CreateMap<IOrderLineStates, OrderLinePersistentModel>().As<IOrderLineStates>();
-                cfg.CreateMap<IOrderLineStates, OrderLine>().As<IOrderLineStates>();
-                cfg.CreateMap<IOrderStates<OrderLinePersistentModel>, IOrderStates<OrderLine>>();
                 cfg.CreateMap<IOrderStates<OrderLine>, IOrderStates<OrderLinePersistentModel>>().AfterMap((domainModel, persistentModel) => {
                     foreach (var line in persistentModel.Lines) {
                         line.OrderId = domainModel.Id;
                     }
                 });
+                cfg.CreateMap<IOrderStates<OrderLinePersistentModel>, IOrderStates<OrderLine>>();
+                cfg.CreateMap<IOrderLineStates, OrderLinePersistentModel>();
+                cfg.CreateMap<IOrderLineStates, OrderLine>();
             });
 
             _mapper = config.CreateMapper();

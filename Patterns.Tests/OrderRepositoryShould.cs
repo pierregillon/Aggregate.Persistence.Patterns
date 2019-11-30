@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
 using NFluent;
 using Patterns.Contract.Domain;
-using Patterns.StateInterface.Domain;
-using Patterns.StateInterface.Infrastructure;
-using Patterns.StateInterface.Infrastructure.Mapping;
 using Xunit;
 
 namespace Patterns.Tests
 {
     public class OrderRepository_should
     {
-        [Theory(Skip = "infra")]
+        [Theory]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -37,7 +34,7 @@ namespace Patterns.Tests
             Check.That(loadedOrder).IsEqualTo(order);
         }
 
-        [Theory(Skip = "infra")]
+        [Theory]
         [MemberData("Binary")]
         [MemberData("EventSourcing")]
         [MemberData("Compromise")]
@@ -66,7 +63,7 @@ namespace Patterns.Tests
             Check.That(loadedOrder).IsEqualTo(order);
         }
 
-        [Theory(Skip = "infra")]
+        [Theory]
         [MemberData("Binary")]
         [MemberData("EventSourcing")]
         [MemberData("Compromise")]
@@ -119,8 +116,10 @@ namespace Patterns.Tests
         {
             get {
                 return new[] {
-                    new object[] { new Patterns.StateInterface.Domain.Order(), new EntityFrameworkOrderRepository(new OrderInterfaceMapper()) },
-                    new object[] { new Order(), new DapperOrderRepository(new OrderAutoMapper()) }
+                    new object[] { new StateInterface.Domain.Order(), new StateInterface.Infrastructure.EntityFrameworkOrderRepository(new StateInterface.Infrastructure.Mapping.OrderInterfaceMapper()) },
+                    new object[] { new StateInterface.Domain.Order(), new StateInterface.Infrastructure.EntityFrameworkOrderRepository(new StateInterface.Infrastructure.Mapping.OrderAutoMapper()) },
+                    new object[] { new StateInterface.Domain.Order(), new StateInterface.Infrastructure.DapperOrderRepository(new StateInterface.Infrastructure.Mapping.OrderInterfaceMapper()) },
+                    new object[] { new StateInterface.Domain.Order(), new StateInterface.Infrastructure.DapperOrderRepository(new StateInterface.Infrastructure.Mapping.OrderAutoMapper()) }
                 };
             }
         }

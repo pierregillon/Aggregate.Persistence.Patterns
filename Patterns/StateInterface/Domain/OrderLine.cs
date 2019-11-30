@@ -8,18 +8,18 @@ namespace Patterns.StateInterface.Domain
     {
         int IOrderLineStates.Quantity
         {
-            get { return Quantity; }
-            set { Quantity = value; }
+            get => Quantity;
+            set => Quantity = value;
         }
         DateTime IOrderLineStates.CreationDate
         {
-            get { return _creationDate; }
-            set { _creationDate = value; }
+            get => _creationDate;
+            set => _creationDate = value;
         }
         Product IOrderLineStates.Product
         {
-            get { return Product; }
-            set { Product = value; }
+            get => Product;
+            set => Product = value;
         }
 
         // ----- Fields
@@ -30,6 +30,7 @@ namespace Patterns.StateInterface.Domain
         public int Quantity { get; private set; }
 
         // ----- Constructor
+
         public OrderLine() { }
 
         public OrderLine(Product product, int quantity)
