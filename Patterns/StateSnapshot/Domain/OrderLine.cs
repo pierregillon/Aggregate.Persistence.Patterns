@@ -14,9 +14,8 @@ namespace Patterns.StateSnapshot.Domain
         public int Quantity { get; private set; }
 
         // ----- Constructor
-        public OrderLine()
-        {
-        }
+        public OrderLine() { }
+
         public OrderLine(Product product, int quantity)
         {
             Product = product;
@@ -33,13 +32,13 @@ namespace Patterns.StateSnapshot.Domain
         // ----- State Snapshot
         OrderLineState IStateSnapshotable<OrderLineState>.TakeSnapshot()
         {
-            return new OrderLineState
-            {
+            return new OrderLineState {
                 Product = Product,
                 Quantity = Quantity,
                 CreationDate = _creationDate
             };
         }
+
         void IStateSnapshotable<OrderLineState>.LoadSnapshot(OrderLineState snapshot)
         {
             Product = snapshot.Product;
@@ -60,12 +59,13 @@ namespace Patterns.StateSnapshot.Domain
                    target.Quantity == Quantity &&
                    target._creationDate == _creationDate;
         }
+
         public override int GetHashCode()
         {
             unchecked {
                 int hashCode = _creationDate.GetHashCode();
-                hashCode = (hashCode*397) ^ (int) Product;
-                hashCode = (hashCode*397) ^ Quantity;
+                hashCode = (hashCode * 397) ^ (int) Product;
+                hashCode = (hashCode * 397) ^ Quantity;
                 return hashCode;
             }
         }

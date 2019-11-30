@@ -14,18 +14,17 @@ namespace Patterns.Binary.Infrastructure
             if (!File.Exists(FilePath)) {
                 return null;
             }
-            using (var stream = File.OpenRead(FilePath)) {
-                var formatter = new BinaryFormatter();
-                return (Order) formatter.Deserialize(stream);
-            }
+
+            using var stream = File.OpenRead(FilePath);
+            var formatter = new BinaryFormatter();
+            return (Order) formatter.Deserialize(stream);
         }
 
         public void Add(Order order)
         {
-            using (var stream = File.Create(FilePath)) {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, order);
-            }
+            using var stream = File.Create(FilePath);
+            var formatter = new BinaryFormatter();
+            formatter.Serialize(stream, order);
         }
 
         public void Update(Order order)

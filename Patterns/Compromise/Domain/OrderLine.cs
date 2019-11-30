@@ -13,9 +13,8 @@ namespace Patterns.Compromise.Domain
         public Guid OrderId { get; set; }
 
         // ----- Constructors
-        public OrderLine()
-        {
-        }
+        public OrderLine() { }
+
         public OrderLine(Product product, int quantity, Guid id)
         {
             Product = product;
@@ -43,12 +42,13 @@ namespace Patterns.Compromise.Domain
                    target.Quantity == Quantity &&
                    target.CreationDate == CreationDate;
         }
+
         public override int GetHashCode()
         {
             unchecked {
                 int hashCode = CreationDate.GetHashCode();
-                hashCode = (hashCode*397) ^ (int) Product;
-                hashCode = (hashCode*397) ^ Quantity;
+                hashCode = (hashCode * 397) ^ (int) Product;
+                hashCode = (hashCode * 397) ^ Quantity;
                 return hashCode;
             }
         }

@@ -19,7 +19,7 @@ namespace Patterns.Tests
         [MemberData("InnerClass")]
         public void increase_quantity_when_adding_existing_product<TOrder>(TOrder order) where TOrder : IOrder
         {
-            order.AddProduct(Product.Jacket, 1); 
+            order.AddProduct(Product.Jacket, 1);
             order.AddProduct(Product.Jacket, 3);
 
             Check.That(order.GetQuantity(Product.Jacket)).IsEqualTo(4);
@@ -173,9 +173,8 @@ namespace Patterns.Tests
 
         private static IEnumerable<object[]> GetParameters<TOrder>(TOrder order)
         {
-            return new[]
-            {
-                new object[] {order}
+            return new[] {
+                new object[] { order }
             };
         }
     }

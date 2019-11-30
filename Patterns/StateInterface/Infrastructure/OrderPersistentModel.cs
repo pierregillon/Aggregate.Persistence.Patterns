@@ -10,8 +10,7 @@ namespace Patterns.StateInterface.Infrastructure
     {
         IEnumerable<OrderLinePersistentModel> IOrderStates<OrderLinePersistentModel>.Lines
         {
-            get
-            {
+            get {
                 // We do a copy of the origin list to avoid
                 // modification from outside.
                 return Lines.ToArray();

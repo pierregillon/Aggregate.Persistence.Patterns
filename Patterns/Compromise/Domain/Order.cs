@@ -39,6 +39,7 @@ namespace Patterns.Compromise.Domain
 
             ReCalculateTotalPrice();
         }
+
         public void RemoveProduct(Product product)
         {
             CheckIfDraft();
@@ -49,14 +50,17 @@ namespace Patterns.Compromise.Domain
                 ReCalculateTotalPrice();
             }
         }
+
         public int GetQuantity(Product product)
         {
             var line = Lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
                 return 0;
             }
+
             return line.Quantity;
         }
+
         public void Submit()
         {
             CheckIfDraft();
@@ -70,21 +74,25 @@ namespace Patterns.Compromise.Domain
             if (OrderStatus != OrderStatus.Draft)
                 throw new OrderOperationException("The operation is only allowed if the order is in draft state.");
         }
+
         private void CheckQuantity(int quantity)
         {
             if (quantity < 0) {
                 throw new OrderOperationException("Unable to add product with negative quantity.");
             }
+
             if (quantity == 0) {
                 throw new OrderOperationException("Unable to add product with no quantity.");
             }
         }
+
         private void ReCalculateTotalPrice()
         {
             if (Lines.Count == 0) {
                 TotalCost = 0;
             }
-            TotalCost = Lines.Sum(x => _catalog.GetPrice(x.Product)*x.Quantity);
+
+            TotalCost = Lines.Sum(x => _catalog.GetPrice(x.Product) * x.Quantity);
         }
 
         #region Overrides with no interest
@@ -102,10 +110,12 @@ namespace Patterns.Compromise.Domain
                    target.TotalCost == TotalCost &&
                    target.Lines.IsEquivalentIgnoringOrderTo(Lines);
         }
+
         public override int GetHashCode()
         {
             return Id.GetHashCode();
         }
+
         public override string ToString()
         {
             return "Order with compromise pattern";

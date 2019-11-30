@@ -13,6 +13,7 @@ namespace Patterns.StateSnapshot.Domain
                 if (complementaryAction != null) {
                     complementaryAction(state);
                 }
+
                 yield return state;
             }
         }

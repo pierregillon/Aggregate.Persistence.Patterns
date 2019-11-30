@@ -8,7 +8,7 @@ namespace Patterns.InnerClass.Infrastructure.EntityFramework
         public OrderLineStateMapping()
         {
             this.ToTable("OrderLine");
-            this.HasKey(x => new {x.OrderId, x.Product});
+            this.HasKey(x => new { x.OrderId, x.Product });
             this.Property(x => x.OrderId);
             this.Property(x => x.Product);
             this.Property(x => x.Quantity);

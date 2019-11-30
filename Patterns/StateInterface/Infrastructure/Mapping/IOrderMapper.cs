@@ -2,7 +2,5 @@
 
 namespace Patterns.StateInterface.Infrastructure.Mapping
 {
-    public interface IOrderMapper : IMapper<Order, OrderPersistentModel>
-    {
-    }
+    public interface IOrderMapper : IMapper<Order, OrderPersistentModel> { }
 }

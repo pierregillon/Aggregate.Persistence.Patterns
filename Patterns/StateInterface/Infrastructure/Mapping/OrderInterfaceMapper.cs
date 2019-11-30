@@ -18,6 +18,7 @@ namespace Patterns.StateInterface.Infrastructure.Mapping
             foreach (var line in persistentModel.Lines) {
                 line.OrderId = persistentModel.Id;
             }
+
             return persistentModel;
         }
     }

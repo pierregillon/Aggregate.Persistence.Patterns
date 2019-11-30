@@ -32,6 +32,7 @@ namespace Patterns.StateInterface.Domain
                 orderLine.CopyTo(persistentOrderLine);
                 target.Add(persistentOrderLine);
             }
+
             return target;
         }
     }

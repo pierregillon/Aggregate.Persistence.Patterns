@@ -17,7 +17,8 @@ namespace Patterns.InnerClass.Domain
         public int Quantity { get; private set; }
 
         // ----- Constructor
-        public OrderLine() {}
+        public OrderLine() { }
+
         public OrderLine(Product product, int quantity)
         {
             Product = product;
@@ -44,12 +45,13 @@ namespace Patterns.InnerClass.Domain
                    target.Quantity == Quantity &&
                    target._creationDate == _creationDate;
         }
+
         public override int GetHashCode()
         {
             unchecked {
                 int hashCode = _creationDate.GetHashCode();
-                hashCode = (hashCode*397) ^ (int) Product;
-                hashCode = (hashCode*397) ^ Quantity;
+                hashCode = (hashCode * 397) ^ (int) Product;
+                hashCode = (hashCode * 397) ^ Quantity;
                 return hashCode;
             }
         }
@@ -60,13 +62,13 @@ namespace Patterns.InnerClass.Domain
         {
             public OrderLine Build(OrderLineState orderLineState)
             {
-                return new OrderLine
-                {
+                return new OrderLine {
                     Product = orderLineState.Product,
                     Quantity = orderLineState.Quantity,
                     _creationDate = orderLineState.CreationDate
                 };
             }
+
             public IEnumerable<OrderLine> Build(IEnumerable<OrderLineState> lines)
             {
                 return lines.Select(Build);
@@ -77,8 +79,7 @@ namespace Patterns.InnerClass.Domain
         {
             public OrderLineState Build(OrderLine orderLine)
             {
-                return new OrderLineState
-                {
+                return new OrderLineState {
                     Product = orderLine.Product,
                     Quantity = orderLine.Quantity,
                     CreationDate = orderLine._creationDate

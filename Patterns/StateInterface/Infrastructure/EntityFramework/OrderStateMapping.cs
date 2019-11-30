@@ -11,7 +11,7 @@ namespace Patterns.StateInterface.Infrastructure.EntityFramework
             this.Property(x => x.OrderStatus);
             this.Property(x => x.TotalCost);
             this.Property(x => x.SubmitDate);
-            this.HasMany(x => x.Lines).WithRequired().HasForeignKey(x=>x.OrderId);
+            this.HasMany(x => x.Lines).WithRequired().HasForeignKey(x => x.OrderId);
         }
     }
 }

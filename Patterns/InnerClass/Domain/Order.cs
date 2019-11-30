@@ -38,6 +38,7 @@ namespace Patterns.InnerClass.Domain
 
             ReCalculateTotalPrice();
         }
+
         public void RemoveProduct(Product product)
         {
             CheckIfDraft();
@@ -48,14 +49,17 @@ namespace Patterns.InnerClass.Domain
                 ReCalculateTotalPrice();
             }
         }
+
         public int GetQuantity(Product product)
         {
             var line = _lines.FirstOrDefault(x => x.Product == product);
             if (line == null) {
                 return 0;
             }
+
             return line.Quantity;
         }
+
         public void Submit()
         {
             CheckIfDraft();
@@ -69,21 +73,25 @@ namespace Patterns.InnerClass.Domain
             if (_orderStatus != OrderStatus.Draft)
                 throw new OrderOperationException("The operation is only allowed if the order is in draft state.");
         }
+
         private void CheckQuantity(int quantity)
         {
             if (quantity < 0) {
                 throw new OrderOperationException("Unable to add product with negative quantity.");
             }
+
             if (quantity == 0) {
                 throw new OrderOperationException("Unable to add product with no quantity.");
             }
         }
+
         private void ReCalculateTotalPrice()
         {
             if (_lines.Count == 0) {
                 TotalCost = 0;
             }
-            TotalCost = _lines.Sum(x => _catalog.GetPrice(x.Product)*x.Quantity);
+
+            TotalCost = _lines.Sum(x => _catalog.GetPrice(x.Product) * x.Quantity);
         }
 
         #region Overrides with no interest
@@ -101,10 +109,12 @@ namespace Patterns.InnerClass.Domain
                    target.TotalCost == TotalCost &&
                    target._lines.IsEquivalentIgnoringOrderTo(_lines);
         }
+
         public override int GetHashCode()
         {
             return Id.GetHashCode();
         }
+
         public override string ToString()
         {
             return "Order with inner class pattern";
@@ -116,8 +126,7 @@ namespace Patterns.InnerClass.Domain
         {
             public Order Build(OrderState orderState)
             {
-                var order = new Order
-                {
+                var order = new Order {
                     Id = orderState.Id,
                     _orderStatus = orderState.OrderStatus,
                     SubmitDate = orderState.SubmitDate,
@@ -135,8 +144,7 @@ namespace Patterns.InnerClass.Domain
         {
             public OrderState Build(Order order)
             {
-                return new OrderState
-                {
+                return new OrderState {
                     Id = order.Id,
                     OrderStatus = order._orderStatus,
                     SubmitDate = order.SubmitDate,

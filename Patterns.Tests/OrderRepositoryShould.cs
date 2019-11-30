@@ -10,7 +10,7 @@ namespace Patterns.Tests
 {
     public class OrderRepository_should
     {
-        [Theory(Skip ="infra")]
+        [Theory(Skip = "infra")]
         [MemberData("Binary")]
         [MemberData("Compromise")]
         [MemberData("EventSourcing")]
@@ -99,65 +99,54 @@ namespace Patterns.Tests
         }
         public static IEnumerable<object[]> Compromise
         {
-            get
-            {
-                return new[]
-                {
-                    new object[] {new Compromise.Domain.Order(), new Compromise.Infrastructure.EntityFrameworkOrderRepository()},
-                    new object[] {new Compromise.Domain.Order(), new Compromise.Infrastructure.DapperOrderRepository()}
+            get {
+                return new[] {
+                    new object[] { new Compromise.Domain.Order(), new Compromise.Infrastructure.EntityFrameworkOrderRepository() },
+                    new object[] { new Compromise.Domain.Order(), new Compromise.Infrastructure.DapperOrderRepository() }
                 };
             }
         }
         public static IEnumerable<object[]> EventSourcing
         {
-            get
-            {
-                return new[]
-                {
-                    new object[] {new EventSourcing.Domain.Order(), new EventSourcing.Infrastructure.EntityFrameworkOrderRepository()},
-                    new object[] {new EventSourcing.Domain.Order(), new EventSourcing.Infrastructure.DapperOrderRepository()}
+            get {
+                return new[] {
+                    new object[] { new EventSourcing.Domain.Order(), new EventSourcing.Infrastructure.EntityFrameworkOrderRepository() },
+                    new object[] { new EventSourcing.Domain.Order(), new EventSourcing.Infrastructure.DapperOrderRepository() }
                 };
             }
         }
         public static IEnumerable<object[]> StateInterface
         {
-            get
-            {
-                return new[]
-                {
-                    new object[] {new Patterns.StateInterface.Domain.Order(), new EntityFrameworkOrderRepository(new OrderInterfaceMapper())},
-                    new object[] {new Order(), new DapperOrderRepository(new OrderAutoMapper())}
+            get {
+                return new[] {
+                    new object[] { new Patterns.StateInterface.Domain.Order(), new EntityFrameworkOrderRepository(new OrderInterfaceMapper()) },
+                    new object[] { new Order(), new DapperOrderRepository(new OrderAutoMapper()) }
                 };
             }
         }
         public static IEnumerable<object[]> StateSnapshot
         {
-            get
-            {
-                return new[]
-                {
-                    new object[] {new StateSnapshot.Domain.Order(), new StateSnapshot.Infrastructure.EntityFrameworkOrderRepository()},
-                    new object[] {new StateSnapshot.Domain.Order(), new StateSnapshot.Infrastructure.DapperOrderRepository()}
+            get {
+                return new[] {
+                    new object[] { new StateSnapshot.Domain.Order(), new StateSnapshot.Infrastructure.EntityFrameworkOrderRepository() },
+                    new object[] { new StateSnapshot.Domain.Order(), new StateSnapshot.Infrastructure.DapperOrderRepository() }
                 };
             }
         }
         public static IEnumerable<object[]> InnerClass
         {
-            get
-            {
-                return new[]
-                {
-                    new object[] {new InnerClass.Domain.Order(), new InnerClass.Infrastructure.EntityFrameworkOrderRepository()},
-                    new object[] {new InnerClass.Domain.Order(), new InnerClass.Infrastructure.DapperOrderRepository()}
+            get {
+                return new[] {
+                    new object[] { new InnerClass.Domain.Order(), new InnerClass.Infrastructure.EntityFrameworkOrderRepository() },
+                    new object[] { new InnerClass.Domain.Order(), new InnerClass.Infrastructure.DapperOrderRepository() }
                 };
             }
         }
 
         private static IEnumerable<object[]> GetParameters<TOrder, TRepository>(TOrder order, TRepository repository)
         {
-            return new[]
-            {
-                new object[] {order, repository}
+            return new[] {
+                new object[] { order, repository }
             };
         }
     }

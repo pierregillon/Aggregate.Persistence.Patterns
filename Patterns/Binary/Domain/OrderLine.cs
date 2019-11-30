@@ -39,12 +39,13 @@ namespace Patterns.Binary.Domain
                    target.Quantity == Quantity &&
                    target._creationDate == _creationDate;
         }
+
         public override int GetHashCode()
         {
             unchecked {
                 int hashCode = _creationDate.GetHashCode();
-                hashCode = (hashCode*397) ^ (int) Product;
-                hashCode = (hashCode*397) ^ Quantity;
+                hashCode = (hashCode * 397) ^ (int) Product;
+                hashCode = (hashCode * 397) ^ Quantity;
                 return hashCode;
             }
         }
