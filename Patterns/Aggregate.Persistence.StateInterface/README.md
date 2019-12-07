@@ -15,6 +15,7 @@ The copy process can be implemented through .Net reflection, Automapper, ...
 ## Advantages
 * Domain model keep its full encapsulation and is not corrupted with persistence concerns.
 * Free to design you model completely differently from persistence.
+* Easy to query multiple domain models / aggregates through the database
 
 ## Disadvantages
 * An interface should normally define a ***behaviour***. Using it to hold shared data between 

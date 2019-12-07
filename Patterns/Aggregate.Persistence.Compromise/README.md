@@ -12,6 +12,7 @@ this kind of approach, use it sparingly. You need to know its advantages/disadva
 * Single model for the domain and the persistence.
 * No mapping required
 * Thin abstraction layers
+* Easy to query multiple domain models / aggregates through the database
 
 ## Disadvantages
 * Internal states are *mutable* and can **be modified from outside of the domain model**, without evaluating business rules
