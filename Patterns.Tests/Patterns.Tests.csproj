@@ -16,7 +16,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Patterns.Contract\Patterns.Contract.csproj" />
+    <ProjectReference Include="..\Common\Common.Domain\Common.Domain.csproj" />
+    <ProjectReference Include="..\Common\Common.Infrastructure\Common.Infrastructure.csproj" />
+    <ProjectReference Include="..\Patterns.Contract\Aggregate.Persistence.Contract.csproj" />
+    <ProjectReference Include="..\Patterns\Aggregate.Persistence.Binary\Aggregate.Persistence.Binary.csproj" />
+    <ProjectReference Include="..\Patterns\Aggregate.Persistence.Compromise\Aggregate.Persistence.Compromise.csproj" />
+    <ProjectReference Include="..\Patterns\Aggregate.Persistence.EventSourcing\Aggregate.Persistence.EventSourcing.csproj" />
+    <ProjectReference Include="..\Patterns\Aggregate.Persistence.InnerClass\Aggregate.Persistence.InnerClass.csproj" />
+    <ProjectReference Include="..\Patterns\Aggregate.Persistence.NoPersistence\Aggregate.Persistence.NoPersistence.csproj" />
+    <ProjectReference Include="..\Patterns\Aggregate.Persistence.StateInterface\Aggregate.Persistence.StateInterface.csproj" />
+    <ProjectReference Include="..\Patterns\Aggregate.Persistence.StateSnapshot\Aggregate.Persistence.StateSnapshot.csproj" />
     <ProjectReference Include="..\Patterns\Patterns.csproj" />
   </ItemGroup>
 

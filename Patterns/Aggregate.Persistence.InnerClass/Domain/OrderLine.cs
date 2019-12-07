@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Patterns.Contract;
 using Patterns.Contract.Domain;
-using Patterns.StateSnapshot.Domain;
 
 namespace Patterns.InnerClass.Domain
 {
