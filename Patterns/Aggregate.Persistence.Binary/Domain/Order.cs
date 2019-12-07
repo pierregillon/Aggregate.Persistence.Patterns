@@ -10,10 +10,11 @@ namespace Aggregate.Persistence.Binary.Domain
     public class Order : IOrder
     {
         private readonly List<OrderLine> _lines = new List<OrderLine>();
+        private DateTime? _submitDate;
+        private OrderStatus _orderStatus;
+        DateTime? IOrder.SubmitDate => _submitDate;
 
         public Guid Id { get; }
-        public OrderStatus OrderStatus { get; private set; }
-        public DateTime? SubmitDate { get; private set; }
         public double TotalCost { get; private set; }
 
         // ----- Constructor
@@ -59,15 +60,15 @@ namespace Aggregate.Persistence.Binary.Domain
         public void Submit()
         {
             CheckIfDraft();
-            SubmitDate = DateTime.Now.RoundToSecond();
-            OrderStatus = OrderStatus.Submitted;
+            _submitDate = DateTime.Now.RoundToSecond();
+            _orderStatus = OrderStatus.Submitted;
         }
 
         // ----- Internal logic
 
         private void CheckIfDraft()
         {
-            if (OrderStatus != OrderStatus.Draft)
+            if (_orderStatus != OrderStatus.Draft)
                 throw new OrderOperationException("The operation is only allowed if the order is in draft state.");
         }
 
@@ -92,8 +93,8 @@ namespace Aggregate.Persistence.Binary.Domain
             if (target == null) return base.Equals(obj);
 
             return target.Id == Id &&
-                   target.OrderStatus == OrderStatus &&
-                   target.SubmitDate == SubmitDate &&
+                   target._orderStatus == _orderStatus &&
+                   target._submitDate == _submitDate &&
                    target.TotalCost == TotalCost &&
                    target._lines.IsEquivalentIgnoringOrderTo(_lines);
         }

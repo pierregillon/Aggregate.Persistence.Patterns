@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Aggregate.Persistence.NoPersistence.Domain;
 using Common.Domain;
 using NFluent;
@@ -69,8 +68,10 @@ namespace Patterns.Tests
         [MemberData(nameof(InnerClass))]
         public void throw_exception_when_adding_product_with_negative_quantity<TOrder>(TOrder order) where TOrder : IOrder
         {
+            void Action() => order.AddProduct(Product.Computer, -5);
+
             Check
-                .ThatCode(() => order.AddProduct(Product.Computer, -5))
+                .ThatCode(Action)
                 .Throws<OrderOperationException>()
                 .WithMessage("Unable to add product with negative quantity.");
         }
@@ -85,8 +86,10 @@ namespace Patterns.Tests
         [MemberData(nameof(InnerClass))]
         public void throw_exception_when_adding_product_with_no_quantity<TOrder>(TOrder order) where TOrder : IOrder
         {
+            void Action() => order.AddProduct(Product.Computer, 0);
+
             Check
-                .ThatCode(() => order.AddProduct(Product.Computer, 0))
+                .ThatCode(Action)
                 .Throws<OrderOperationException>()
                 .WithMessage("Unable to add product with no quantity.");
         }
@@ -101,11 +104,15 @@ namespace Patterns.Tests
         [MemberData(nameof(InnerClass))]
         public void throw_exception_when_adding_product_to_submitted_order<TOrder>(TOrder order) where TOrder : IOrder
         {
-            order.Submit();
+            void Action()
+            {
+                order.Submit();
+                order.AddProduct(Product.Computer, 1);
+            }
 
-            Action action = () => order.AddProduct(Product.Computer, 1);
-
-            Check.ThatCode(action).Throws<OrderOperationException>();
+            Check
+                .ThatCode(Action)
+                .Throws<OrderOperationException>();
         }
 
         [Theory]
@@ -118,12 +125,14 @@ namespace Patterns.Tests
         [MemberData(nameof(InnerClass))]
         public void throw_exception_when_removing_product_if_submitted<TOrder>(TOrder order) where TOrder : IOrder
         {
-            order.AddProduct(Product.Computer, 1);
-            order.Submit();
+            void Action()
+            {
+                order.AddProduct(Product.Computer, 1);
+                order.Submit();
+                order.RemoveProduct(Product.Computer);
+            }
 
-            Action action = () => order.RemoveProduct(Product.Computer);
-
-            Check.ThatCode(action).Throws<OrderOperationException>();
+            Check.ThatCode(Action).Throws<OrderOperationException>();
         }
 
         [Theory]
@@ -136,9 +145,15 @@ namespace Patterns.Tests
         [MemberData(nameof(InnerClass))]
         public void throw_exception_when_trying_to_submit_twice<TOrder>(TOrder order) where TOrder : IOrder
         {
-            order.Submit();
+            void Action()
+            {
+                order.Submit();
+                order.Submit();
+            }
 
-            Check.ThatCode(order.Submit).Throws<OrderOperationException>();
+            Check
+                .ThatCode(Action)
+                .Throws<OrderOperationException>();
         }
 
         // ----- Properties

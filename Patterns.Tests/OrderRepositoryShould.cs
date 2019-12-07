@@ -1,8 +1,4 @@
 ﻿using System.Collections.Generic;
-using Aggregate.Persistence.Binary.Domain;
-using Aggregate.Persistence.Binary.Infrastructure;
-using Aggregate.Persistence.Compromise.Infrastructure;
-using Aggregate.Persistence.StateInterface.Infrastructure.Mapping;
 using Common.Domain;
 using NFluent;
 using Xunit;
@@ -94,60 +90,35 @@ namespace Patterns.Tests
 
         // ----- Properties
 
-        public static IEnumerable<object[]> Binary => GetParameters(new Order(), new OrderRepository());
-        public static IEnumerable<object[]> Compromise
-        {
-            get {
-                return new[] {
-                    new object[] { new Aggregate.Persistence.Compromise.Domain.Order(), new EntityFrameworkOrderRepository() },
-                    new object[] { new Aggregate.Persistence.Compromise.Domain.Order(), new DapperOrderRepository() }
-                };
-            }
-        }
-        public static IEnumerable<object[]> EventSourcing
-        {
-            get {
-                return new[] {
-                    new object[] { new Aggregate.Persistence.EventSourcing.Domain.Order(), new Aggregate.Persistence.EventSourcing.Infrastructure.EntityFrameworkOrderRepository() },
-                    new object[] { new Aggregate.Persistence.EventSourcing.Domain.Order(), new Aggregate.Persistence.EventSourcing.Infrastructure.DapperOrderRepository() }
-                };
-            }
-        }
-        public static IEnumerable<object[]> StateInterface
-        {
-            get {
-                return new[] {
-                    new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.EntityFrameworkOrderRepository(new OrderInterfaceMapper()) },
-                    new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.EntityFrameworkOrderRepository(new OrderAutoMapper()) },
-                    new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.DapperOrderRepository(new OrderInterfaceMapper()) },
-                    new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.DapperOrderRepository(new OrderAutoMapper()) }
-                };
-            }
-        }
-        public static IEnumerable<object[]> StateSnapshot
-        {
-            get {
-                return new[] {
-                    new object[] { new Aggregate.Persistence.StateSnapshot.Domain.Order(), new Aggregate.Persistence.StateSnapshot.Infrastructure.EntityFrameworkOrderRepository() },
-                    new object[] { new Aggregate.Persistence.StateSnapshot.Domain.Order(), new Aggregate.Persistence.StateSnapshot.Infrastructure.DapperOrderRepository() }
-                };
-            }
-        }
-        public static IEnumerable<object[]> InnerClass
-        {
-            get {
-                return new[] {
-                    new object[] { new Aggregate.Persistence.InnerClass.Domain.Order(), new Aggregate.Persistence.InnerClass.Infrastructure.EntityFrameworkOrderRepository() },
-                    new object[] { new Aggregate.Persistence.InnerClass.Domain.Order(), new Aggregate.Persistence.InnerClass.Infrastructure.DapperOrderRepository() }
-                };
-            }
-        }
+        public static IEnumerable<object[]> Binary => new[] {
+            new object[] { new Aggregate.Persistence.Binary.Domain.Order(), new Aggregate.Persistence.Binary.Infrastructure.OrderRepository(), },
+        };
 
-        private static IEnumerable<object[]> GetParameters<TOrder, TRepository>(TOrder order, TRepository repository)
-        {
-            return new[] {
-                new object[] { order, repository }
-            };
-        }
+        public static IEnumerable<object[]> Compromise => new[] {
+            new object[] { new Aggregate.Persistence.Compromise.Domain.Order(), new Aggregate.Persistence.Compromise.Infrastructure.EntityFrameworkOrderRepository() },
+            new object[] { new Aggregate.Persistence.Compromise.Domain.Order(), new Aggregate.Persistence.Compromise.Infrastructure.DapperOrderRepository() }
+        };
+
+        public static IEnumerable<object[]> EventSourcing => new[] {
+            new object[] { new Aggregate.Persistence.EventSourcing.Domain.Order(), new Aggregate.Persistence.EventSourcing.Infrastructure.EntityFrameworkOrderRepository() },
+            new object[] { new Aggregate.Persistence.EventSourcing.Domain.Order(), new Aggregate.Persistence.EventSourcing.Infrastructure.DapperOrderRepository() }
+        };
+
+        public static IEnumerable<object[]> StateInterface => new[] {
+            new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.EntityFrameworkOrderRepository(new Aggregate.Persistence.StateInterface.Infrastructure.Mapping.OrderInterfaceMapper()) },
+            new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.EntityFrameworkOrderRepository(new Aggregate.Persistence.StateInterface.Infrastructure.Mapping.OrderAutoMapper()) },
+            new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.DapperOrderRepository(new Aggregate.Persistence.StateInterface.Infrastructure.Mapping.OrderInterfaceMapper()) },
+            new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.DapperOrderRepository(new Aggregate.Persistence.StateInterface.Infrastructure.Mapping.OrderAutoMapper()) }
+        };
+
+        public static IEnumerable<object[]> StateSnapshot => new[] {
+            new object[] { new Aggregate.Persistence.StateSnapshot.Domain.Order(), new Aggregate.Persistence.StateSnapshot.Infrastructure.EntityFrameworkOrderRepository() },
+            new object[] { new Aggregate.Persistence.StateSnapshot.Domain.Order(), new Aggregate.Persistence.StateSnapshot.Infrastructure.DapperOrderRepository() }
+        };
+
+        public static IEnumerable<object[]> InnerClass => new[] {
+            new object[] { new Aggregate.Persistence.InnerClass.Domain.Order(), new Aggregate.Persistence.InnerClass.Infrastructure.EntityFrameworkOrderRepository() },
+            new object[] { new Aggregate.Persistence.InnerClass.Domain.Order(), new Aggregate.Persistence.InnerClass.Infrastructure.DapperOrderRepository() }
+        };
     }
 }
