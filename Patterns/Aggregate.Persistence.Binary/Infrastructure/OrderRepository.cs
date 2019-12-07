@@ -7,22 +7,20 @@ namespace Aggregate.Persistence.Binary.Infrastructure
 {
     public class OrderRepository : IOrderRepository
     {
-        private const string FilePath = "save.binary";
-
         public Order Get(Guid id)
         {
-            if (!File.Exists(FilePath)) {
+            if (!File.Exists(GetFilePath(id))) {
                 return null;
             }
 
-            using var stream = File.OpenRead(FilePath);
+            using var stream = File.OpenRead(GetFilePath(id));
             var formatter = new BinaryFormatter();
             return (Order) formatter.Deserialize(stream);
         }
 
         public void Add(Order order)
         {
-            using var stream = File.Create(FilePath);
+            using var stream = File.Create(GetFilePath(order.Id));
             var formatter = new BinaryFormatter();
             formatter.Serialize(stream, order);
         }
@@ -35,9 +33,14 @@ namespace Aggregate.Persistence.Binary.Infrastructure
 
         public void Delete(Guid orderId)
         {
-            if (File.Exists(FilePath)) {
-                File.Delete(FilePath);
+            if (File.Exists(GetFilePath(orderId))) {
+                File.Delete(GetFilePath(orderId));
             }
+        }
+
+        private static string GetFilePath(Guid id)
+        {
+            return id + ".save.binary";
         }
     }
 }
