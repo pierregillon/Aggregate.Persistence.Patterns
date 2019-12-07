@@ -142,34 +142,13 @@ namespace Patterns.Tests
         }
 
         // ----- Properties
-        public static IEnumerable<object[]> NoPersistence
-        {
-            get { return GetParameters(new Order()); }
-        }
-        public static IEnumerable<object[]> Binary
-        {
-            get { return GetParameters(new Binary.Domain.Order()); }
-        }
-        public static IEnumerable<object[]> Compromise
-        {
-            get { return GetParameters(new Compromise.Domain.Order()); }
-        }
-        public static IEnumerable<object[]> EventSourcing
-        {
-            get { return GetParameters(new EventSourcing.Domain.Order()); }
-        }
-        public static IEnumerable<object[]> StateInterface
-        {
-            get { return GetParameters(new StateInterface.Domain.Order()); }
-        }
-        public static IEnumerable<object[]> StateSnapshot
-        {
-            get { return GetParameters(new StateSnapshot.Domain.Order()); }
-        }
-        public static IEnumerable<object[]> InnerClass
-        {
-            get { return GetParameters(new InnerClass.Domain.Order()); }
-        }
+        public static IEnumerable<object[]> NoPersistence => GetParameters(new Order());
+        public static IEnumerable<object[]> Binary => GetParameters(new Binary.Domain.Order());
+        public static IEnumerable<object[]> Compromise => GetParameters(new Compromise.Domain.Order());
+        public static IEnumerable<object[]> EventSourcing => GetParameters(new EventSourcing.Domain.Order());
+        public static IEnumerable<object[]> StateInterface => GetParameters(new StateInterface.Domain.Order());
+        public static IEnumerable<object[]> StateSnapshot => GetParameters(new StateSnapshot.Domain.Order());
+        public static IEnumerable<object[]> InnerClass => GetParameters(new InnerClass.Domain.Order());
 
         private static IEnumerable<object[]> GetParameters<TOrder>(TOrder order)
         {

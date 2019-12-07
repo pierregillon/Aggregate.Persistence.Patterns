@@ -90,10 +90,7 @@ namespace Patterns.Tests
 
         // ----- Properties
 
-        public static IEnumerable<object[]> Binary
-        {
-            get { return GetParameters(new Binary.Domain.Order(), new Binary.Infrastructure.OrderRepository()); }
-        }
+        public static IEnumerable<object[]> Binary => GetParameters(new Binary.Domain.Order(), new Binary.Infrastructure.OrderRepository());
         public static IEnumerable<object[]> Compromise
         {
             get {
