@@ -8,6 +8,25 @@ are well encapsulated.
 
 This repository contains examples of patterns you can use to fit this need of **encapsulation and persistence**.
 
+## The patterns
+The patterns are :
+* **[Compromise](/Patterns/Aggregate.Persistence.Compromise/)** 
+: oriented object compromise by exposing domain model internal states publicly to persist them.
+* **[Binary](/Patterns/Aggregate.Persistence.Binary)** 
+: persist internal states of an domain model using binary serialization
+* **[State-Interface](/Patterns/Aggregate.Persistence.StateInterface/)**
+: create a clear separation between domain model and persistence model. Copy states from one to other
+thanks to interface.
+* **[State-Snapshot](/Patterns/Aggregate.Persistence.StateSnapshot/)**
+: create a clear separation between domain model and persistence model. Persistent model is returned 
+by the domain model as a *Snapshot* of its internal states.
+* **[Inner-Class](/Patterns/Aggregate.Persistence.InnerClass/)**
+: create a clear separation between domain model and persistence model. Create a converter class within 
+the domain model to access to its internal states and build persistent model from it.
+* **[Event-Sourcing](/Patterns/Aggregate.Persistence.EventSourcing/)**
+: the domain model state is decomposed in domain events that are persisted in the database. They are 
+replayed in the domain model to restore its original state.
+
 ## A simple domain
 To illustrate aggregate persistence patterns, we will use a simple domain : an order management system with product, prices and quantities.
 The order contract is :
@@ -36,25 +55,6 @@ All the patterns are implementing the same business rules :
 ## Tests
 A set of unit tests and integration tests are implemented for all the different patterns using XUnit. To run the integration
 tests, you must publish the database project before (Patterns.Tables).
-
-## The patterns
-The patterns are :
-* **[Compromise](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/Compromise)** 
-: oriented object compromise by exposing domain model internal states publicly to persist them.
-* **[Binary](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/Binary)** 
-: persist internal states of an domain model using binary serialization
-* **[State-Interface](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/StateInterface)**
-: create a clear separation between domain model and persistence model. Copy states from one to other
-thanks to interface.
-* **[State-Snapshot](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/StateSnapshot)**
-: create a clear separation between domain model and persistence model. Persistent model is returned 
-by the domain model as a *Snapshot* of its internal states.
-* **[Inner-Class](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/InnerClass)**
-: create a clear separation between domain model and persistence model. Create a converter class within 
-the domain model to access to its internal states and build persistent model from it.
-* **[Event-Sourcing](https://github.com/pierregillon/DomainModelPersistencePatterns/tree/master/Patterns/EventSourcing)**
-: the domain model state is decomposed in domain events that are persisted in the database. They are 
-replayed in the domain model to restore its original state.
 
 ## Original blog
 You can find the original blog about those domain model persistence patterns [**here**](http://pierregillon.com/persister-un-pur-domain-model-pas-si-simple/).
