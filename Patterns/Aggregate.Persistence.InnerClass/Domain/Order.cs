@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Patterns.Contract;
-using Patterns.Contract.Domain;
+using Common.Domain;
+using Common.Domain.Extensions;
 
-namespace Patterns.InnerClass.Domain
+namespace Aggregate.Persistence.InnerClass.Domain
 {
     public class Order : IOrder
     {

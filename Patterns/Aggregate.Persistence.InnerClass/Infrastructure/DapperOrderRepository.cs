@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Linq;
+using Aggregate.Persistence.InnerClass.Domain;
+using Common.Infrastructure;
 using Dapper;
-using Patterns.Contract.Infrastructure;
-using Patterns.InnerClass.Domain;
 
-namespace Patterns.InnerClass.Infrastructure
+namespace Aggregate.Persistence.InnerClass.Infrastructure
 {
     public class DapperOrderRepository : IOrderRepository
     {

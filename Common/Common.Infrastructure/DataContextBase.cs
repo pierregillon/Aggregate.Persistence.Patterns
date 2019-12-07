@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace Patterns.Contract.Infrastructure
+namespace Common.Infrastructure
 {
     public abstract class DataContextBase<T> : DbContext where T : DbContext
     {

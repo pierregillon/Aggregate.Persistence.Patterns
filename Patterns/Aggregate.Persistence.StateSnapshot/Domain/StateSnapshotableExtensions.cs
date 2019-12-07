@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Patterns.StateSnapshot.Domain
+namespace Aggregate.Persistence.StateSnapshot.Domain
 {
     public static class StateSnapshotableExtensions
     {

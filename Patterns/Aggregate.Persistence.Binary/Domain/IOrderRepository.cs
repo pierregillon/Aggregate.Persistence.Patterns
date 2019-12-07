@@ -1,6 +1,6 @@
-using Patterns.Contract.Domain;
+using Common.Domain;
 
-namespace Patterns.Binary.Domain
+namespace Aggregate.Persistence.Binary.Domain
 {
     public interface IOrderRepository : IRepository<Order> { }
 }

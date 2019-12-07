@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using Patterns.StateSnapshot.Domain;
+using Aggregate.Persistence.StateSnapshot.Domain;
 
-namespace Patterns.StateSnapshot.Infrastructure.EntityFramework
+namespace Aggregate.Persistence.StateSnapshot.Infrastructure.EntityFramework
 {
     public class OrderStateMapping : EntityTypeConfiguration<OrderState>
     {

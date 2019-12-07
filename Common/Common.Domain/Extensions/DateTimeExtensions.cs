@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Patterns.Contract
+namespace Common.Domain.Extensions
 {
     public static class DateTimeExtensions
     {

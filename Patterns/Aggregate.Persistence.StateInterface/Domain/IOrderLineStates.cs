@@ -1,7 +1,7 @@
 using System;
-using Patterns.Contract.Domain;
+using Common.Domain;
 
-namespace Patterns.StateInterface.Domain
+namespace Aggregate.Persistence.StateInterface.Domain
 {
     public interface IOrderLineStates
     {

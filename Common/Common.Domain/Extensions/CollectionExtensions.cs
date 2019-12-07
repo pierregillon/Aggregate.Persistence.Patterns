@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Patterns.Contract
+namespace Common.Domain.Extensions
 {
     public static class CollectionExtensions
     {

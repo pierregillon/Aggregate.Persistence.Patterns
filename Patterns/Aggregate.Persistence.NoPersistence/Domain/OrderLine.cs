@@ -1,7 +1,7 @@
 using System;
-using Patterns.Contract.Domain;
+using Common.Domain;
 
-namespace Patterns.NoPersistence
+namespace Aggregate.Persistence.NoPersistence.Domain
 {
     public class OrderLine : IOrderLine
     {

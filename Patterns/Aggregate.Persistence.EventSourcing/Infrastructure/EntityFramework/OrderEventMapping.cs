@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Patterns.EventSourcing.Infrastructure.EntityFramework
+namespace Aggregate.Persistence.EventSourcing.Infrastructure.EntityFramework
 {
     public class OrderEventMapping : EntityTypeConfiguration<OrderEvent>
     {

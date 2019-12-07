@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Linq;
+using Aggregate.Persistence.EventSourcing.Domain;
+using Aggregate.Persistence.EventSourcing.Domain.Base;
+using Aggregate.Persistence.EventSourcing.Domain.Events;
+using Common.Infrastructure;
 using Dapper;
 using Newtonsoft.Json;
-using Patterns.Contract.Infrastructure;
-using Patterns.EventSourcing.Domain;
-using Patterns.EventSourcing.Domain.Base;
-using Patterns.EventSourcing.Domain.Events;
 
-namespace Patterns.EventSourcing.Infrastructure
+namespace Aggregate.Persistence.EventSourcing.Infrastructure
 {
     public class DapperOrderRepository : IOrderRepository
     {

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Linq;
+using Aggregate.Persistence.StateInterface.Domain;
+using Aggregate.Persistence.StateInterface.Infrastructure.Mapping;
+using Common.Infrastructure;
 using Dapper;
-using Patterns.Contract.Infrastructure;
-using Patterns.StateInterface.Domain;
-using Patterns.StateInterface.Infrastructure.Mapping;
 
-namespace Patterns.StateInterface.Infrastructure
+namespace Aggregate.Persistence.StateInterface.Infrastructure
 {
     public class DapperOrderRepository : IOrderRepository
     {

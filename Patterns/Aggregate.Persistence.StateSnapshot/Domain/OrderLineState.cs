@@ -1,7 +1,7 @@
 ﻿using System;
-using Patterns.Contract.Domain;
+using Common.Domain;
 
-namespace Patterns.StateSnapshot.Domain
+namespace Aggregate.Persistence.StateSnapshot.Domain
 {
     public class OrderLineState
     {

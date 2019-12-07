@@ -1,8 +1,8 @@
 using System;
-using Patterns.Contract;
-using Patterns.Contract.Domain;
+using Common.Domain;
+using Common.Domain.Extensions;
 
-namespace Patterns.StateSnapshot.Domain
+namespace Aggregate.Persistence.StateSnapshot.Domain
 {
     public class OrderLine : IOrderLine, IStateSnapshotable<OrderLineState>
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Aggregate.Persistence.NoPersistence.Domain;
+using Common.Domain;
 using NFluent;
-using Patterns.Contract.Domain;
-using Patterns.NoPersistence;
 using Xunit;
 
 namespace Patterns.Tests
@@ -143,12 +143,12 @@ namespace Patterns.Tests
 
         // ----- Properties
         public static IEnumerable<object[]> NoPersistence => GetParameters(new Order());
-        public static IEnumerable<object[]> Binary => GetParameters(new Binary.Domain.Order());
-        public static IEnumerable<object[]> Compromise => GetParameters(new Compromise.Domain.Order());
-        public static IEnumerable<object[]> EventSourcing => GetParameters(new EventSourcing.Domain.Order());
-        public static IEnumerable<object[]> StateInterface => GetParameters(new StateInterface.Domain.Order());
-        public static IEnumerable<object[]> StateSnapshot => GetParameters(new StateSnapshot.Domain.Order());
-        public static IEnumerable<object[]> InnerClass => GetParameters(new InnerClass.Domain.Order());
+        public static IEnumerable<object[]> Binary => GetParameters(new Aggregate.Persistence.Binary.Domain.Order());
+        public static IEnumerable<object[]> Compromise => GetParameters(new Aggregate.Persistence.Compromise.Domain.Order());
+        public static IEnumerable<object[]> EventSourcing => GetParameters(new Aggregate.Persistence.EventSourcing.Domain.Order());
+        public static IEnumerable<object[]> StateInterface => GetParameters(new Aggregate.Persistence.StateInterface.Domain.Order());
+        public static IEnumerable<object[]> StateSnapshot => GetParameters(new Aggregate.Persistence.StateSnapshot.Domain.Order());
+        public static IEnumerable<object[]> InnerClass => GetParameters(new Aggregate.Persistence.InnerClass.Domain.Order());
 
         private static IEnumerable<object[]> GetParameters<TOrder>(TOrder order)
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Patterns.EventSourcing.Infrastructure
+namespace Aggregate.Persistence.EventSourcing.Infrastructure
 {
     public class OrderEvent
     {

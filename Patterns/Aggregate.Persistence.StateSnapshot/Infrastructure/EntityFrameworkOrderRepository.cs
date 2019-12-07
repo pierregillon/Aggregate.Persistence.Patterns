@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
-using Patterns.StateSnapshot.Domain;
-using Patterns.StateSnapshot.Infrastructure.EntityFramework;
+using Aggregate.Persistence.StateSnapshot.Domain;
+using Aggregate.Persistence.StateSnapshot.Infrastructure.EntityFramework;
 
-namespace Patterns.StateSnapshot.Infrastructure
+namespace Aggregate.Persistence.StateSnapshot.Infrastructure
 {
     public class EntityFrameworkOrderRepository : IOrderRepository
     {

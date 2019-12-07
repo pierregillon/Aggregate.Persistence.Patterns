@@ -1,7 +1,7 @@
+using Aggregate.Persistence.StateInterface.Domain;
 using AutoMapper;
-using Patterns.StateInterface.Domain;
 
-namespace Patterns.StateInterface.Infrastructure.Mapping
+namespace Aggregate.Persistence.StateInterface.Infrastructure.Mapping
 {
     public class OrderAutoMapper : IOrderMapper
     {

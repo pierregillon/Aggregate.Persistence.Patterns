@@ -1,8 +1,8 @@
 using System;
-using Patterns.Contract.Domain;
-using Patterns.EventSourcing.Domain.Base;
+using Aggregate.Persistence.EventSourcing.Domain.Base;
+using Common.Domain;
 
-namespace Patterns.EventSourcing.Domain.Events
+namespace Aggregate.Persistence.EventSourcing.Domain.Events
 {
     public class ProductAdded : IDomainEvent
     {

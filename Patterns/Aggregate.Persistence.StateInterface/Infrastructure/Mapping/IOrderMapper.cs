@@ -1,6 +1,6 @@
-﻿using Patterns.StateInterface.Domain;
+﻿using Aggregate.Persistence.StateInterface.Domain;
 
-namespace Patterns.StateInterface.Infrastructure.Mapping
+namespace Aggregate.Persistence.StateInterface.Infrastructure.Mapping
 {
     public interface IOrderMapper : IMapper<Order, OrderPersistentModel> { }
 }

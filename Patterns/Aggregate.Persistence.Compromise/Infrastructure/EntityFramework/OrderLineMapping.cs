@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using Patterns.Compromise.Domain;
+using Aggregate.Persistence.Compromise.Domain;
 
-namespace Patterns.Compromise.Infrastructure.EntityFramework
+namespace Aggregate.Persistence.Compromise.Infrastructure.EntityFramework
 {
     public class OrderLineMapping : EntityTypeConfiguration<OrderLine>
     {

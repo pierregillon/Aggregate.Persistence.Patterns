@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Persistence.StateSnapshot
+﻿namespace Aggregate.Persistence.StateSnapshot
 {
     public class Class1
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Patterns.Contract.Domain;
-using Patterns.StateInterface.Domain;
+using Aggregate.Persistence.StateInterface.Domain;
+using Common.Domain;
 
-namespace Patterns.StateInterface.Infrastructure
+namespace Aggregate.Persistence.StateInterface.Infrastructure
 {
     public class OrderPersistentModel : IOrderStates<OrderLinePersistentModel>
     {

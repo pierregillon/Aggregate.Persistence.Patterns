@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using Patterns.InnerClass.Domain;
+using Aggregate.Persistence.InnerClass.Domain;
 
-namespace Patterns.InnerClass.Infrastructure.EntityFramework
+namespace Aggregate.Persistence.InnerClass.Infrastructure.EntityFramework
 {
     public class OrderLineStateMapping : EntityTypeConfiguration<OrderLineState>
     {

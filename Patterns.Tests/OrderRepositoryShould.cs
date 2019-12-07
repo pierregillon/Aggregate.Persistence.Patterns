@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
+using Aggregate.Persistence.Binary.Domain;
+using Aggregate.Persistence.Binary.Infrastructure;
+using Aggregate.Persistence.Compromise.Infrastructure;
+using Aggregate.Persistence.StateInterface.Infrastructure.Mapping;
+using Common.Domain;
 using NFluent;
-using Patterns.Contract.Domain;
 using Xunit;
 
 namespace Patterns.Tests
@@ -90,13 +94,13 @@ namespace Patterns.Tests
 
         // ----- Properties
 
-        public static IEnumerable<object[]> Binary => GetParameters(new Binary.Domain.Order(), new Binary.Infrastructure.OrderRepository());
+        public static IEnumerable<object[]> Binary => GetParameters(new Order(), new OrderRepository());
         public static IEnumerable<object[]> Compromise
         {
             get {
                 return new[] {
-                    new object[] { new Compromise.Domain.Order(), new Compromise.Infrastructure.EntityFrameworkOrderRepository() },
-                    new object[] { new Compromise.Domain.Order(), new Compromise.Infrastructure.DapperOrderRepository() }
+                    new object[] { new Aggregate.Persistence.Compromise.Domain.Order(), new EntityFrameworkOrderRepository() },
+                    new object[] { new Aggregate.Persistence.Compromise.Domain.Order(), new DapperOrderRepository() }
                 };
             }
         }
@@ -104,8 +108,8 @@ namespace Patterns.Tests
         {
             get {
                 return new[] {
-                    new object[] { new EventSourcing.Domain.Order(), new EventSourcing.Infrastructure.EntityFrameworkOrderRepository() },
-                    new object[] { new EventSourcing.Domain.Order(), new EventSourcing.Infrastructure.DapperOrderRepository() }
+                    new object[] { new Aggregate.Persistence.EventSourcing.Domain.Order(), new Aggregate.Persistence.EventSourcing.Infrastructure.EntityFrameworkOrderRepository() },
+                    new object[] { new Aggregate.Persistence.EventSourcing.Domain.Order(), new Aggregate.Persistence.EventSourcing.Infrastructure.DapperOrderRepository() }
                 };
             }
         }
@@ -113,10 +117,10 @@ namespace Patterns.Tests
         {
             get {
                 return new[] {
-                    new object[] { new StateInterface.Domain.Order(), new StateInterface.Infrastructure.EntityFrameworkOrderRepository(new StateInterface.Infrastructure.Mapping.OrderInterfaceMapper()) },
-                    new object[] { new StateInterface.Domain.Order(), new StateInterface.Infrastructure.EntityFrameworkOrderRepository(new StateInterface.Infrastructure.Mapping.OrderAutoMapper()) },
-                    new object[] { new StateInterface.Domain.Order(), new StateInterface.Infrastructure.DapperOrderRepository(new StateInterface.Infrastructure.Mapping.OrderInterfaceMapper()) },
-                    new object[] { new StateInterface.Domain.Order(), new StateInterface.Infrastructure.DapperOrderRepository(new StateInterface.Infrastructure.Mapping.OrderAutoMapper()) }
+                    new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.EntityFrameworkOrderRepository(new OrderInterfaceMapper()) },
+                    new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.EntityFrameworkOrderRepository(new OrderAutoMapper()) },
+                    new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.DapperOrderRepository(new OrderInterfaceMapper()) },
+                    new object[] { new Aggregate.Persistence.StateInterface.Domain.Order(), new Aggregate.Persistence.StateInterface.Infrastructure.DapperOrderRepository(new OrderAutoMapper()) }
                 };
             }
         }
@@ -124,8 +128,8 @@ namespace Patterns.Tests
         {
             get {
                 return new[] {
-                    new object[] { new StateSnapshot.Domain.Order(), new StateSnapshot.Infrastructure.EntityFrameworkOrderRepository() },
-                    new object[] { new StateSnapshot.Domain.Order(), new StateSnapshot.Infrastructure.DapperOrderRepository() }
+                    new object[] { new Aggregate.Persistence.StateSnapshot.Domain.Order(), new Aggregate.Persistence.StateSnapshot.Infrastructure.EntityFrameworkOrderRepository() },
+                    new object[] { new Aggregate.Persistence.StateSnapshot.Domain.Order(), new Aggregate.Persistence.StateSnapshot.Infrastructure.DapperOrderRepository() }
                 };
             }
         }
@@ -133,8 +137,8 @@ namespace Patterns.Tests
         {
             get {
                 return new[] {
-                    new object[] { new InnerClass.Domain.Order(), new InnerClass.Infrastructure.EntityFrameworkOrderRepository() },
-                    new object[] { new InnerClass.Domain.Order(), new InnerClass.Infrastructure.DapperOrderRepository() }
+                    new object[] { new Aggregate.Persistence.InnerClass.Domain.Order(), new Aggregate.Persistence.InnerClass.Infrastructure.EntityFrameworkOrderRepository() },
+                    new object[] { new Aggregate.Persistence.InnerClass.Domain.Order(), new Aggregate.Persistence.InnerClass.Infrastructure.DapperOrderRepository() }
                 };
             }
         }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Patterns.Contract.Domain;
+using Common.Domain;
 
-namespace Patterns.StateSnapshot.Domain
+namespace Aggregate.Persistence.StateSnapshot.Domain
 {
     public class OrderState
     {

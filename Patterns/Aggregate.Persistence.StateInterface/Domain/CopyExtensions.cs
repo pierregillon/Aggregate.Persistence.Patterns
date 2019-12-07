@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Patterns.StateInterface.Domain
+namespace Aggregate.Persistence.StateInterface.Domain
 {
     public static class CopyExtensions
     {

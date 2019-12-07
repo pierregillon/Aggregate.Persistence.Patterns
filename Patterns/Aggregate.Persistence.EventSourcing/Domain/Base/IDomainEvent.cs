@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Patterns.EventSourcing.Domain.Base
+namespace Aggregate.Persistence.EventSourcing.Domain.Base
 {
     public interface IDomainEvent
     {

@@ -1,4 +1,4 @@
-﻿namespace Patterns.Contract.Infrastructure
+﻿namespace Common.Infrastructure
 {
     public class SqlConnectionLocator
     {

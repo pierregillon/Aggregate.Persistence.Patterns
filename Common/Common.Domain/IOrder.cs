@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Patterns.Contract.Domain
+namespace Common.Domain
 {
     public interface IOrder
     {

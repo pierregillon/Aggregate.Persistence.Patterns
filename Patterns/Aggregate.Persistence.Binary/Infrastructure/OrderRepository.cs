@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Patterns.Binary.Domain;
+using Aggregate.Persistence.Binary.Domain;
 
-namespace Patterns.Binary.Infrastructure
+namespace Aggregate.Persistence.Binary.Infrastructure
 {
     public class OrderRepository : IOrderRepository
     {

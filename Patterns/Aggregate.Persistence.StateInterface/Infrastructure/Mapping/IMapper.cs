@@ -1,4 +1,4 @@
-﻿namespace Patterns.StateInterface.Infrastructure.Mapping
+﻿namespace Aggregate.Persistence.StateInterface.Infrastructure.Mapping
 {
     public interface IMapper<TDomainModel, TPersistentModel>
         where TDomainModel : class

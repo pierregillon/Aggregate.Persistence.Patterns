@@ -1,7 +1,7 @@
 ﻿using System;
-using Patterns.EventSourcing.Domain.Base;
+using Aggregate.Persistence.EventSourcing.Domain.Base;
 
-namespace Patterns.EventSourcing.Domain.Events
+namespace Aggregate.Persistence.EventSourcing.Domain.Events
 {
     public class OrderPlaced : IDomainEvent
     {

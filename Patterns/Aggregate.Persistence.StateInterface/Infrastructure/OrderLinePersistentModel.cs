@@ -1,8 +1,8 @@
 ﻿using System;
-using Patterns.Contract.Domain;
-using Patterns.StateInterface.Domain;
+using Aggregate.Persistence.StateInterface.Domain;
+using Common.Domain;
 
-namespace Patterns.StateInterface.Infrastructure
+namespace Aggregate.Persistence.StateInterface.Infrastructure
 {
     public class OrderLinePersistentModel : IOrderLineStates
     {

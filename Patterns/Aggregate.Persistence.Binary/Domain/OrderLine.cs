@@ -1,8 +1,8 @@
 using System;
-using Patterns.Contract;
-using Patterns.Contract.Domain;
+using Common.Domain;
+using Common.Domain.Extensions;
 
-namespace Patterns.Binary.Domain
+namespace Aggregate.Persistence.Binary.Domain
 {
     [Serializable]
     public class OrderLine : IOrderLine

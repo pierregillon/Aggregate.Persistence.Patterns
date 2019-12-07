@@ -1,7 +1,7 @@
 using System;
-using Patterns.Contract.Domain;
+using Common.Domain;
 
-namespace Patterns.EventSourcing.Domain
+namespace Aggregate.Persistence.EventSourcing.Domain
 {
     public class OrderLine : IOrderLine
     {

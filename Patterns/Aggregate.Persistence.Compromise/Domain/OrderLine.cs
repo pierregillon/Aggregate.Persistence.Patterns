@@ -1,8 +1,8 @@
 using System;
-using Patterns.Contract;
-using Patterns.Contract.Domain;
+using Common.Domain;
+using Common.Domain.Extensions;
 
-namespace Patterns.Compromise.Domain
+namespace Aggregate.Persistence.Compromise.Domain
 {
     public class OrderLine : IOrderLine
     {

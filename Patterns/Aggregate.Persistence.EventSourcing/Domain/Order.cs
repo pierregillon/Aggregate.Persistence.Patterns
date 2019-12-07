@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Patterns.Contract;
-using Patterns.Contract.Domain;
-using Patterns.EventSourcing.Domain.Base;
-using Patterns.EventSourcing.Domain.Events;
+using Aggregate.Persistence.EventSourcing.Domain.Base;
+using Aggregate.Persistence.EventSourcing.Domain.Events;
+using Common.Domain;
+using Common.Domain.Extensions;
 
-namespace Patterns.EventSourcing.Domain
+namespace Aggregate.Persistence.EventSourcing.Domain
 {
     public class Order : EventOwner, IOrder
     {

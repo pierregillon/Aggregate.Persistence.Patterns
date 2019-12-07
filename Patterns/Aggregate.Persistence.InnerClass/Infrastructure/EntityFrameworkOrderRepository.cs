@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Data.Entity;
-using Patterns.InnerClass.Domain;
-using Patterns.InnerClass.Infrastructure.EntityFramework;
+using System.Linq;
+using Aggregate.Persistence.InnerClass.Domain;
+using Aggregate.Persistence.InnerClass.Infrastructure.EntityFramework;
 
-namespace Patterns.InnerClass.Infrastructure
+namespace Aggregate.Persistence.InnerClass.Infrastructure
 {
     public class EntityFrameworkOrderRepository : IOrderRepository
     {

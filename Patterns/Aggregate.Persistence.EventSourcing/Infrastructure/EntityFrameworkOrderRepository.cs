@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Aggregate.Persistence.EventSourcing.Domain;
+using Aggregate.Persistence.EventSourcing.Domain.Base;
+using Aggregate.Persistence.EventSourcing.Domain.Events;
+using Aggregate.Persistence.EventSourcing.Infrastructure.EntityFramework;
 using Newtonsoft.Json;
-using Patterns.EventSourcing.Domain;
-using Patterns.EventSourcing.Domain.Base;
-using Patterns.EventSourcing.Domain.Events;
-using Patterns.EventSourcing.Infrastructure.EntityFramework;
 
-namespace Patterns.EventSourcing.Infrastructure
+namespace Aggregate.Persistence.EventSourcing.Infrastructure
 {
     public class EntityFrameworkOrderRepository : IOrderRepository
     {

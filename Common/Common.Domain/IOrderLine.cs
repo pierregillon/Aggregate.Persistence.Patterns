@@ -1,4 +1,4 @@
-﻿namespace Patterns.Contract.Domain
+﻿namespace Common.Domain
 {
     public interface IOrderLine
     {
