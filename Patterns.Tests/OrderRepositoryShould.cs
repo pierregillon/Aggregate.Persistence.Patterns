@@ -8,12 +8,12 @@ namespace Patterns.Tests
     public class OrderRepository_should
     {
         [Theory]
-        [MemberData("Binary")]
-        [MemberData("Compromise")]
-        [MemberData("EventSourcing")]
-        [MemberData("StateInterface")]
-        [MemberData("StateSnapshot")]
-        [MemberData("InnerClass")]
+        [MemberData(nameof(Binary))]
+        [MemberData(nameof(Compromise))]
+        [MemberData(nameof(EventSourcing))]
+        [MemberData(nameof(StateInterface))]
+        [MemberData(nameof(StateSnapshot))]
+        [MemberData(nameof(InnerClass))]
         public void persist_new_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder
             where TRepository : IRepository<TModel>
@@ -35,12 +35,12 @@ namespace Patterns.Tests
         }
 
         [Theory]
-        [MemberData("Binary")]
-        [MemberData("EventSourcing")]
-        [MemberData("Compromise")]
-        [MemberData("StateInterface")]
-        [MemberData("StateSnapshot")]
-        [MemberData("InnerClass")]
+        [MemberData(nameof(Binary))]
+        [MemberData(nameof(EventSourcing))]
+        [MemberData(nameof(Compromise))]
+        [MemberData(nameof(StateInterface))]
+        [MemberData(nameof(StateSnapshot))]
+        [MemberData(nameof(InnerClass))]
         public void update_existing_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : IOrder
             where TRepository : IRepository<TModel>
@@ -64,12 +64,12 @@ namespace Patterns.Tests
         }
 
         [Theory]
-        [MemberData("Binary")]
-        [MemberData("EventSourcing")]
-        [MemberData("Compromise")]
-        [MemberData("StateInterface")]
-        [MemberData("StateSnapshot")]
-        [MemberData("InnerClass")]
+        [MemberData(nameof(Binary))]
+        [MemberData(nameof(EventSourcing))]
+        [MemberData(nameof(Compromise))]
+        [MemberData(nameof(StateInterface))]
+        [MemberData(nameof(StateSnapshot))]
+        [MemberData(nameof(InnerClass))]
         public void delete_existing_order<TModel, TRepository>(TModel order, TRepository orderRepository)
             where TModel : class, IOrder
             where TRepository : IRepository<TModel>

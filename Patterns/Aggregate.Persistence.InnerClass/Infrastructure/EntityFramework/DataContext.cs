@@ -3,7 +3,7 @@ using Patterns.Contract.Infrastructure;
 
 namespace Patterns.InnerClass.Infrastructure.EntityFramework
 {
-    public class DataContext : DataContextBase
+    public class DataContext : DataContextBase<DataContext>
     {
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

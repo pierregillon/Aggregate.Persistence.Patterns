@@ -12,8 +12,8 @@
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>Patterns.Tables</RootNamespace>
-    <AssemblyName>Patterns.Tables</AssemblyName>
+    <RootNamespace>Aggregate.Persistence</RootNamespace>
+    <AssemblyName>SqlDatabase.Tables</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -23,8 +23,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <DacApplicationName>Patterns.Table</DacApplicationName>
-    <TargetDatabase>Patterns.Tables</TargetDatabase>
+    <DacApplicationName>SqlDatabase.Tables</DacApplicationName>
+    <TargetDatabase>Aggregate.Persistence</TargetDatabase>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -64,8 +64,5 @@
     <Build Include="Order.sql" />
     <Build Include="OrderLine.sql" />
     <Build Include="OrderEvent.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Patterns.Tables.publish.xml" />
   </ItemGroup>
 </Project>

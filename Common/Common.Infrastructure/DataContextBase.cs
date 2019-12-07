@@ -2,20 +2,11 @@
 
 namespace Patterns.Contract.Infrastructure
 {
-    public abstract class DataContextBase : DbContext
+    public abstract class DataContextBase<T> : DbContext where T : DbContext
     {
-        protected DataContextBase()
-            : base(SqlConnectionLocator.LocalhostSqlExpress())
+        protected DataContextBase() : base(SqlConnectionLocator.LocalhostSqlExpress())
         {
-            DisableDatabaseGeneration();
-        }
-
-        private void DisableDatabaseGeneration()
-        {
-            typeof(Database)
-                .GetMethod("SetInitializer")
-                .MakeGenericMethod(GetType())
-                .Invoke(this, new object[] { null });
+            Database.SetInitializer<T>(null);
         }
     }
 }
