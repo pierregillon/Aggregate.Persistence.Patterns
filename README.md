@@ -31,7 +31,7 @@ replayed in the domain model to restore its original state.
 To illustrate aggregate persistence patterns, we will use a simple domain : an order management system with product, prices and quantities.
 The order contract is :
 
-```
+```csharp
 public interface IOrder
 {
     Guid Id { get; }
